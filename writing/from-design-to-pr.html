@@ -110,6 +110,23 @@
     }
     pre code { font-size: inherit; }
 
+    figure {
+      margin: 0 0 14px;
+    }
+    figure img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    figcaption {
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--mid);
+      margin-top: 8px;
+    }
+
     @media (max-width: 900px) {
       html { font-size: 17px; }
       main { max-width: 540px; padding: 56px 32px 96px; }
@@ -135,6 +152,10 @@
     <h1>Designers in the codebase: UI bug to merged PR</h1>
 
     <p>20%-40% of my time goes into making changes directly in production code. Layout that breaks when panels sit next to each other. Icons, labels, and status colors that don't match from one screen to the next. Copy and defaults that don't say what they mean.</p>
+    <figure>
+      <img src="images/contribution-heatmap.png" alt="Calendar heat map of my code contributions from November to November" />
+      <figcaption>A year of my commits, mostly small UI fixes and PRs.</figcaption>
+    </figure>
     <p>This post follows one of those fixes from start to finish. A few bugs kept coming from a banner section in the app. The fix was to clean up the section and add a way to collapse or dismiss it. It's a small change, and that's why it's a good one to walk through.</p>
 
     <p>I pick up front-end PRs that need design polish, plus design bugs and user requests. I write the tickets into our regular backlog, and each week I sit down with my engineers to set goals and agree on which ones I'll take.</p>
