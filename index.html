@@ -7,6 +7,11 @@
   <link rel="icon" type="image/png" href="MR_logo.png" />
   <link rel="apple-touch-icon" href="MR_logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <script>
+    if (window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)').matches) {
+      document.documentElement.classList.add('enhanced');
+    }
+  </script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -17,7 +22,7 @@
       --light: #aaaaaa;
     }
 
-    html { font-size: 18px; }
+    html { font-size: 18px; scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -28,9 +33,15 @@
     }
 
     main {
+      padding: 72px 0 120px;
+    }
+
+    .narrow {
       max-width: 600px;
-      margin: 0 auto;
-      padding: 72px 40px 120px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 40px;
+      padding-right: 40px;
     }
 
     /* ── HEADER ── */
@@ -55,7 +66,8 @@
     }
 
     /* ── SECTIONS ── */
-    section { margin-bottom: 104px; }
+    section.narrow,
+    .work { margin-bottom: 104px; }
 
     /* Level 1 — Header: semi-bold, ink */
     h2 {
@@ -75,8 +87,38 @@
       max-width: 520px;
     }
     .body-text:last-child { margin-bottom: 0; }
+    .body-text a,
+    .body-text a:visited {
+      color: var(--ink);
+      text-decoration-line: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: #aaaaaa;
+      text-decoration-skip-ink: none;
+    }
+    .body-text a:hover,
+    .body-text a:active,
+    .body-text a:focus-visible,
+    .body-text a.is-on {
+      color: var(--ink);
+      text-decoration-thickness: 3px;
+      text-decoration-color: var(--ink);
+      -webkit-text-stroke: 0.4px var(--ink);
+    }
+    .body-text a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
 
     /* ── PROJECT ROWS ── */
+    .project-list {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
     .project-row {
       display: flex;
       align-items: center;
@@ -84,6 +126,7 @@
       padding-bottom: 28px;
       margin-bottom: 28px;
       border-bottom: 1px solid #f0f0f0;
+      scroll-margin-top: 32px;
     }
     .project-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 
@@ -109,6 +152,10 @@
       gap: 20px;
       width: 100%;
     }
+    .pr-link:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 4px;
+    }
 
     /* Level 2 — Body */
     .pr-name {
@@ -132,6 +179,11 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
+
+    .pr-bar { display: none; }
+
+    .hero,
+    .hero-slot { display: none; }
 
     /* ── EXPERIENCE ROWS ── */
     .exp-row {
@@ -159,6 +211,221 @@
       line-height: 1.6;
       max-width: 480px;
     }
+    .talk-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid #f0f0f0;
+      color: inherit;
+      text-decoration: none;
+    }
+    .talk-row:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .talk-row img {
+      width: 96px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+      display: block;
+    }
+    .talk-title {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.4;
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .talk-row:hover .talk-title,
+    .talk-row:focus-visible .talk-title {
+      text-decoration-color: var(--ink);
+    }
+    .talk-meta {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    .talk-row:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+    #panel-writing .exp-title a,
+    #panel-writing .exp-title a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    #panel-writing .exp-title a:hover,
+    #panel-writing .exp-title a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    #panel-writing .exp-title a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    /* ── DESIGN LIBRARY ── */
+    .lib-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .lib-tab {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--mid);
+      background: transparent;
+      border: 1px solid #f0f0f0;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .lib-tab[aria-selected="true"] {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+    .lib-tab:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .lib-panel[hidden] { display: none; }
+    .lib-panel .exp-title { overflow-wrap: anywhere; }
+    .lib-label {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--mid);
+      margin: 0 0 16px;
+    }
+    .lib-label + .exp-row { margin-top: 0; }
+    .lib-tools { margin-top: 28px; }
+    .tool-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tool-tile {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #ececec;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
+    }
+    .tool-tile svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      color: #000000;
+    }
+    .tool-tile:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .tool-tile::after {
+      content: attr(data-name);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 8px);
+      transform: translateX(-50%);
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: var(--ink);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .tool-tile:hover::after,
+    .tool-tile:focus-visible::after {
+      opacity: 1;
+    }
+    .books {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .books img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      object-fit: cover;
+      display: block;
+    }
+    .books img:nth-child(n + 16) { display: none; }
+    .books.is-expanded img:nth-child(n + 16) { display: block; }
+    .books-toggle {
+      appearance: none;
+      display: inline-block;
+      margin-top: 20px;
+      padding: 0;
+      border: 0;
+      background: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--mid);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+      cursor: pointer;
+    }
+    .books-toggle:hover,
+    .books-toggle:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .books-toggle:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .film-rows { margin-bottom: 20px; }
+    .film-row {
+      display: grid;
+      grid-template-columns: 2fr 3fr 2fr 3fr 2fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .film-row + .film-row { margin-top: 12px; }
+    .film-frame {
+      background: #f3f3f2;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px #e8e8e6;
+    }
+    .film-frame.is-portrait { aspect-ratio: 2 / 3; }
+    .film-frame.is-landscape { aspect-ratio: 3 / 2; }
 
     /* ── CONTACT ── */
     .contact-links {
@@ -188,17 +455,20 @@
     @media (max-width: 900px) {
       html { font-size: 17px; }
 
-      main {
+      main { padding: 56px 0 96px; }
+
+      .narrow,
+      .project-list {
         max-width: 540px;
-        padding: 56px 32px 96px;
+        padding-left: 32px;
+        padding-right: 32px;
       }
 
       header { margin-bottom: 80px; }
-      section { margin-bottom: 80px; }
+      section.narrow,
+      .work { margin-bottom: 80px; }
 
-      .body-text {
-        max-width: 100%;
-      }
+      .body-text { max-width: 100%; }
 
       footer { margin-top: 64px; }
     }
@@ -207,9 +477,13 @@
     @media (max-width: 600px) {
       html { font-size: 16px; }
 
-      main {
+      main { padding: 40px 0 64px; }
+
+      .narrow,
+      .project-list {
         max-width: 100%;
-        padding: 40px 20px 64px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       header { margin-bottom: 56px; }
@@ -217,7 +491,8 @@
       .name { font-size: 1.25rem; }
       .role { font-size: 0.85rem; }
 
-      section { margin-bottom: 72px; }
+      section.narrow,
+      .work { margin-bottom: 72px; }
 
       h2 {
         font-size: 0.85rem;
@@ -243,9 +518,7 @@
         aspect-ratio: 16 / 9;
       }
 
-      .pr-left {
-        padding-top: 0;
-      }
+      .pr-left { padding-top: 0; }
 
       .pr-link {
         flex-direction: column;
@@ -259,12 +532,20 @@
         line-height: 1.55;
       }
 
-      .pr-year {
-        font-size: 0.78rem;
-      }
+      .pr-year { font-size: 0.78rem; }
 
       .contact-links { gap: 10px; }
       .contact-links a { font-size: 0.85rem; }
+
+      .books {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .film-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .film-frame:nth-child(n + 4) { display: none; }
+      .film-frame,
+      .film-frame.is-portrait,
+      .film-frame.is-landscape { aspect-ratio: 2 / 3; }
 
       footer {
         margin-top: 48px;
@@ -276,9 +557,141 @@
     @media (max-width: 380px) {
       html { font-size: 15px; }
 
-      main { padding: 32px 16px 56px; }
+      main { padding: 32px 0 56px; }
+
+      .narrow,
+      .project-list {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
       header { margin-bottom: 44px; }
-      section { margin-bottom: 44px; }
+      section.narrow,
+      .work { margin-bottom: 44px; }
+    }
+
+    /* ── DESKTOP SCROLL HERO ── */
+    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+      html.enhanced .intro { margin-bottom: 36px; }
+
+      html.enhanced .work { height: 320vh; }
+
+      html.enhanced .work-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+      }
+
+      html.enhanced .work-stage {
+        height: 100%;
+        width: min(1120px, calc(100vw - 64px));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(260px, 300px) minmax(320px, 560px);
+        column-gap: clamp(28px, 4vw, 64px);
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+      }
+
+      html.enhanced .project-list {
+        max-width: 300px;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        justify-self: start;
+      }
+
+      html.enhanced .project-row {
+        display: block;
+        border-bottom: none;
+        margin: 0 0 30px;
+        padding: 0;
+      }
+      html.enhanced .project-row:last-child { margin-bottom: 0; }
+
+      html.enhanced .pr-link {
+        display: block;
+      }
+
+      html.enhanced .pr-thumb { display: none; }
+
+      html.enhanced .pr-bar {
+        display: block;
+        height: 1px;
+        margin-top: 12px;
+        background: #e4e4e4;
+        overflow: hidden;
+      }
+      html.enhanced .pr-bar-fill {
+        display: block;
+        height: 1px;
+        width: 100%;
+        background: var(--ink);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+
+      html.enhanced .project-list.is-stepping .pr-name {
+        color: var(--mid);
+        transition: color 0.25s ease;
+      }
+      html.enhanced .project-list.is-stepping .project-row.is-current .pr-name,
+      html.enhanced .project-list.is-stepping .project-row:hover .pr-name {
+        color: var(--ink);
+        -webkit-text-stroke: 0.4px var(--ink);
+      }
+
+      html.enhanced .hero-slot {
+        display: block;
+        width: 100%;
+        max-width: 560px;
+        aspect-ratio: 2 / 1;
+        justify-self: end;
+        visibility: hidden;
+      }
+
+      html.enhanced .hero {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 50%;
+        width: min(960px, calc(100vw - 80px));
+        aspect-ratio: 2 / 1;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #f0f0f0;
+        color: inherit;
+        text-decoration: none;
+        pointer-events: auto;
+        transform: translateX(-50%) scale(1.03);
+        transform-origin: top center;
+      }
+      html.enhanced .hero:focus-visible {
+        outline: 1px solid var(--ink);
+        outline-offset: 3px;
+      }
+      html.enhanced .hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: translate3d(16px, 0, 0);
+        transition: opacity 520ms ease, transform 520ms ease;
+      }
+      html.enhanced .hero img.is-shown {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        z-index: 1;
+      }
+      html.enhanced .hero img.is-leaving {
+        opacity: 0;
+        transform: translate3d(-16px, 0, 0);
+      }
     }
   </style>
 </head>
@@ -286,54 +699,263 @@
 
   <main>
 
-    <header>
-<p class="name"><i>M</i>ahima <i>R</i>ao</p>
-      <p class="role">Product Designer / Design Technologist</p>
+    <header class="narrow">
+      <p class="name"><i>M</i>ahima <i>R</i>ao</p>
+      <p class="role">Lead Product Designer / Design Technologist</p>
     </header>
 
-    <section>
-      <p class="body-text">Design generalist who moves between canvas and code. I care about how things work as much as how they look. Currently at Klaviyo, working on marketing orchestration and AI tooling</p>
+    <section class="intro narrow">
+      <p class="body-text">Lead product designer at Klaviyo working on <a href="#omnichannel" data-project="omnichannel">omnichannel orchestration</a> and <a href="#composer" data-project="composer">agentic marketing</a> tools used by 200,000+ brands, and previously <a href="#attribution" data-project="attribution">multi-touch attribution reporting</a>. I move between canvas and code, building AI-native, data-driven experiences.</p>
     </section>
 
-    <section>
-      <h2>Latest projects</h2>
+    <section class="work" id="work">
+      <div class="work-sticky">
+        <div class="work-stage">
+          <div class="project-list">
+            <h2>Latest projects</h2>
 
-      <div class="project-row" data-panel="1">
-        <a href="https://www.klaviyo.com/blog/introducing-kai-marketing-agent" target="_blank" class="pr-link">
-          <img class="pr-thumb" src="KAI_marketing_agent.png" alt="K:AI marketing agent" />
-          <div class="pr-left">
-            <p class="pr-name">K:AI marketing agent</p>
-            <p class="pr-desc">Autonomous AI agent surfacing advanced recommendations and optimization strategies</p>
-          </div>
-        </a>
-      </div>
+            <div class="project-row" id="composer" data-project="composer" data-panel="1">
+              <a href="https://www.klaviyo.com/composer" target="_blank" rel="noopener noreferrer" class="pr-link">
+                <img class="pr-thumb" src="KAI_marketing_agent.png" alt="Composer marketing agent" />
+                <div class="pr-left">
+                  <p class="pr-name">Composer marketing agent</p>
+                  <p class="pr-desc">AI marketing agent that analyzes performance, audits flows, and builds campaigns</p>
+                  <span class="pr-bar" aria-hidden="true"><span class="pr-bar-fill"></span></span>
+                </div>
+              </a>
+            </div>
 
-      <div class="project-row" data-panel="2">
-        <a href="https://www.klaviyo.com/blog/omnichannel-campaign-builder" target="_blank" class="pr-link">
-          <img class="pr-thumb" src="Omnichannel_campaign.png" alt="Omnichannel campaigns" />
-          <div class="pr-left">
-            <p class="pr-name">Omnichannel campaigns</p>
-            <p class="pr-desc">Unified cross-channel campaign builder spanning email, SMS, push, and WhatsApp</p>
-          </div>
-        </a>
-      </div>
+            <div class="project-row" id="omnichannel" data-project="omnichannel" data-panel="2">
+              <a href="https://www.klaviyo.com/solutions/omnichannel" target="_blank" rel="noopener noreferrer" class="pr-link">
+                <img class="pr-thumb" src="Omnichannel_campaign.png" alt="Omnichannel campaigns" />
+                <div class="pr-left">
+                  <p class="pr-name">Omnichannel campaigns</p>
+                  <p class="pr-desc">Unified cross-channel campaign builder spanning email, SMS, push, and WhatsApp</p>
+                  <span class="pr-bar" aria-hidden="true"><span class="pr-bar-fill"></span></span>
+                </div>
+              </a>
+            </div>
 
-      <div class="project-row" data-panel="3">
-        <a href="https://www.klaviyo.com/blog/single-touch-vs-multi-touch-attribution" target="_blank" class="pr-link">
-          <img class="pr-thumb" src="Attribution.png" alt="Marketing attribution and reporting" />
-          <div class="pr-left">
-            <p class="pr-name">Marketing attribution & reporting</p>
-            <p class="pr-desc">End-to-end attribution and analytics for multi-touch marketing journeys</p>
+            <div class="project-row" id="attribution" data-project="attribution" data-panel="3">
+              <a href="https://www.klaviyo.com/solutions/analytics/marketing-attribution" target="_blank" rel="noopener noreferrer" class="pr-link">
+                <img class="pr-thumb" src="Attribution.png" alt="Marketing attribution and reporting" />
+                <div class="pr-left">
+                  <p class="pr-name">Marketing attribution &amp; reporting</p>
+                  <p class="pr-desc">End-to-end attribution and analytics for multi-touch marketing journeys</p>
+                  <span class="pr-bar" aria-hidden="true"><span class="pr-bar-fill"></span></span>
+                </div>
+              </a>
+            </div>
           </div>
+          <div class="hero-slot" aria-hidden="true"></div>
+        </div>
+        <a class="hero" href="https://www.klaviyo.com/solutions/omnichannel" target="_blank" rel="noopener noreferrer" aria-label="Omnichannel campaigns">
+          <img data-project="omnichannel" class="is-shown" src="Omnichannel_campaign.png" alt="" />
+          <img data-project="composer" src="KAI_marketing_agent.png" alt="" />
+          <img data-project="attribution" src="Attribution.png" alt="" />
         </a>
       </div>
     </section>
 
-    <section>
+    <section class="narrow" id="library">
+      <h2>Design library</h2>
+      <div class="lib-tabs" role="tablist" aria-label="Design library">
+        <button type="button" class="lib-tab" role="tab" id="tab-writing" aria-selected="true" aria-controls="panel-writing" tabindex="0">Writing</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-skills" aria-selected="false" aria-controls="panel-skills" tabindex="-1">Skills &amp; tools</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-shelf" aria-selected="false" aria-controls="panel-shelf" tabindex="-1">On my shelf</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-talks" aria-selected="false" aria-controls="panel-talks" tabindex="-1">Talks</button>
+        <!-- Film tab hidden for now
+        <button type="button" class="lib-tab" role="tab" id="tab-film" aria-selected="false" aria-controls="panel-film" tabindex="-1">Film</button>
+        -->
+      </div>
+
+      <div class="lib-panel" id="panel-writing" role="tabpanel" aria-labelledby="tab-writing">
+        <div class="exp-row">
+          <p class="exp-title"><a href="writing/from-design-to-pr.html">Designers in the codebase: UI bug to merged PR</a></p>
+          <p class="exp-desc">How I take a small front-end design fix from a ticket to a merged PR with Claude, and what I check before anyone reviews it.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title"><a href="writing/start-with-any-tool.html">Rotating between Claude, Codex, and Cursor</a></p>
+          <p class="exp-desc">I rotate between Claude, Codex, and Cursor to ship front-end changes. They keep getting closer, and the differences that matter to me are small details in the interface.</p>
+        </div>
+      </div>
+
+      <div class="lib-panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" hidden>
+        <p class="lib-label">Skills</p>
+        <div class="exp-row">
+          <p class="exp-title">braintrust-mcp-setup</p>
+          <p class="exp-desc">A guide to connecting Claude to Braintrust so you can query logs, traces and experiments in plain language.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">daily-standup</p>
+          <p class="exp-desc">Draft daily async standup updates for a team and send them for review.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">daily-todos</p>
+          <p class="exp-desc">Weekday morning briefing and one unified to-do list pulled from calendar, email, Slack, issue tracker, Figma, and GitHub.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">product-marketing-assets</p>
+          <p class="exp-desc">Create launch-ready product marketing assets: polished product screenshots, short GIFs, and organized Figma files.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">slack-message-cleanup</p>
+          <p class="exp-desc">Cleans up, tightens, and rewrites Slack messages in your own voice.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">weekly-design-showcase</p>
+          <p class="exp-desc">Generate a weekly design showcase Slack message and Loom talking-points outline.</p>
+        </div>
+        <p class="lib-label lib-tools">Tools I use</p>
+                <div class="tool-icons">
+          <span class="tool-tile" tabindex="0" title="Figma" data-name="Figma" aria-label="Figma">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Claude" data-name="Claude" aria-label="Claude">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Cursor" data-name="Cursor" aria-label="Cursor">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M11.503.131 1.891 5.678a.84.84 0 0 0-.42.726v11.188c0 .3.162.575.42.724l9.609 5.55a1 1 0 0 0 .998 0l9.61-5.55a.84.84 0 0 0 .42-.724V6.404a.84.84 0 0 0-.42-.726L12.497.131a1.01 1.01 0 0 0-.996 0M2.657 6.338h18.55c.263 0 .43.287.297.515L12.23 22.918c-.062.107-.229.064-.229-.06V12.335a.59.59 0 0 0-.295-.51l-9.11-5.257c-.109-.063-.064-.23.061-.23"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Codex" data-name="Codex" aria-label="Codex">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M20.562 10.188c.25-.688.313-1.376.25-2.063c-.062-.687-.312-1.375-.625-2c-.562-.937-1.375-1.687-2.312-2.125c-1-.437-2.063-.562-3.125-.312c-.5-.5-1.063-.938-1.688-1.25S11.687 2 11 2a5.17 5.17 0 0 0-3 .938c-.875.624-1.5 1.5-1.813 2.5c-.75.187-1.375.5-2 .875c-.562.437-1 1-1.375 1.562c-.562.938-.75 2-.625 3.063a5.44 5.44 0 0 0 1.25 2.874a4.7 4.7 0 0 0-.25 2.063c.063.688.313 1.375.625 2c.563.938 1.375 1.688 2.313 2.125c1 .438 2.062.563 3.125.313c.5.5 1.062.937 1.687 1.25S12.312 22 13 22a5.17 5.17 0 0 0 3-.937c.875-.625 1.5-1.5 1.812-2.5a4.54 4.54 0 0 0 1.938-.875c.562-.438 1.062-.938 1.375-1.563c.562-.937.75-2 .625-3.062c-.125-1.063-.5-2.063-1.188-2.876m-7.5 10.5c-1 0-1.75-.313-2.437-.875c0 0 .062-.063.125-.063l4-2.312a.5.5 0 0 0 .25-.25a.57.57 0 0 0 .062-.313V11.25l1.688 1v4.625a3.685 3.685 0 0 1-3.688 3.813M5 17.25c-.438-.75-.625-1.625-.438-2.5c0 0 .063.063.125.063l4 2.312a.56.56 0 0 0 .313.063c.125 0 .25 0 .312-.063l4.875-2.812v1.937l-4.062 2.375A3.7 3.7 0 0 1 7.312 19c-1-.25-1.812-.875-2.312-1.75M3.937 8.563a3.8 3.8 0 0 1 1.938-1.626v4.751c0 .124 0 .25.062.312a.5.5 0 0 0 .25.25l4.875 2.813l-1.687 1l-4-2.313a3.7 3.7 0 0 1-1.75-2.25c-.25-.937-.188-2.062.312-2.937M17.75 11.75l-4.875-2.812l1.687-1l4 2.312c.625.375 1.125.875 1.438 1.5s.5 1.313.437 2.063a3.7 3.7 0 0 1-.75 1.937c-.437.563-1 1-1.687 1.25v-4.75c0-.125 0-.25-.063-.312c0 0-.062-.126-.187-.188m1.687-2.5s-.062-.062-.125-.062l-4-2.313c-.125-.062-.187-.062-.312-.062s-.25 0-.313.062L9.812 9.688V7.75l4.063-2.375c.625-.375 1.312-.5 2.062-.5c.688 0 1.375.25 2 .688c.563.437 1.063 1 1.313 1.625s.312 1.375.187 2.062m-10.5 3.5l-1.687-1V7.063c0-.688.187-1.438.562-2C8.187 4.438 8.75 4 9.375 3.688a3.37 3.37 0 0 1 2.062-.313c.688.063 1.375.375 1.938.813c0 0-.063.062-.125.062l-4 2.313a.5.5 0 0 0-.25.25c-.063.125-.063.187-.063.312zm.875-2L12 9.5l2.187 1.25v2.5L12 14.5l-2.188-1.25z"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="GitHub" data-name="GitHub" aria-label="GitHub">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Grok Bot" data-name="Grok Bot" aria-label="Grok Bot">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.324 3.026C20.308 3.186 20.961 4.031 21 5v14c-.046 1.146-.854 1.954-2 2H5c-.535-.022-1.03-.202-1.414-.586S3.022 19.535 3 19V5c.046-1.146.854-1.954 2-2h14Zm-4.573 4.006c-.229.059-.401.19-.551.368l-6 8c-.301.454-.254 1.059.2 1.4c.455.341 1.049.216 1.4-.2l6-8c.511-.77-.106-1.811-1.049-1.568"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Braintrust" data-name="Braintrust" aria-label="Braintrust">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M0 12.002C0 5.372 5.374-.002 12.001-.002 18.626-.002 24 5.372 24 12.002c0 6.625-5.374 12-11.999 12h-9.98a2.01 2.01 0 0 1-2.013-2.013V12.01zm0 0"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Heap" data-name="Heap" aria-label="Heap">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect x="10.8" y="13.4" width="2.4" height="9"/><rect x="16" y="6.1" width="2.4" height="11.2"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Linear" data-name="Linear" aria-label="Linear">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M2.886 4.18A11.982 11.982 0 0 1 11.99 0C18.624 0 24 5.376 24 12.009c0 3.64-1.62 6.903-4.18 9.105L2.887 4.18ZM1.817 5.626l16.556 16.556c-.524.33-1.075.62-1.65.866L.951 7.277c.247-.575.537-1.126.866-1.65ZM.322 9.163l14.515 14.515c-.71.172-1.443.282-2.195.322L0 11.358a12 12 0 0 1 .322-2.195Zm-.17 4.862 9.823 9.824a12.02 12.02 0 0 1-9.824-9.824Z"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Canva" data-name="Canva" aria-label="Canva">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 0C7.161 0 0 7.161 0 16s7.161 16 16 16s16-7.161 16-16S24.839 0 16 0M9.281 10.24c1.005 0 1.787.733 1.875 1.599c.095.781-.229 1.464-1.093 1.875c-.459.229-.641.229-.735.093c-.047-.093 0-.181.093-.276c.824-.681.824-1.233.729-2.009c-.047-.505-.411-.824-.776-.824c-1.604 0-3.885 3.563-3.568 6.172c.141 1.005.735 2.193 2.011 2.193c.412 0 .871-.136 1.281-.317c.667-.355 1.068-.625 1.464-1.068c-.099-1.183.937-2.729 2.468-2.729c.688 0 1.235.276 1.281.781c.089.683-.505.776-.687.776s-.505-.047-.505-.229c-.041-.183.411-.093.369-.505c-.047-.276-.323-.364-.593-.364c-.964 0-1.511 1.328-1.375 2.145c.047.369.228.735.599.735c.271 0 .683-.412.817-1.005c.093-.412.459-.688.781-.688c.136 0 .224.047.271.229v.183c-.041.183-.183.735-.135.869c0 .095.047.229.228.229c.12 0 .579-.24 1.037-.615c.151-.787.333-1.729.333-1.807c.047-.323.183-.641.823-.641c.14 0 .229.047.276.229v.183l-.183.823c.595-.776 1.464-1.323 2.011-1.323c.229 0 .412.135.412.364c0 .136 0 .365-.095.595c-.181.5-.411 1.281-.547 1.963c0 .183.047.365.276.365s.912-.271 1.459-1.005l.011-.005c0-.089-.011-.177-.011-.265c0-.552.047-1.005.141-1.328c.093-.365.547-.683.823-.683c.135 0 .276.088.276.224c0 .047 0 .14-.047.183c-.183.599-.324 1.145-.324 1.692c0 .323.048.776.141 1.052c0 .047.041.093.088.093c.095 0 .735-.593 1.188-1.375c-.412-.271-.641-.729-.641-1.276c0-.963.6-1.464 1.147-1.464c.459 0 .823.319.823.959c0 .412-.136.871-.364 1.281h.135c.292.011.579-.109.776-.317a.4.4 0 0 1 .183-.156c.448-.568 1.104-.989 1.88-.989c.64 0 1.229.276 1.276.776c.093.687-.505.823-.688.823c-.181 0-.504-.047-.504-.229s.411-.093.369-.5c-.047-.276-.323-.369-.599-.369c-.912 0-1.505 1.187-1.371 2.151c.047.364.229.776.595.776c.276 0 .687-.412.869-1.005c.088-.364.459-.688.776-.688c.14 0 .229.047.276.229c0 .095 0 .276-.183.871c-.229.411-.229.64-.181.823c.041.364.224.64.411.776a1 1 0 0 1 .089.135c0 .095-.048.188-.183.188c-.047 0-.089 0-.136-.047c-.687-.276-.963-.735-1.052-1.193c-.276.323-.593.505-.963.505c-.595 0-1.183-.547-1.276-1.235a2.1 2.1 0 0 1 .099-.864c-.271.172-.563.271-.833.271h-.224c-.599.869-1.24 1.464-1.693 1.735a1.2 1.2 0 0 1-.505.14c-.088 0-.228-.047-.271-.14c-.129-.203-.208-.521-.26-.885c-.641.697-1.527 1.072-1.937 1.072c-.459 0-.729-.276-.776-.733v-.5c.135-1.005.505-1.604.505-1.787a.105.105 0 0 0-.095-.093c-.317 0-1.369 1.099-1.552 1.833l-.14.593c-.089.411-.5.687-.776.687c-.136 0-.229-.047-.271-.228v-.183l.057-.312c-.579.411-1.157.676-1.433.676c-.411 0-.64-.229-.681-.552c-.276.371-.595.552-1.005.552c-.475 0-.932-.323-1.151-.791c-.329.369-.699.739-1.136 1.02c-.64.412-1.369.729-2.24.729c-.776 0-1.463-.412-1.828-.776c-.552-.505-.869-1.281-.916-2.011c-.271-2.239 1.099-5.12 3.197-6.401c.505-.276 1.011-.457 1.511-.457zm13.026 4.391c-.135 0-.228.229-.228.452c0 .371.181.781.411 1.011a2.3 2.3 0 0 0 .141-.781c0-.452-.183-.681-.324-.681z"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Adobe Suite" data-name="Adobe Suite" aria-label="Adobe Suite">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M18.97 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h13.97c1.1 0 2-.9 2-2V5a2 2 0 0 0-2-2m-1.59 13.98c-.03.01-.07.02-.1.02h-2.26a.49.49 0 0 1-.46-.3l-2.46-5.74c-.02-.06-.08-.09-.13-.07a.12.12 0 0 0-.07.07l-1.53 3.65c-.03.07 0 .14.07.17c.02.01.03.01.05.01h1.68c.1 0 .2.06.24.16l.74 1.64c.07.15-.01.33-.16.4c-.06 0-.1.01-.14.01H6.73c-.15 0-.28-.13-.28-.28c0-.04.01-.07.02-.11l3.9-9.28c.08-.2.28-.33.49-.33h2.25c.22 0 .41.13.49.33l3.92 9.28c.07.14.01.31-.14.37"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="UserTesting" data-name="UserTesting" aria-label="UserTesting">
+            <svg aria-hidden="true" viewBox="0 0 68 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M67.8962 26.5492V6.17788C67.8962 2.76865 65.1274 0 61.7181 0H6.1779C2.76874 0 0 2.76865 0 6.17788V26.5492C0 29.9584 2.76874 32.7271 6.1779 32.7271H46.3663L57.2561 40L55.0659 32.7271H61.719C65.1283 32.7271 67.8971 29.9584 67.8971 26.5492H67.8962ZM11.7257 20.477C12.0453 21.0417 12.4728 21.4709 13.0082 21.7646C13.5436 22.0583 14.1386 22.205 14.793 22.2048C15.4473 22.2048 16.046 22.0487 16.5892 21.7365C17.1324 21.4242 17.5618 20.982 17.8773 20.4098C18.1932 19.8378 18.3513 19.1837 18.3516 18.4476V9.30496C18.3516 9.17131 18.3924 9.06351 18.4742 8.98157C18.5559 8.89963 18.6637 8.85872 18.7977 8.85884H21.0285C21.1699 8.85884 21.2813 8.90154 21.3629 8.98694C21.4033 9.02926 21.435 9.07913 21.4561 9.13371C21.4771 9.18828 21.4872 9.24648 21.4857 9.30496V18.4363C21.4857 19.9006 21.1864 21.1253 20.5878 22.1102C19.9892 23.0951 19.1861 23.8232 18.1786 24.2945C17.171 24.7665 16.0426 25.0026 14.7935 25.0026C13.5517 25.0026 12.4251 24.761 11.4137 24.278C10.4022 23.795 9.59718 23.0594 8.99856 22.0711C8.39994 21.0826 8.10069 19.8599 8.10081 18.4028V9.29367C8.09844 9.18118 8.13805 9.07183 8.21192 8.98694C8.24587 8.94606 8.28857 8.91332 8.33687 8.89115C8.38517 8.86898 8.43784 8.85793 8.49099 8.85884H10.8333C10.9815 8.85884 11.0874 8.89586 11.1513 8.96991C11.2151 9.04395 11.2468 9.15169 11.2463 9.29311V18.447C11.2463 19.2355 11.4061 19.9121 11.7257 20.477ZM23.5845 22.0545C23.5847 22.1233 23.5978 22.1915 23.6232 22.2554C23.6575 22.3379 23.7006 22.4165 23.7517 22.4897C24.2564 23.2713 24.9283 23.8855 25.7673 24.3323C26.6063 24.7791 27.5605 25.0025 28.6299 25.0025C29.4637 25.0049 30.2901 24.8456 31.0636 24.5335C31.8395 24.2208 32.4707 23.7499 32.957 23.1208C33.4433 22.4917 33.6865 21.7342 33.6865 20.8483C33.687 19.9026 33.3899 19.0539 32.7952 18.3022C32.2005 17.5505 31.2944 16.9921 30.0769 16.627C29.9213 16.5753 29.7765 16.5307 29.6425 16.4934C29.5085 16.4561 29.386 16.4225 29.2751 16.3927C28.6808 16.2286 28.2389 16.0909 27.9494 15.9797C27.6598 15.8678 27.4296 15.7245 27.2589 15.5496C27.0881 15.3747 27.0028 15.1421 27.0028 14.8518C27.0026 14.4722 27.1604 14.1632 27.4762 13.9248C27.7919 13.6864 28.2318 13.5672 28.7959 13.5672C29.331 13.5671 29.7803 13.662 30.1438 13.852C30.5074 14.0419 30.8525 14.3267 31.1794 14.7062C31.2981 14.8476 31.4094 14.9183 31.5133 14.9183C31.5954 14.9182 31.692 14.8736 31.8029 14.7845L33.0728 13.7346C33.2138 13.623 33.2843 13.5151 33.2843 13.4109C33.2843 13.3211 33.2288 13.202 33.1179 13.0537C32.6426 12.4509 32.0429 11.9411 31.3188 11.5241C30.5946 11.1071 29.7279 10.8986 28.7184 10.8986C27.7831 10.8986 26.9571 11.0866 26.2405 11.4625C25.5239 11.8386 24.9726 12.3243 24.5866 12.9197C24.2006 13.515 24.0076 14.1217 24.0076 14.7396C24.0075 15.5066 24.1541 16.1599 24.4473 16.6995C24.7408 17.239 25.1863 17.6986 25.7839 18.0783C26.3816 18.4579 27.1668 18.7966 28.1396 19.0944C28.5632 19.2212 28.812 19.292 28.886 19.3068C29.3685 19.4486 29.7248 19.566 29.955 19.6591C30.1853 19.7519 30.3673 19.8858 30.5009 20.061C30.6345 20.2361 30.7013 20.48 30.7013 20.7925C30.7016 21.0975 30.5865 21.3711 30.3561 21.613C30.1257 21.855 29.8305 22.0412 29.4705 22.1716C29.1227 22.2997 28.7552 22.3657 28.3847 22.3668C27.7909 22.3665 27.2917 22.225 26.8868 21.9425C26.482 21.6599 26.1088 21.2768 25.7673 20.7931C25.6485 20.6293 25.5186 20.5474 25.3777 20.5474C25.2912 20.5464 25.2076 20.5783 25.1436 20.6366L23.7737 21.6748C23.6476 21.794 23.5845 21.9206 23.5845 22.0545ZM46.1949 20.9075C46.3059 20.9075 46.3913 20.952 46.4512 21.0412L47.5424 22.38C47.6313 22.4911 47.6758 22.5989 47.6759 22.7035C47.6759 22.8147 47.6205 22.9225 47.5095 23.0271C46.7147 23.7265 45.922 24.2305 45.1313 24.5392C44.3406 24.8479 43.4922 25.0023 42.5859 25.0023C41.3604 25.0023 40.2092 24.6862 39.1325 24.0541C38.0558 23.4221 37.1961 22.5686 36.5536 21.4939C35.9112 20.4196 35.59 19.2538 35.5901 17.9964C35.5901 16.7173 35.889 15.5403 36.4869 14.4654C37.0847 13.3905 37.9108 12.537 38.9651 11.9049C40.0197 11.273 41.2005 10.9569 42.5077 10.9566C43.5694 10.9566 44.6183 11.2152 45.6543 11.7323C46.6904 12.2494 47.5481 13.0377 48.2276 14.0972C48.9074 15.157 49.2472 16.4567 49.2472 17.9964C49.2472 18.3458 49.2063 18.599 49.1246 18.7558C49.0429 18.9126 48.9333 19.0068 48.796 19.0382C48.6584 19.0717 48.4449 19.0884 48.1557 19.0883H38.5756C38.7236 19.7281 38.9909 20.2899 39.3775 20.7737C39.7586 21.2532 40.2445 21.6386 40.7977 21.9004C41.3585 22.168 41.9619 22.3018 42.6081 22.3018C43.1058 22.3018 43.5364 22.2517 43.9001 22.1514C44.2639 22.0511 44.5628 21.9322 44.7969 21.7945C45.0696 21.6304 45.3319 21.4496 45.5824 21.2533L45.9053 21.0079C46.0018 20.9411 46.0984 20.9076 46.1949 20.9075ZM40.8815 13.9572C40.3704 14.2163 39.9174 14.5769 39.5499 15.017C39.1772 15.4591 38.8883 15.9658 38.6977 16.5121H46.3284C46.0087 15.6271 45.5129 14.915 44.8409 14.3757C44.169 13.8365 43.3984 13.5668 42.5292 13.5667C41.9567 13.5636 41.3918 13.6975 40.8815 13.9572ZM53.7195 11.0745H52.1779C51.8953 11.0745 51.7538 11.2274 51.7535 11.5331V24.3034C51.7535 24.6011 51.895 24.75 52.1779 24.75H54.3784C54.6761 24.7502 54.8214 24.6013 54.8142 24.3034V16.8126C54.8141 16.1352 54.9425 15.5659 55.1996 15.1045C55.4566 14.6431 55.7879 14.3008 56.1934 14.0777C56.5913 13.8563 57.0394 13.7409 57.4948 13.7426C57.9566 13.7427 58.3809 13.8245 58.7679 13.9881C59.1674 14.1587 59.5491 14.3681 59.9076 14.6133C60.0341 14.7025 60.1457 14.7471 60.2425 14.7471C60.3543 14.7473 60.4512 14.6878 60.5331 14.5688L61.5382 13.1509C61.6202 13.0466 61.6612 12.9461 61.6612 12.8494C61.6611 12.7154 61.5792 12.5704 61.4155 12.4142C61.0064 12.0643 60.4889 11.7274 59.8629 11.4037C59.237 11.0799 58.5593 10.9181 57.8299 10.9181C57.1522 10.9183 56.5322 11.0783 55.9701 11.3981C55.408 11.7179 54.9482 12.1682 54.5908 12.7489L54.3784 11.5768C54.3422 11.3611 54.2697 11.2234 54.1609 11.1638C54.0521 11.1043 53.905 11.0745 53.7195 11.0745Z"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Gong" data-name="Gong" aria-label="Gong">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1900 1900"><path fill="currentColor" d="M1684.54 829.281h-453.33c-26.05.206-45.84 26.67-36.48 50.924l108.93 282.675c4.83 12.64-4.98 26.05-18.49 25.23l-139.11-8.48c-6.42-.41-12.59 2.57-16.34 7.81l-108.53 153.29c-5.6 8.94-17.52 11.41-26.255 5.5l-160.274-109.15a18.53 18.53 0 0 0-20.914 0l-222.195 150.51c-14.337 9.72-33.042-3.7-28.365-20.4l61.715-221.63c2.518-9.09-2.159-18.65-10.894-22.19l-117.624-48.05c-11.562-4.73-15.261-19.27-7.399-28.93l104.006-128.364a18.67 18.67 0 0 0 .873-22.302l-87.305-126.565c-8.171-11.819-.411-28.005 13.874-29.136l135.557-10.431c10.124-.771 17.729-9.507 17.164-19.63l-10.74-190.078c-.771-13.72 13.052-23.484 25.744-18.242l168.548 69.988c7.348 3.083 15.878 1.079 21.12-4.933l115.67-129.802c9.094-10.329 25.904-7.606 31.194 5.138l69.47 179.185c9.3 22.301 37.1 30.009 56.53 15.621l272.76-202.976c30.93-22.919 11.04-71.89-27.08-66.802l-179.29 24.1a18.59 18.59 0 0 1-19.73-11.511l-93.84-241.927c-10.22-25.334-43.37-31.397-61.92-11.305L836.254 349.384c-5.344 5.755-13.72 7.605-20.914 4.522L544.996 239.674c-24.049-10.175-50.821 6.937-51.695 32.99l-9.609 278.72c-.308 9.557-7.862 17.317-17.42 17.933l-246.86 15.982c-28.725 1.849-44.552 34.223-28.417 58.066l164.077 241.773a18.62 18.62 0 0 1-1.388 22.662l-166.543 191.31c-16.547 19.01-9.815 48.66 13.36 58.63l190.952 82.32c8.428 3.65 12.95 12.85 10.637 21.74l-122.351 477.17c-8.633 33.71 29.547 59.77 57.758 39.47l458.778-329.59a18.52 18.52 0 0 1 21.531-.11l208.934 146.56c17.17 12.02 40.86 7.55 52.42-9.92l130.88-200.51c3.9-6.01 10.94-9.25 18.04-8.27l312.84 37.92c25.28 3.96 50.3-17.26 41.41-40.49l-130.06-336.63c-3.39-9.05 0-19.38 11.26-24.77l237.15-112.436c36.02-17.06 23.63-71.17-16.24-70.861z"/></svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Loom" data-name="Loom" aria-label="Loom">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M24 10.665h-7.018l6.078-3.509-1.335-2.312-6.078 3.509 3.508-6.077L16.843.94l-3.508 6.077V0h-2.67v7.018L7.156.94 4.844 2.275l3.509 6.077-6.078-3.508L.94 7.156l6.078 3.509H0v2.67h7.017L.94 16.844l1.335 2.313 6.077-3.508-3.509 6.077 2.312 1.335 3.509-6.078V24h2.67v-7.017l3.508 6.077 2.312-1.335-3.509-6.078 6.078 3.509 1.335-2.313-6.077-3.508h7.017v-2.67H24zm-12 4.966a3.645 3.645 0 1 1 0-7.29 3.645 3.645 0 0 1 0 7.29z"/></svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="lib-panel" id="panel-shelf" role="tabpanel" aria-labelledby="tab-shelf" hidden>
+        <div class="books">
+          <img src="books/laws-of-ux.webp" alt="Laws of UX — Jon Yablonski" title="Laws of UX — Jon Yablonski" />
+          <img src="books/mobile-design-patterns-smashing-ebooks-28.webp" alt="Mobile Design Patterns (Smashing eBooks #28) — Smashing Magazine" title="Mobile Design Patterns (Smashing eBooks #28) — Smashing Magazine" />
+          <img src="books/articulating-design-decisions.webp" alt="Articulating Design Decisions — Tom Greever" title="Articulating Design Decisions — Tom Greever" />
+          <img src="books/user-friendly.webp" alt="User Friendly — Cliff Kuang" title="User Friendly — Cliff Kuang" />
+          <img src="books/living-in-information.webp" alt="Living in Information — Jorge Arango" title="Living in Information — Jorge Arango" />
+          <img src="books/about-face.webp" alt="About Face — Alan Cooper" title="About Face — Alan Cooper" />
+          <img src="books/just-enough-research.webp" alt="Just Enough Research — Erika Hall" title="Just Enough Research — Erika Hall" />
+          <img src="books/the-jobs-to-be-done-playbook.webp" alt="The Jobs to Be Done Playbook — Jim Kalbach" title="The Jobs to Be Done Playbook — Jim Kalbach" />
+          <img src="books/the-materials-of-interaction-design.webp" alt="The Materials of Interaction Design — Mikael Wiberg" title="The Materials of Interaction Design — Mikael Wiberg" />
+          <img src="books/visual-complexity.webp" alt="Visual Complexity — Manuel Lima" title="Visual Complexity — Manuel Lima" />
+          <img src="books/dear-data.webp" alt="Dear Data — Giorgia Lupi &amp; Stefanie Posavec" title="Dear Data — Giorgia Lupi &amp; Stefanie Posavec" />
+          <img src="books/extra-bold.webp" alt="Extra Bold — Ellen Lupton" title="Extra Bold — Ellen Lupton" />
+          <img src="books/thinking-with-type.webp" alt="Thinking with Type — Ellen Lupton" title="Thinking with Type — Ellen Lupton" />
+          <img src="books/the-sketchnote-handbook.webp" alt="The Sketchnote Handbook — Mike Rohde" title="The Sketchnote Handbook — Mike Rohde" />
+          <img src="books/seeing-with-fresh-eyes.webp" alt="Seeing with Fresh Eyes — Edward Tufte" title="Seeing with Fresh Eyes — Edward Tufte" />
+          <img src="books/the-visual-display-of-quantitative-information.webp" alt="The Visual Display of Quantitative Information — Edward Tufte" title="The Visual Display of Quantitative Information — Edward Tufte" />
+          <img src="books/things-we-create.webp" alt="Things We Create — Brechbühler" title="Things We Create — Brechbühler" />
+          <img src="books/creative-confidence.webp" alt="Creative Confidence — Tom &amp; David Kelley" title="Creative Confidence — Tom &amp; David Kelley" />
+          <img src="books/lists.webp" alt="Lists — Liza Kirwin" title="Lists — Liza Kirwin" />
+          <img src="books/show-your-work.webp" alt="Show Your Work! — Austin Kleon" title="Show Your Work! — Austin Kleon" />
+          <img src="books/steal-like-an-artist.webp" alt="Steal Like an Artist — Austin Kleon" title="Steal Like an Artist — Austin Kleon" />
+          <img src="books/design-is-storytelling.webp" alt="Design Is Storytelling — Ellen Lupton" title="Design Is Storytelling — Ellen Lupton" />
+          <img src="books/ruined-by-design.webp" alt="Ruined by Design — Mike Monteiro" title="Ruined by Design — Mike Monteiro" />
+          <img src="books/design-as-art.webp" alt="Design as Art — Bruno Munari" title="Design as Art — Bruno Munari" />
+          <img src="books/design-as-an-attitude.webp" alt="Design as an Attitude — Alice Rawsthorn" title="Design as an Attitude — Alice Rawsthorn" />
+          <img src="books/design-emergency.webp" alt="Design Emergency — Alice Rawsthorn" title="Design Emergency — Alice Rawsthorn" />
+          <img src="books/the-creative-act.webp" alt="The Creative Act — Rick Rubin" title="The Creative Act — Rick Rubin" />
+          <img src="books/the-art-of-noticing.webp" alt="The Art of Noticing — Rob Walker" title="The Art of Noticing — Rob Walker" />
+          <img src="books/the-beauty-of-everyday-things.webp" alt="The Beauty of Everyday Things — Soetsu Yanagi" title="The Beauty of Everyday Things — Soetsu Yanagi" />
+          <img src="books/mindful-design.webp" alt="Mindful Design — Scott Riley" title="Mindful Design — Scott Riley" />
+          <img src="books/100-things-every-designer-needs-to-know-about-people.webp" alt="100 Things Every Designer Needs to Know About People — Susan Weinschenk" title="100 Things Every Designer Needs to Know About People — Susan Weinschenk" />
+          <img src="books/accessible-america.webp" alt="Accessible America — Bess Williamson" title="Accessible America — Bess Williamson" />
+          <img src="books/the-making-of-prince-of-persia-journals-1985-1993.webp" alt="The Making of Prince of Persia: Journals 1985-1993 — Jordan Mechner" title="The Making of Prince of Persia: Journals 1985-1993 — Jordan Mechner" />
+          <img src="books/we-are-not-machines.webp" alt="We Are Not Machines — Sarah O'Connor" title="We Are Not Machines — Sarah O'Connor" />
+          <img src="books/the-alignment-problem.webp" alt="The Alignment Problem — Brian Christian" title="The Alignment Problem — Brian Christian" />
+          <img src="books/this-is-for-everyone.webp" alt="This Is for Everyone — Tim Berners-Lee" title="This Is for Everyone — Tim Berners-Lee" />
+          <img src="books/ways-of-being.webp" alt="Ways of Being — James Bridle" title="Ways of Being — James Bridle" />
+          <img src="books/space-journal.webp" alt="Space Journal — Dallas Campbell" title="Space Journal — Dallas Campbell" />
+          <img src="books/the-book-of-alchemy.webp" alt="The Book of Alchemy — Suleika Jaouad" title="The Book of Alchemy — Suleika Jaouad" />
+          <img src="books/co-existence.webp" alt="Co-Existence — Ethan Mollick" title="Co-Existence — Ethan Mollick" />
+          <img src="books/thing-explainer.webp" alt="Thing Explainer — Randall Munroe" title="Thing Explainer — Randall Munroe" />
+          <img src="books/japanese-graphic-design.webp" alt="Japanese Graphic Design — Sandu" title="Japanese Graphic Design — Sandu" />
+          <img src="books/the-art-book.webp" alt="The Art Book — Phaidon Editors" title="The Art Book — Phaidon Editors" />
+          <img src="books/beautiful-particulars.webp" alt="Beautiful Particulars — David Weinberger" title="Beautiful Particulars — David Weinberger" />
+          <img src="books/the-problem-with-personalization.webp" alt="The Problem with Personalization — Joseph Turow" title="The Problem with Personalization — Joseph Turow" />
+        </div>
+        <button type="button" class="books-toggle" aria-expanded="false">View all (45)</button>
+      </div>
+
+      <div class="lib-panel" id="panel-talks" role="tabpanel" aria-labelledby="tab-talks" hidden>
+        <a class="talk-row" href="https://x.com/leerob/status/2108650243365736855" target="_blank" rel="noopener noreferrer">
+          <img src="talks/leerob-cs146s.jpg" alt="" />
+          <span>
+            <span class="talk-title">How do always-on, proactive agents work?</span>
+            <span class="talk-meta">Lee Robinson · Stanford CS146S</span>
+          </span>
+        </a>
+        <a class="talk-row" href="https://www.youtube.com/watch?v=eh8bcBIAAFo" target="_blank" rel="noopener noreferrer">
+          <img src="talks/jenny-wen-lenny.jpg" alt="" />
+          <span>
+            <span class="talk-title">The design process is dead. Here's what's replacing it.</span>
+            <span class="talk-meta">Jenny Wen · Lenny's Podcast</span>
+          </span>
+        </a>
+        <a class="talk-row" href="https://www.youtube.com/watch?v=VfA-vjsFQ1o" target="_blank" rel="noopener noreferrer">
+          <img src="talks/setor-zilevu-config.jpg" alt="" />
+          <span>
+            <span class="talk-title">Own the loop: how designers and researchers win with AI evals</span>
+            <span class="talk-meta">Setor Zilevu · Config 2026</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Film panel hidden for now
+      <div class="lib-panel" id="panel-film" role="tabpanel" aria-labelledby="tab-film" hidden>
+        <div class="film-rows" aria-hidden="true">
+          <div class="film-row">
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+          </div>
+          <div class="film-row">
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+          </div>
+        </div>
+        <p class="body-text"><a href="https://www.instagram.com/myfilmraol/" target="_blank" rel="noopener noreferrer">More on Instagram</a></p>
+      </div>
+      -->
+    </section>
+
+    <section class="narrow">
       <h2>Experience</h2>
       <div class="exp-row">
-        <p class="exp-title">Senior product designer</p>
-        <p class="exp-date">Klaviyo, 2021 — Present</p>
+        <p class="exp-title">Lead product designer</p>
+        <p class="exp-date">Klaviyo, 2021 – Present</p>
         <p class="exp-desc">Leading product design for marketing orchestration and AI, shaping tools that power e-commerce growth across email, SMS, and automation</p>
       </div>
       <div class="exp-row">
@@ -348,7 +970,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="narrow">
       <h2>Links</h2>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/rao-mahima/" target="_blank">LinkedIn</a>
@@ -357,9 +979,279 @@
       </div>
     </section>
 
-    <footer>© 2026 Mahima Rao</footer>
+    <footer class="narrow">© 2026 Mahima Rao</footer>
 
   </main>
+
+  <script>
+    (function () {
+      const mq = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)');
+      const ORDER = ['composer', 'omnichannel', 'attribution'];
+      const HOLD_START = 0.1;
+      const HOLD_END = 0.12;
+      const track = document.querySelector('.work');
+      const sticky = document.querySelector('.work-sticky');
+      const list = document.querySelector('.project-list');
+      const slot = document.querySelector('.hero-slot');
+      const hero = document.querySelector('.hero');
+      const rows = Array.from(document.querySelectorAll('.project-row'));
+      const blurbLinks = Array.from(document.querySelectorAll('.body-text a[data-project]'));
+      let shownId = 'omnichannel';
+      let preview = null;
+      let intentTimer = 0;
+      let glideEase = 0;
+      let raf = 0;
+
+      const HERO_LINKS = {
+        composer: { href: 'https://www.klaviyo.com/composer', label: 'Composer marketing agent' },
+        omnichannel: { href: 'https://www.klaviyo.com/solutions/omnichannel', label: 'Omnichannel campaigns' },
+        attribution: { href: 'https://www.klaviyo.com/solutions/analytics/marketing-attribution', label: 'Marketing attribution and reporting' }
+      };
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const smooth = (t) => t * t * (3 - 2 * t);
+
+      function syncHeroLink(id) {
+        const info = HERO_LINKS[id];
+        if (!info || hero.tagName !== 'A') return;
+        hero.href = info.href;
+        hero.setAttribute('aria-label', info.label);
+      }
+
+      function showProject(id) {
+        if (!id) return;
+        syncHeroLink(id);
+        if (id === shownId) {
+          blurbLinks.forEach((link) => link.classList.toggle('is-on', link.dataset.project === shownId));
+          return;
+        }
+        const next = hero.querySelector('[data-project="' + id + '"]');
+        const prev = hero.querySelector('.is-shown');
+        if (prev) {
+          prev.classList.remove('is-shown');
+          prev.classList.add('is-leaving');
+        }
+        next.classList.remove('is-leaving');
+        next.classList.remove('is-shown');
+        void next.offsetWidth;
+        next.classList.add('is-shown');
+        shownId = id;
+        blurbLinks.forEach((link) => link.classList.toggle('is-on', link.dataset.project === id));
+      }
+
+      function clearHeroMotion() {
+        hero.style.left = '';
+        hero.style.top = '';
+        hero.style.width = '';
+        hero.style.transform = '';
+        hero.style.transformOrigin = '';
+        list.style.opacity = '';
+        list.style.transform = '';
+        list.classList.remove('is-stepping');
+        list.inert = false;
+        rows.forEach((row) => {
+          row.classList.remove('is-current', 'is-done');
+          const fill = row.querySelector('.pr-bar-fill');
+          if (fill) fill.style.transform = '';
+        });
+        blurbLinks.forEach((link) => link.classList.remove('is-on'));
+      }
+
+      function progressFor(index) {
+        const span = 1 - HOLD_START - HOLD_END;
+        return HOLD_START + span * ((index + 0.4) / ORDER.length);
+      }
+
+      function scrollToProject(id, behavior) {
+        const index = ORDER.indexOf(id);
+        if (index < 0) return;
+        const scrollable = track.offsetHeight - window.innerHeight;
+        const top = track.getBoundingClientRect().top + window.scrollY + scrollable * progressFor(index);
+        window.scrollTo({ top: top, behavior: behavior || 'smooth' });
+      }
+
+      function stepState(pinnedP) {
+        if (pinnedP <= HOLD_START) return { index: -1, local: 0 };
+        if (pinnedP >= 1 - HOLD_END) return { index: ORDER.length - 1, local: 1 };
+        const span = 1 - HOLD_START - HOLD_END;
+        const scaled = ((pinnedP - HOLD_START) / span) * ORDER.length;
+        const index = Math.min(ORDER.length - 1, Math.floor(scaled));
+        return { index: index, local: scaled - index };
+      }
+
+      function update() {
+        const enhanced = mq.matches;
+        document.documentElement.classList.toggle('enhanced', enhanced);
+        if (!enhanced) {
+          clearHeroMotion();
+          return;
+        }
+
+        const stickyRect = sticky.getBoundingClientRect();
+        const slotRect = slot.getBoundingClientRect();
+        const approach = stickyRect.top;
+        const glideDistance = Math.max(1, track.getBoundingClientRect().top + window.scrollY);
+        const glide = clamp(1 - approach / glideDistance, 0, 1);
+        glideEase = smooth(glide);
+
+        const above = track.getBoundingClientRect().top + window.scrollY;
+        const spaceAtRest = Math.max(220, window.innerHeight - above - 20);
+        const startW = Math.min(960, window.innerWidth - 80, (spaceAtRest / 1.03) * 2);
+        const endW = slotRect.width || startW;
+        const endX = slotRect.left - stickyRect.left;
+        const endY = slotRect.top - stickyRect.top;
+        const scale = lerp(1.03, 1, glideEase);
+        const width = lerp(startW, endW, glideEase);
+        const x = lerp((sticky.clientWidth - startW * 1.03) / 2, endX, glideEase);
+        const y = lerp(0, endY, glideEase);
+
+        hero.style.left = '0px';
+        hero.style.top = '0px';
+        hero.style.width = width + 'px';
+        hero.style.transformOrigin = 'top left';
+        hero.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0) scale(' + scale + ')';
+
+        list.style.opacity = String(glideEase);
+        list.style.transform = 'translateY(' + ((1 - glideEase) * 18) + 'px)';
+        list.inert = glideEase < 0.98;
+
+        const scrollable = Math.max(1, track.offsetHeight - window.innerHeight);
+        const pinnedP = clamp(-(track.getBoundingClientRect().top) / scrollable, 0, 1);
+        const step = glide >= 1 ? stepState(pinnedP) : { index: -1, local: 0 };
+        list.classList.toggle('is-stepping', step.index >= 0);
+        rows.forEach((row, index) => {
+          const fill = row.querySelector('.pr-bar-fill');
+          let amount = 0;
+          if (step.index >= 0) {
+            if (index < step.index) amount = 1;
+            else if (index === step.index) amount = step.local;
+          }
+          if (fill) fill.style.transform = 'scaleX(' + amount + ')';
+          row.classList.toggle('is-current', index === step.index);
+          row.classList.toggle('is-done', step.index >= 0 && index < step.index);
+        });
+
+        const scrollProject = step.index >= 0 ? ORDER[step.index] : null;
+        showProject(preview || scrollProject || 'omnichannel');
+      }
+
+      function requestUpdate() {
+        if (raf) return;
+        raf = window.requestAnimationFrame(() => {
+          raf = 0;
+          update();
+        });
+      }
+
+      function armPreview(id) {
+        window.clearTimeout(intentTimer);
+        intentTimer = window.setTimeout(() => {
+          preview = id;
+          requestUpdate();
+        }, 60);
+      }
+
+      function clearPreview() {
+        window.clearTimeout(intentTimer);
+        intentTimer = window.setTimeout(() => {
+          preview = null;
+          requestUpdate();
+        }, 60);
+      }
+
+      function plainClick(event) {
+        return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+      }
+
+      blurbLinks.forEach((link) => {
+        link.addEventListener('pointerenter', () => armPreview(link.dataset.project));
+        link.addEventListener('pointerleave', clearPreview);
+        link.addEventListener('focus', () => {
+          window.clearTimeout(intentTimer);
+          preview = link.dataset.project;
+          requestUpdate();
+        });
+        link.addEventListener('blur', clearPreview);
+        link.addEventListener('click', (event) => {
+          if (!mq.matches || !plainClick(event)) return;
+          event.preventDefault();
+          scrollToProject(link.dataset.project, 'smooth');
+        });
+      });
+
+      rows.forEach((row) => {
+        row.addEventListener('pointerenter', () => {
+          if (glideEase < 0.98) return;
+          armPreview(row.dataset.project);
+        });
+        row.addEventListener('pointerleave', () => {
+          if (glideEase < 0.98) return;
+          clearPreview();
+        });
+      });
+
+      hero.querySelectorAll('img').forEach((img) => {
+        img.addEventListener('transitionend', (event) => {
+          if (event.propertyName === 'opacity' && !img.classList.contains('is-shown')) {
+            img.classList.remove('is-leaving');
+          }
+        });
+      });
+
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate);
+      mq.addEventListener('change', requestUpdate);
+      window.addEventListener('load', () => {
+        update();
+        const id = location.hash.replace('#', '');
+        if (mq.matches && ORDER.indexOf(id) !== -1) scrollToProject(id, 'auto');
+      });
+      update();
+    })();
+  </script>
+  <script>
+    (function () {
+      const tabs = Array.from(document.querySelectorAll('.lib-tab'));
+      const panels = Array.from(document.querySelectorAll('.lib-panel'));
+      if (!tabs.length) return;
+
+      function select(tab) {
+        const panelId = tab.getAttribute('aria-controls');
+        tabs.forEach((item) => {
+          const on = item === tab;
+          item.setAttribute('aria-selected', on ? 'true' : 'false');
+          item.tabIndex = on ? 0 : -1;
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.id !== panelId;
+        });
+      }
+
+      const books = document.querySelector('.books');
+      const booksToggle = document.querySelector('.books-toggle');
+      if (books && booksToggle) {
+        booksToggle.addEventListener('click', () => {
+          const open = books.classList.toggle('is-expanded');
+          booksToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          booksToggle.textContent = open ? 'Show less' : 'View all (45)';
+        });
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => select(tab));
+        tab.addEventListener('keydown', (event) => {
+          if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+          event.preventDefault();
+          const next = event.key === 'ArrowRight'
+            ? tabs[(index + 1) % tabs.length]
+            : tabs[(index - 1 + tabs.length) % tabs.length];
+          next.focus();
+          select(next);
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
