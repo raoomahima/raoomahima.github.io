@@ -766,8 +766,8 @@
     <section class="narrow" id="library">
       <h2>Design library</h2>
       <div class="lib-tabs" role="tablist" aria-label="Design library">
-        <button type="button" class="lib-tab" role="tab" id="tab-writing" aria-selected="true" aria-controls="panel-writing" tabindex="0">Writing</button>
-        <button type="button" class="lib-tab" role="tab" id="tab-skills" aria-selected="false" aria-controls="panel-skills" tabindex="-1">Skills &amp; tools</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-skills" aria-selected="true" aria-controls="panel-skills" tabindex="0">Skills &amp; tools</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-writing" aria-selected="false" aria-controls="panel-writing" tabindex="-1">Writing</button>
         <button type="button" class="lib-tab" role="tab" id="tab-shelf" aria-selected="false" aria-controls="panel-shelf" tabindex="-1">On my shelf</button>
         <button type="button" class="lib-tab" role="tab" id="tab-talks" aria-selected="false" aria-controls="panel-talks" tabindex="-1">Talks</button>
         <!-- Film tab hidden for now
@@ -775,18 +775,7 @@
         -->
       </div>
 
-      <div class="lib-panel" id="panel-writing" role="tabpanel" aria-labelledby="tab-writing">
-        <div class="exp-row">
-          <p class="exp-title"><a href="writing/from-design-to-pr.html">Designers in the codebase: UI bug to merged PR</a></p>
-          <p class="exp-desc">How I take a small front-end design fix from a ticket to a merged PR with Claude, and what I check before anyone reviews it.</p>
-        </div>
-        <div class="exp-row">
-          <p class="exp-title"><a href="writing/start-with-any-tool.html">Rotating between Claude, Codex, and Cursor</a></p>
-          <p class="exp-desc">I rotate between Claude, Codex, and Cursor to ship front-end changes. They keep getting closer, and the differences that matter to me are small details in the interface.</p>
-        </div>
-      </div>
-
-      <div class="lib-panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" hidden>
+      <div class="lib-panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills">
         <p class="lib-label">Skills</p>
         <div class="exp-row">
           <p class="exp-title"><a href="skills/braintrust-mcp-setup.html">braintrust-mcp-setup</a></p>
@@ -856,6 +845,17 @@
           <a class="tool-tile" href="https://www.loom.com/download" target="_blank" rel="noopener noreferrer" title="Loom" data-name="Loom" aria-label="Loom">
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M24 10.665h-7.018l6.078-3.509-1.335-2.312-6.078 3.509 3.508-6.077L16.843.94l-3.508 6.077V0h-2.67v7.018L7.156.94 4.844 2.275l3.509 6.077-6.078-3.508L.94 7.156l6.078 3.509H0v2.67h7.017L.94 16.844l1.335 2.313 6.077-3.508-3.509 6.077 2.312 1.335 3.509-6.078V24h2.67v-7.017l3.508 6.077 2.312-1.335-3.509-6.078 6.078 3.509 1.335-2.313-6.077-3.508h7.017v-2.67H24zm-12 4.966a3.645 3.645 0 1 1 0-7.29 3.645 3.645 0 0 1 0 7.29z"/></svg>
           </a>
+        </div>
+      </div>
+
+      <div class="lib-panel" id="panel-writing" role="tabpanel" aria-labelledby="tab-writing" hidden>
+        <div class="exp-row">
+          <p class="exp-title"><a href="writing/from-design-to-pr.html">Designers in the codebase: UI bug to merged PR</a></p>
+          <p class="exp-desc">How I take a small front-end design fix from a ticket to a merged PR with Claude, and what I check before anyone reviews it.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title"><a href="writing/start-with-any-tool.html">Rotating between Claude, Codex, and Cursor</a></p>
+          <p class="exp-desc">I rotate between Claude, Codex, and Cursor to ship front-end changes. They keep getting closer, and the differences that matter to me are small details in the interface.</p>
         </div>
       </div>
 
