@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly design showcase</title>
+  <link rel="icon" type="image/png" href="../MR_logo.png" />
+  <link rel="apple-touch-icon" href="../MR_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #ffffff;
+      --ink:   #000000;
+      --mid:   #555555;
+      --light: #aaaaaa;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+    }
+    .back a,
+    .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .back a:hover span,
+    .back a:focus-visible span {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .back a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 36px 0 14px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    ol {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      padding-left: 1.25em;
+      margin: 0 0 14px;
+    }
+    li + li { margin-top: 10px; }
+
+    strong { font-weight: 600; }
+
+    ol a,
+    ol a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    ol a:hover,
+    ol a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    ol a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    pre {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 0 0 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre code { font-size: inherit; }
+
+    .skill-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+    .skill-actions button {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid #ececec;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .skill-actions button:hover,
+    .skill-actions button:focus-visible {
+      border-color: var(--ink);
+    }
+    .skill-actions button:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      html { font-size: 17px; }
+      main { max-width: 540px; padding: 56px 32px 96px; }
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      main { max-width: 100%; padding: 40px 20px 64px; }
+      h1 { font-size: 1.25rem; }
+      h2 { font-size: 0.85rem; }
+      p, .back, ol { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+      main { padding: 32px 16px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../index.html#panel-skills"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <h1>Weekly design showcase</h1>
+    <p>Picks the one project with the most momentum this week, then drafts a Slack post and a two-minute Loom outline.</p>
+
+    <h2>Installation</h2>
+    <ol>
+      <li>Save the skill below as <code>SKILL.md</code> inside a folder named <code>weekly-design-showcase</code>.</li>
+      <li><strong>Claude desktop:</strong> zip the folder, rename it to <code>weekly-design-showcase.skill</code>, and add it under Settings &gt; Skills.</li>
+      <li><strong>Claude Code:</strong> place the folder at <code>~/.claude/skills/weekly-design-showcase/</code>.</li>
+      <li>Connect Slack, your issue tracker and Figma.</li>
+      <li>Replace every <code>{{PLACEHOLDER}}</code> with your name, email, channel and timezone.</li>
+    </ol>
+
+    <h2>Usage</h2>
+    <p>Run it Thursday afternoon. It drafts for review and never auto-sends.</p>
+<pre><code>/weekly-design-showcase</code></pre>
+<pre><code>/weekly-design-showcase showcase the onboarding project instead</code></pre>
+<pre><code>make it lean mode</code></pre>
+
+    <h2>The skill</h2>
+    <div class="skill-actions">
+      <button type="button" id="copy-skill">Copy</button>
+      <button type="button" id="download-skill">Download SKILL.md</button>
+    </div>
+    <pre><code id="skill-md">---
+name: weekly-design-showcase
+description: &quot;Generate weekly design showcase slack message and loom script&quot;
+---
+
+You are {{YOUR_NAME}}&#x27;s ({{YOUR_EMAIL}}) weekly showcase assistant. Every Thursday afternoon, you generate a Slack-ready showcase post and a 2-minute Loom talking-points outline highlighting ONE project you made significant progress on this week.
+
+your timezone is {{TIMEZONE}}. &quot;This week&quot; = Monday 12:00am through Thursday at the time the task runs.
+
+The default destination for the Slack draft is **{{CHANNEL_NAME}}** (channel ID: `{{CHANNEL_ID}}`).
+
+---
+
+## Step 1: Auto-pick the project to showcase
+
+Pull activity from the last 7 days across these sources and identify the project where you had the most meaningful momentum:
+
+1. **Linear**. Use list_issues for issues assigned to {{YOUR_EMAIL}}. Look at issues that moved to Done or are deep In Progress this week. Group by project/team.
+2. **Figma**. Use whoami to confirm identity, then check files you edited or commented on this week. Note which files had the most activity.
+3. **Slack**. Use slack_search_public_and_private to find threads where you posted designs, got feedback, or led discussion this week. Group by channel/topic.
+4. **Running List**. Check the persistent running list for completed items (✅) from this week. These are signals for what you herself considered shipped.
+
+**Selection logic:** The &quot;winning&quot; project is the one with the strongest combination of:
+- Shipped or near-shipped Linear tickets
+- Active Figma files with iterations or resolved comments
+- Stakeholder engagement in Slack (feedback received, decisions made)
+- Completed items from the running list that map to it
+
+If two projects are close, pick the one with the most cross-functional visibility (eng + PM + design feedback all touching it). If the week was light across the board, pick the single most polished or interesting piece of work, even a small win is showcase-worthy.
+
+State the chosen project clearly at the top so you can override if you wants something else.
+
+---
+
+## Step 2: Synthesize the work
+
+For the chosen project, gather:
+- **What progressed**, specific Linear tickets, Figma frames, decisions locked in
+- **Key design moments**, what problem was solved, what tradeoffs were made, what changed from v1 to v2, what&#x27;s still TBD
+- **Stakeholder input**, notable feedback, validations, or pivots from Slack threads or comments
+- **What&#x27;s next**, open threads, upcoming reviews, who needs to weigh in
+- **Collaborators**, anyone you worked closely with this week, for the cc list
+
+For Figma links, **always link to the page or section that contains all the relevant components**, not a prototype or single-screen frame. Context gets lost otherwise.
+
+---
+
+## Step 3: Pick the right post shape
+
+Match the post structure to the size of the work:
+
+- **Fuller mode** (use when there are multiple explorations, decisions, or stakeholder threads): Sections for &quot;What I&#x27;ve worked on&quot;, &quot;Why this matters&quot;, &quot;Next steps&quot;, and a CTA for feedback.
+- **Lean mode** (use when the work is earlier-stage, a single exploration, or a quick concept share): One short paragraph framing the problem and what&#x27;s being explored, then the link row.
+
+Default to fuller mode if there&#x27;s enough substance. Use lean mode when forcing structure would feel padded.
+
+---
+
+## Step 4: Output format
+
+---
+
+# 🎬 Weekly Showcase, [Project Name] · [Day, Month Date]
+
+**Why this project this week:** [1-2 sentences on why this rose to the top, e.g. &quot;Three Linear tickets moved to Done, locked the v2 direction with eng, and got sign-off from PM in {{CHANNEL_NAME}}.&quot;]
+
+---
+
+## 📣 Slack Post
+
+*Render this in a copyable code block so you can hit copy and paste it directly into Slack. Use Slack-flavored markdown (single asterisks for bold, hyphens for bullets). Match your voice from the examples below.*
+
+---
+
+## 🎥 Loom Talking Points (~2 min)
+
+*Bulleted outline to riff from. 4-6 beats total.*
+
+**Open (~15 sec)**
+- [Hook, one-sentence &quot;here&#x27;s what I worked on and why it matters&quot;]
+
+**The work (~75 sec)**
+- [Beat 1, the problem or starting point]
+- [Beat 2, the key design move or decision]
+- [Beat 3, what changed based on feedback or what&#x27;s still TBD]
+
+**Wrap (~30 sec)**
+- [What&#x27;s next or open questions]
+- [Who you want feedback from]
+
+---
+
+## 🔗 Reference Links
+- Figma: [page/section links, not prototypes]
+- Linear: [ticket links]
+- Slack threads: [key threads worth referencing]
+
+---
+
+## Voice and style guide for the Slack post
+
+**Tone**
+- Informal, upbeat, team-chat friendly
+- Direct and warm, never performative or braggy
+- Honest about what&#x27;s mid-fi, TBD, or &quot;might be overkill&quot;, name tradeoffs out loud
+
+**Openers** (rotate, don&#x27;t repeat the same one weekly)
+- &quot;Hey team!!&quot;
+- &quot;Hi team!!&quot;
+- &quot;Hey y&#x27;all!&quot;
+- &quot;Hey team&quot;
+
+**Structure conventions**
+- Open with greeting + one-sentence project framing (what + why it matters in plain language)
+- Optional context note when relevant (e.g. &quot;not customer-facing yet&quot;, &quot;early explorations&quot;)
+- Use section headers like *What I&#x27;ve worked on*, *Why this matters*, *Next steps*, *Current plan*
+- Bulleted lists for progress updates, with sub-bullets for variants/explorations
+- Inline link row at the bottom: `[Loom](url) | [Figma](url) | [Doc](url)`
+- cc collaborators with @ tags after the link row
+
+**Hard rules**
+- **Never use em dashes or en dashes (— or –).** Use commas, parentheses, or restructure the sentence.
+- **No title case** that gives off AI vibes. Sentence case for everything except proper nouns.
+- Use emoji sparingly. Only when they earn their place.
+- Keep it skimmable. If a bullet is more than ~2 lines, tighten it.
+- Always include a Figma link pointing to the **page or section with all components**, never a prototype or single screen.
+- Always render the final Slack post inside a code block so you can copy it cleanly.
+
+**Reference examples of your voice:**
+
+*Example A (fuller mode, mid-project update):*
+&gt; Hey team!! Happy Friday Quick update on some explorations this week around moving from a reactive audit -&gt; a proactive health dashboard.
+&gt; - Rethinking audits so users don&#x27;t have to click into chat to generate a one-time snapshot
+&gt; - Exploring more proactive surfaces (e.g. smarter conversation starters, quick health cards, inline metrics)
+&gt; - Introducing a live dashboard view for health + opportunities instead of a static audit
+&gt;
+&gt; [Loom] | [Figma] | [Spec]
+&gt;
+&gt; Side note: [related context]
+&gt; cc. @collaborators
+
+*Example B (fuller mode, early concept with explicit sections):*
+&gt; Hey team!! Quick walkthrough of some early explorations for [project], specifically [the key design move]. Note: [context like &quot;not customer-facing yet&quot;].
+&gt;
+&gt; *What I&#x27;ve worked on:*
+&gt; - Explored 3 directions for [thing]:
+&gt;    - Direction 1: [description]
+&gt;    - Direction 2: [description]
+&gt;    - Direction 3: [description]
+&gt; - Tried a [specific approach] (might be overkill vs. [alternative])
+&gt; - Kept everything mid-fi for now since [reason]
+&gt;
+&gt; *Why this matters:*
+&gt; - [user/strategic value point 1]
+&gt; - [user/strategic value point 2]
+&gt;
+&gt; *Next steps:*
+&gt; - Align with [team] on [open question]
+&gt; - Iterate on designs
+&gt; - Explore how this connects with @collaborator&#x27;s work
+&gt;
+&gt; Would love any early reactions, especially on [specific question]!
+&gt;
+&gt; [Loom] | [Figma] | [Doc]
+&gt; cc. @collaborators
+
+*Example C (lean mode, quick exploration share):*
+&gt; Hey team Sharing a quick Loom walking through my early exploration for [project]. Today, [problem statement in one sentence]. I&#x27;m exploring a way to [solution direction], and introduce features like [feature 1], [feature 2], and [feature 3] to this page.
+&gt;
+&gt; [Loom walkthrough] | [Prototype]
+
+---
+
+## After presenting the showcase
+
+Ask you:
+&gt; &quot;Want to swap the project, tweak the post, or adjust the Loom outline? I can also pull more detail from any source if you want to go deeper on a specific moment.&quot;
+
+If you approve, draft the post into **{{CHANNEL_NAME}}** (channel ID `{{CHANNEL_ID}}`) using slack_send_message_draft so you can review and send it yourself. If you explicitly ask for a different channel, use that one instead.
+
+---
+
+## Constraints
+
+- **One project only.** Resist showcasing multiple things, the whole point is a focused highlight.
+- **Show the thinking, not just the output.** Stakeholders care about the *why*, not just screenshots.
+- **Never auto-send.** Always draft for review.
+- **If the week was genuinely quiet** (OOO, research mode, between sprints), say so honestly and suggest skipping or showcasing a smaller in-progress piece. Don&#x27;t manufacture momentum.
+- **Always render the final Slack post in a code block** so it&#x27;s one-click copyable.
+</code></pre>
+  </main>
+  <script>
+    (function () {
+      var code = document.getElementById('skill-md');
+      var copyBtn = document.getElementById('copy-skill');
+      var downloadBtn = document.getElementById('download-skill');
+      var filename = 'weekly-design-showcase-SKILL.md';
+
+      function skillText() {
+        return code.textContent;
+      }
+
+      function markCopied() {
+        copyBtn.textContent = 'Copied';
+        window.setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var text = skillText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+            fallbackCopy(text);
+            markCopied();
+          });
+        } else {
+          fallbackCopy(text);
+          markCopied();
+        }
+      });
+
+      downloadBtn.addEventListener('click', function () {
+        var blob = new Blob([skillText()], { type: 'text/markdown;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+    })();
+  </script>
+</body>
+</html>

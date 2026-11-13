@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product marketing assets</title>
+  <link rel="icon" type="image/png" href="../MR_logo.png" />
+  <link rel="apple-touch-icon" href="../MR_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #ffffff;
+      --ink:   #000000;
+      --mid:   #555555;
+      --light: #aaaaaa;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+    }
+    .back a,
+    .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .back a:hover span,
+    .back a:focus-visible span {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .back a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 36px 0 14px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    ol {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      padding-left: 1.25em;
+      margin: 0 0 14px;
+    }
+    li + li { margin-top: 10px; }
+
+    strong { font-weight: 600; }
+
+    ol a,
+    ol a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    ol a:hover,
+    ol a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    ol a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    pre {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 0 0 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre code { font-size: inherit; }
+
+    .skill-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+    .skill-actions button {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid #ececec;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .skill-actions button:hover,
+    .skill-actions button:focus-visible {
+      border-color: var(--ink);
+    }
+    .skill-actions button:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      html { font-size: 17px; }
+      main { max-width: 540px; padding: 56px 32px 96px; }
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      main { max-width: 100%; padding: 40px 20px 64px; }
+      h1 { font-size: 1.25rem; }
+      h2 { font-size: 0.85rem; }
+      p, .back, ol { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+      main { padding: 32px 16px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../index.html#panel-skills"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <h1>Product marketing assets</h1>
+    <p>Creates launch-ready product screenshots and GIFs from a demo account, then assembles them into an organized Figma file for release notes, docs, social and decks.</p>
+
+    <h2>Installation</h2>
+    <ol>
+      <li>Save the skill below as <code>SKILL.md</code> inside a folder named <code>product-marketing-assets</code>.</li>
+      <li><strong>Claude desktop:</strong> zip the folder, rename it to <code>product-marketing-assets.skill</code>, and add it under Settings &gt; Skills.</li>
+      <li><strong>Claude Code:</strong> place the folder at <code>~/.claude/skills/product-marketing-assets/</code>.</li>
+      <li>Connect Figma, point it at a demo or staging account, and replace every <code>{{PLACEHOLDER}}</code>.</li>
+    </ol>
+
+    <h2>Usage</h2>
+    <p>Name the feature and where the assets will be used. It returns screenshots, GIFs when you ask for them, and a Figma link.</p>
+<pre><code>/product-marketing-assets the results page for the release note</code></pre>
+<pre><code>/product-marketing-assets a three-shot set and Figma file for the launch post</code></pre>
+<pre><code>/product-marketing-assets a GIF of the onboarding flow plus screenshots</code></pre>
+<pre><code>retake the hero shot with cleaner demo data and update the Figma file</code></pre>
+
+    <h2>The skill</h2>
+    <div class="skill-actions">
+      <button type="button" id="copy-skill">Copy</button>
+      <button type="button" id="download-skill">Download SKILL.md</button>
+    </div>
+    <pre><code id="skill-md">---
+name: product-marketing-assets
+description: &quot;Create launch-ready product marketing assets: polished product screenshots, short GIFs and organized Figma files (release notes, announcements, help docs, landing pages, social, decks). Use when the user asks for product marketing screenshots, GIFs, launch visuals, or a Figma file of a feature&#x27;s marketing assets.&quot;
+---
+
+# Product marketing assets
+
+Produce consistent, on-brand screenshots and GIFs from a demo or staging account, then assemble them into a Figma file a marketer can pick up and use with no extra editing.
+
+## Setup
+| Field | Value |
+|---|---|
+| Environment | {{DEMO_ACCOUNT_OR_STAGING_URL}} |
+| Output folder | {{OUTPUT_FOLDER}} |
+| Figma team or project | {{FIGMA_PROJECT}} |
+| Figma template or library | {{FIGMA_TEMPLATE_OR_LIBRARY}} |
+| Viewport | 1440 x 900 (default) |
+| Format | PNG for screenshots (2x when the tool allows), GIF for motion |
+
+## Workflow
+1. **Get the brief.** Ask for the feature, the one thing each asset should show, whether they want screenshots, GIFs or both, and where it will be used (release note, social, docs, deck). Default to screenshots, and add GIFs only when asked or when the feature is about motion or a multi-step flow. If the user already said, don&#x27;t ask again.
+2. **Use demo data only.** Never capture a real customer account. If the account isn&#x27;t a demo or staging account, stop and ask.
+3. **Stage the screen:**
+   - Realistic, friendly data: believable names, round-ish numbers, no &quot;test&quot; or &quot;asdf&quot; strings.
+   - The feature in its most useful state: populated, not empty, no error banners.
+   - Close modals, toasts, cookie banners, and browser extensions.
+   - Light theme unless told otherwise. Consistent zoom across a set.
+4. **Frame and capture.** Crop to the feature, not the full app, unless the full layout is the point. Even padding around the subject. Capture the default state first, then interaction states that tell the story (hover, open menu, completed state).
+5. **Check each image:** text legible at half size, no personal data, no cut-off elements, no cursor unless it adds meaning.
+6. **Save the screenshots** as `&lt;feature&gt;-&lt;state&gt;-&lt;usage&gt;.png` in the output folder.
+   **Record GIFs when asked.** Plan the shot first: one flow, 3 to 8 steps, under 10 seconds. Start from the staged default state, perform the steps at a calm pace with a short pause on the result, and use the browser&#x27;s GIF recorder. Keep width at or under 1200px and the file under 5 MB when possible. Trim dead time at the start and end, and loop cleanly. Save as `&lt;feature&gt;-&lt;flow&gt;-&lt;usage&gt;.gif`. Check that text stays legible at half size and that no personal data appears in any frame.
+7. **Build the Figma file.** Create a new file in {{FIGMA_PROJECT}} named `&lt;feature&gt; launch assets`, and lay out:
+   - A cover frame with the feature name and one-line value.
+   - One page per channel (release note, social, docs, deck), each with correctly sized frames.
+   - The screenshots placed in frames with consistent padding, and GIFs added as image fills or linked next to a still frame of the same flow, using the team&#x27;s library styles and fonts where available.
+   - A short &quot;notes&quot; frame listing what each asset shows and its alt text.
+   Use the Figma connector to create the file and upload the images. If the connector is unavailable, deliver the PNGs plus a list of frame sizes and say so.
+8. **Deliver** the Figma link, the screenshot and GIF files, and a short list: asset, what it shows, suggested alt text.
+
+## Sets
+For a launch, offer three screenshots: the hero (the finished result), the before state (the problem), and one detail close-up. Add one GIF of the core flow when motion helps. Keep order and crop consistent in the screenshots, the GIF and the Figma frames.
+
+## Rules
+- Don&#x27;t ship GIFs that show real customer data in any frame. Re-record instead of blurring.
+- Don&#x27;t edit the UI with devtools to fake states unless the user says so, and label any such asset as a mock.
+- Don&#x27;t ship numbers that aren&#x27;t in the demo data. No invented metrics.
+- Flag anything that looks unreleased or behind a flag before it goes in public material.
+- Never overwrite an existing Figma file. Create a new one, or add a clearly named page.
+- Don&#x27;t share the Figma link outside the team unless the user asks.
+</code></pre>
+  </main>
+  <script>
+    (function () {
+      var code = document.getElementById('skill-md');
+      var copyBtn = document.getElementById('copy-skill');
+      var downloadBtn = document.getElementById('download-skill');
+      var filename = 'product-marketing-assets-SKILL.md';
+
+      function skillText() {
+        return code.textContent;
+      }
+
+      function markCopied() {
+        copyBtn.textContent = 'Copied';
+        window.setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var text = skillText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+            fallbackCopy(text);
+            markCopied();
+          });
+        } else {
+          fallbackCopy(text);
+          markCopied();
+        }
+      });
+
+      downloadBtn.addEventListener('click', function () {
+        var blob = new Blob([skillText()], { type: 'text/markdown;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+    })();
+  </script>
+</body>
+</html>

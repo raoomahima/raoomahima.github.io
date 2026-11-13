@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slack message cleanup</title>
+  <link rel="icon" type="image/png" href="../MR_logo.png" />
+  <link rel="apple-touch-icon" href="../MR_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #ffffff;
+      --ink:   #000000;
+      --mid:   #555555;
+      --light: #aaaaaa;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+    }
+    .back a,
+    .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .back a:hover span,
+    .back a:focus-visible span {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .back a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 36px 0 14px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    ol {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      padding-left: 1.25em;
+      margin: 0 0 14px;
+    }
+    li + li { margin-top: 10px; }
+
+    strong { font-weight: 600; }
+
+    ol a,
+    ol a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    ol a:hover,
+    ol a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    ol a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    pre {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 0 0 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre code { font-size: inherit; }
+
+    .skill-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+    .skill-actions button {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid #ececec;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .skill-actions button:hover,
+    .skill-actions button:focus-visible {
+      border-color: var(--ink);
+    }
+    .skill-actions button:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      html { font-size: 17px; }
+      main { max-width: 540px; padding: 56px 32px 96px; }
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      main { max-width: 100%; padding: 40px 20px 64px; }
+      h1 { font-size: 1.25rem; }
+      h2 { font-size: 0.85rem; }
+      p, .back, ol { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+      main { padding: 32px 16px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../index.html#panel-skills"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <h1>Slack message cleanup</h1>
+    <p>Turns rough, typo-filled drafts into messages in your own voice: warm, direct, and easy to act on.</p>
+
+    <h2>Installation</h2>
+    <ol>
+      <li>Save the skill below as <code>SKILL.md</code> inside a folder named <code>slack-message-cleanup</code>.</li>
+      <li><strong>Claude desktop:</strong> zip the folder, rename it to <code>slack-message-cleanup.skill</code>, and add it under Settings &gt; Skills.</li>
+      <li><strong>Claude Code:</strong> place the folder at <code>~/.claude/skills/slack-message-cleanup/</code>.</li>
+      <li>Edit the voice rules so they match how you write. Swap in your own greetings, emoji and message patterns.</li>
+    </ol>
+
+    <h2>Usage</h2>
+    <p>Paste a rough draft, or describe the message you need. It never sends anything on its own.</p>
+<pre><code>clean up this slack message: [paste draft]</code></pre>
+<pre><code>write a slack to the team about the book club vote</code></pre>
+<pre><code>polish this feedback on the exploration</code></pre>
+
+    <h2>The skill</h2>
+    <div class="skill-actions">
+      <button type="button" id="copy-skill">Copy</button>
+      <button type="button" id="download-skill">Download SKILL.md</button>
+    </div>
+    <pre><code id="skill-md">---
+name: slack-message-cleanup
+description: Cleans up, tightens, and rewrites Slack messages in {{YOUR_NAME}}&#x27;s own voice (warm, direct, double-exclamation friendly, structured when needed). Use whenever the user pastes a rough Slack draft, says &quot;clean up this slack message&quot;, &quot;polish this&quot;, &quot;make this sound better&quot;, &quot;write a slack to X about Y&quot;, &quot;draft a vote/poll/announcement/update/feedback/ask&quot;, or shares a half-written message with typos or run-on sentences, even if they never say the word &quot;Slack&quot;. Also use for design-review feedback, async asks, project updates, escalations, and book-club or team-culture posts.
+---
+
+# Slack Message Cleanup ({{YOUR_NAME}}&#x27;s voice)
+
+Turn rough, typo-filled, or half-finished Slack drafts into messages that sound like {{YOUR_NAME}} wrote them on a good day: clear, warm, and easy to act on. Do not make them sound like a corporate memo or like generic AI.
+
+## Workflow
+
+1. **Read the draft for intent.** Identify the message type (ask, update, feedback, announcement, vote/poll, escalation, reply) and the one thing the reader should do or know.
+2. **Check for cut-off or missing info.** If the paste ends mid-sentence, make the most reasonable assumption, state it in one line after the draft, and move on. Do not stall with questions. Leave `[day/time]`-style placeholders for facts you don&#x27;t know, and never invent dates, names, ticket numbers, or links.
+3. **Rewrite in your voice** using the rules below. Keep your content and decisions; only improve clarity, structure, and tone.
+4. **Add the &quot;why&quot; when the message proposes or asks for something.** If the user says &quot;plan out the idea&quot; or &quot;give the why&quot;, lay out the idea, then 3-4 short reasons, then a low-friction next step.
+5. **Deliver.** Use `message_compose_v1` (kind `other`) when available so you gets a copy-ready card, and do not repeat the draft text in chat. Otherwise put the draft in a plain block. After the draft, add 1-2 sentences: assumptions made, placeholders to fill, links that look truncated. Never send the message to Slack unless you explicitly asks, and offer a draft instead of sending when unsure.
+
+## Voice rules (from your past messages)
+
+- **Open friendly and direct.** Greetings like &quot;Hi design team!!&quot;, &quot;Hey team!! Happy Friday.&quot;, &quot;Hi everyone!!&quot;. For a single person, start with the @-mention and a short context line. In thread replies, skip the greeting and just answer.
+- **Double exclamation marks** on warm or celebratory beats (&quot;Thank you for the feedback!!&quot;, &quot;this is in review now!!&quot;). Single &quot;!&quot; for normal friendliness. Don&#x27;t put them on serious escalations or bad news.
+- **Appreciate first, then the point.** For feedback: &quot;Thanks for putting this exploration together, it&#x27;s great!! Two thoughts:&quot; then the substance.
+- **Say what you thinks plainly.** &quot;I think...&quot;, &quot;I&#x27;d like...&quot;, &quot;I strongly lean toward...&quot;, &quot;Thoughts?&quot;, &quot;Let me know which you prefer!&quot;, &quot;lmk so we can align!&quot;. No hedging pile-ups like &quot;I was just wondering if maybe&quot;.
+- **Contractions and casual register.** Short sentences. No em dashes; use commas, periods, or colons instead. No corporate filler (&quot;circle back&quot;, &quot;leverage&quot;, &quot;per my last message&quot;).
+- **Structure only when it earns its place.**
+  - Short asks and replies: 1-3 sentences, no formatting.
+  - Feedback or proposals with multiple points: a numbered list with a bold-style lead-in per point, e.g. &quot;1. Parity first: ...&quot; and &quot;2. Placement: ...&quot;.
+  - Updates and rollups: short intro line, then bullets with ticket links.
+  - Always put the ask or decision needed near the top or in a clearly marked last line.
+- **Tag the right people** with a clear ask directed at them (&quot;&lt;@name&gt; What do you think we should do in the meantime?&quot;). For escalations, tag owners, state the impact (e.g. number of affected customers or support tickets), and ask for prioritization.
+- **Link, don&#x27;t paste.** Reference Linear tickets, PRs, docs, and Slack threads by link. If a link in the draft looks truncated (ends in &quot;…&quot;), keep it and flag it.
+- **Emoji:** Light, a few per message at most. You may use your workspace custom emoji and standard ones. Prefer emoji you have used before or standard ones. Do not invent custom emoji names. For polls, use whatever theme emoji you specifies; if none given, use standard emoji and mention you can swap in custom ones.
+- **Keep the specifics you gave** (names, ticket IDs, numbers). Don&#x27;t generalize them away.
+
+## Message-type patterns
+
+**Ask / alignment ping to one person**
+@mention, one sentence of context with link, the specific question, &quot;lmk so we can align!&quot;. Example shape: what I made, who else is involved, what I&#x27;m asking.
+
+**Feedback or design review reply**
+Thanks + genuine affirmation, &quot;Two thoughts:&quot; (or three), numbered points with lead-ins, state the recommendation, end with a clear next step or ticket link.
+
+**Proposal / new idea (&quot;give the why&quot;)**
+Greeting + @mention, &quot;I&#x27;d love your thoughts on...&quot;, one-paragraph description of the idea, &quot;Why I think it&#x27;s worth trying:&quot; with 3-4 bullets (benefit-first, concrete), a small pilot/next step with a placeholder for date/time, and an invitation for input.
+
+**Vote / poll (e.g., design team book club)**
+Hook line with enthusiasm and an emoji, one sentence of instruction on how to vote, each option as: reaction emoji + **Title** by Author, one-to-two-line blurb, Goodreads link. Close with when voting ends or what happens next. Past example opened &quot;Okay it&#x27;s time to vote for our November book!!!&quot;.
+
+**Nomination / kickoff post**
+@here, &quot;Hi everyone!!&quot;, what we&#x27;re doing and for what month, how to participate (thread suggestions here), what happens next and when.
+
+**Project update / design showcase**
+&quot;Hey team!! Happy Friday.&quot; then a one-line honest summary of the week&#x27;s mode, then bullets of work with ticket links, then any asks or what&#x27;s next.
+
+**Escalation**
+Tag owners, say plainly that support/customer impact is growing, name what is off (e.g., column order, formatting), and ask them to prioritize or escalate. Keep it calm and factual, no exclamation marks.
+
+## Output checklist
+
+- Reads like {{YOUR_NAME}}, not a template.
+- The ask or decision is easy to find.
+- No invented facts; placeholders marked in `[brackets]`.
+- No em dashes; typos fixed; links preserved.
+- Length matches the type: short stays short.
+</code></pre>
+  </main>
+  <script>
+    (function () {
+      var code = document.getElementById('skill-md');
+      var copyBtn = document.getElementById('copy-skill');
+      var downloadBtn = document.getElementById('download-skill');
+      var filename = 'slack-message-cleanup-SKILL.md';
+
+      function skillText() {
+        return code.textContent;
+      }
+
+      function markCopied() {
+        copyBtn.textContent = 'Copied';
+        window.setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var text = skillText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+            fallbackCopy(text);
+            markCopied();
+          });
+        } else {
+          fallbackCopy(text);
+          markCopied();
+        }
+      });
+
+      downloadBtn.addEventListener('click', function () {
+        var blob = new Blob([skillText()], { type: 'text/markdown;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+    })();
+  </script>
+</body>
+</html>

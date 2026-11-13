@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily To-Dos</title>
+  <link rel="icon" type="image/png" href="../MR_logo.png" />
+  <link rel="apple-touch-icon" href="../MR_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #ffffff;
+      --ink:   #000000;
+      --mid:   #555555;
+      --light: #aaaaaa;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+    }
+    .back a,
+    .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .back a:hover span,
+    .back a:focus-visible span {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .back a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 36px 0 14px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    ol {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      padding-left: 1.25em;
+      margin: 0 0 14px;
+    }
+    li + li { margin-top: 10px; }
+
+    strong { font-weight: 600; }
+
+    ol a,
+    ol a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    ol a:hover,
+    ol a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    ol a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    pre {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 0 0 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre code { font-size: inherit; }
+
+    .skill-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+    .skill-actions button {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid #ececec;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .skill-actions button:hover,
+    .skill-actions button:focus-visible {
+      border-color: var(--ink);
+    }
+    .skill-actions button:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      html { font-size: 17px; }
+      main { max-width: 540px; padding: 56px 32px 96px; }
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      main { max-width: 100%; padding: 40px 20px 64px; }
+      h1 { font-size: 1.25rem; }
+      h2 { font-size: 0.85rem; }
+      p, .back, ol { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+      main { padding: 32px 16px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../index.html#panel-skills"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <h1>Daily To-Dos</h1>
+    <p>A weekday morning briefing skill. It pulls from your calendar, email, Slack, issue tracker, Figma, and GitHub, and returns one prioritized to-do list.</p>
+
+    <h2>Installation</h2>
+    <ol>
+      <li>Copy or download the skill below and save it as <code>SKILL.md</code> inside a folder named <code>daily-todos</code>.</li>
+      <li><strong>Claude desktop:</strong> zip the <code>daily-todos</code> folder, rename it to <code>daily-todos.skill</code>, and add it under Settings &gt; Skills.</li>
+      <li><strong>Claude Code:</strong> place the folder at <code>~/.claude/skills/daily-todos/</code>.</li>
+      <li>Connect your calendar, email, Slack, and issue tracker. Figma and GitHub are optional.</li>
+      <li><strong>Fill in your details and tool stack.</strong> Open the installed <code>SKILL.md</code> and replace every <code>{{PLACEHOLDER}}</code> in the Setup table with your name, email, Slack user ID, timezone, issue tracker, and running list path. Then swap or delete any source you don&#x27;t use.</li>
+    </ol>
+
+    <h2>Usage</h2>
+    <p>Use it at the start of your day, or any time you feel buried and want one list to work from. For example:</p>
+<pre><code>/daily-todos</code></pre>
+<pre><code>/daily-todos what&#x27;s still waiting on me in Slack? put those first</code></pre>
+<pre><code>/daily-todos add &quot;send Q4 roadmap draft&quot; to my running list</code></pre>
+
+    <h2>The skill</h2>
+    <div class="skill-actions">
+      <button type="button" id="copy-skill">Copy</button>
+      <button type="button" id="download-skill">Download SKILL.md</button>
+    </div>
+    <pre><code id="skill-md">---
+name: daily-todos
+description: Weekday morning briefing and one unified to-do list, pulled from your calendar, email, Slack, issue tracker, Figma, and GitHub.
+---
+
+You are {{YOUR_NAME}}&#x27;s ({{YOUR_EMAIL}}, Slack user {{YOUR_SLACK_USER_ID}}, {{TIMEZONE}}) productivity assistant. This is an automated weekday morning run: do not ask questions; make reasonable choices. Produce today&#x27;s briefing and a single unified to-do list. Never send or post anything.
+
+## Running list
+Persistent file: {{RUNNING_LIST_PATH}} (create it if missing) with sections: To-Dos, Ideas &amp; Parking Lot, Recently Completed (keep 7 days). It holds MANUAL items only (things {{YOUR_FIRST_NAME}} asked to track). When {{YOUR_FIRST_NAME}} chats with you outside the briefing, treat messages as list operations (add, complete, drop, reprioritize, show), confirm in ONE line, and update this file. Briefing items from Slack/Linear etc. don&#x27;t auto-populate the file.
+
+## Sources (run in parallel)
+1. Google Calendar: today&#x27;s events (midnight to midnight {{TIMEZONE}}), with times; note back-to-backs and prep needed.
+2. Gmail: unread from the last 24h that need action (design reviews, replies, invites). Skip FYI.
+3. Slack (slack_search_public_and_private): @mentions of &lt;@{{YOUR_SLACK_USER_ID}}&gt; and DMs to you in the last 24h. Read threads for context. Classify as Needs reply (someone is waiting on you; oldest first) or FYI (1-2 lines, omit if nothing). Skip resolved/social.
+4. {{ISSUE_TRACKER}}: list issues assigned to me: In Progress first, then a brief Backlog summary. Links included.
+5. Figma: whoami, then unresolved comments or activity directed at you.
+6. GitHub/PRs: review requests or mentions in the last 24h (use issue tracker PR attachments or the GitHub connector if available). Omit if none.
+7. Carryover: read the previous briefing&#x27;s to-dos (most recent daily-todos run output if available) and the running list. Carry forward items still unresolved in source data (thread unanswered, ticket still In Progress, comments still open) and any you marked &quot;not done&quot;; drop anything now resolved. Track days carried (🔁 day N; add ⚠️ at 3+ days).
+
+## Output
+# Good morning, {{YOUR_FIRST_NAME}} ☀️ [Day, Month Date, Year]
+## 🗓️ Today&#x27;s Schedule
+## 📬 Gmail (omit if nothing)
+## 💬 Slack: Needs Your Attention (🔴 Needs reply with sender, channel, one-line ask, link; 🟡 FYI)
+## 📋 {{ISSUE_TRACKER}}
+## 🖼️ Figma (omit if nothing)
+## 🔧 GitHub (omit if nothing)
+## ✅ Today&#x27;s To-Dos (🔁 Carried Over at top, then New Today; unanswered Slack messages near the top; one synthesized list to work from)
+## 💡 Ideas &amp; Parking Lot (3-5 max, omit if empty)
+
+## Constraints
+- 3-6 bullets per section unless more is truly needed; omit empty sections except Schedule, Slack, To-Dos.
+- Direct links wherever possible; never repeat an item across sections.
+- Tone: warm and direct, like a colleague; encouraging, not nagging, about carryover.
+- End with one line: &quot;Reply with anything to carry forward, drop, or add and I&#x27;ll update your running list.&quot;
+</code></pre>
+  </main>
+  <script>
+    (function () {
+      var code = document.getElementById('skill-md');
+      var copyBtn = document.getElementById('copy-skill');
+      var downloadBtn = document.getElementById('download-skill');
+      var filename = 'daily-todos-SKILL.md';
+
+      function skillText() {
+        return code.textContent;
+      }
+
+      function markCopied() {
+        copyBtn.textContent = 'Copied';
+        window.setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var text = skillText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+            fallbackCopy(text);
+            markCopied();
+          });
+        } else {
+          fallbackCopy(text);
+          markCopied();
+        }
+      });
+
+      downloadBtn.addEventListener('click', function () {
+        var blob = new Blob([skillText()], { type: 'text/markdown;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+    })();
+  </script>
+</body>
+</html>

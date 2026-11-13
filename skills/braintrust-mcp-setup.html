@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Braintrust MCP setup</title>
+  <link rel="icon" type="image/png" href="../MR_logo.png" />
+  <link rel="apple-touch-icon" href="../MR_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #ffffff;
+      --ink:   #000000;
+      --mid:   #555555;
+      --light: #aaaaaa;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+    }
+    .back a,
+    .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .back a:hover span,
+    .back a:focus-visible span {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .back a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 36px 0 14px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    ol {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      padding-left: 1.25em;
+      margin: 0 0 14px;
+    }
+    li + li { margin-top: 10px; }
+
+    strong { font-weight: 600; }
+
+    ol a,
+    ol a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    ol a:hover,
+    ol a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    ol a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    pre {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 0 0 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre code { font-size: inherit; }
+
+    .skill-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+    .skill-actions button {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid #ececec;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .skill-actions button:hover,
+    .skill-actions button:focus-visible {
+      border-color: var(--ink);
+    }
+    .skill-actions button:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      html { font-size: 17px; }
+      main { max-width: 540px; padding: 56px 32px 96px; }
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      main { max-width: 100%; padding: 40px 20px 64px; }
+      h1 { font-size: 1.25rem; }
+      h2 { font-size: 0.85rem; }
+      p, .back, ol { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+      main { padding: 32px 16px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../index.html#panel-skills"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <h1>Braintrust MCP setup</h1>
+    <p>A guide to connecting Claude to Braintrust so you can query logs, traces and experiments in plain language.</p>
+
+    <h2>Installation</h2>
+    <ol>
+      <li><strong>Pick your endpoint.</strong> US: <code>https://api.braintrust.dev/mcp</code>. EU: <code>https://api-eu.braintrust.dev/mcp</code>. BYOC: copy the MCP URL from Settings &gt; Data plane in Braintrust.</li>
+      <li><strong>Add the server in Claude.</strong> Use HTTP transport. Claude Code: <code>claude mcp add --transport http braintrust https://api.braintrust.dev/mcp</code> Claude chat and Cowork: add a custom connector with the endpoint URL. <a href="https://claude.com/docs/connectors/custom/add-unlisted" target="_blank" rel="noopener noreferrer">Claude guide</a> · <a href="https://docs.braintrust.dev/integrations/developer-tools/claude-cowork" target="_blank" rel="noopener noreferrer">Braintrust guide</a></li>
+      <li><strong>Sign in.</strong> Use OAuth: approve access on the Braintrust page that opens. No API key needed. The server acts with your account&#x27;s permissions.</li>
+      <li><strong>Verify the connection.</strong> In Claude Code, run <code>claude mcp list</code> to confirm <code>braintrust</code> shows as connected. In Claude chat and Cowork, check that the connector shows as active.</li>
+      <li><strong>Require confirmation for write tools</strong> in your client. They act on your organization with your permissions.</li>
+      <li><strong>Test it.</strong> Ask Claude the first prompt below. You should get your projects back.</li>
+    </ol>
+
+    <h2>Usage</h2>
+    <p>Swap in your agent or feature area for <code>[agent]</code>. Each prompt pulls real user messages from your logs.</p>
+<pre><code>1. SURFACE &quot;DO IT FOR ME&quot; ACTIONS
+
+What types of direct-action requests are users making in [agent / feature area]? Pull a sample of incoming user messages and identify where users are asking the agent to execute something on their behalf rather than guide them.</code></pre>
+<pre><code>2. RECOMMENDATION -&gt; COWORK LOOP
+
+How are users coworking with [agent] after it delivers a recommendation? Look for patterns: do they try to hand execution back, verify their own work, ask what to do next, or build on the recommendation with more context?</code></pre>
+<pre><code>3. VERIFICATION LOOP
+
+Find conversations where users return to [agent] after making a change to check if they did it right. What percentage of sessions include a &quot;did I fix this&quot; or re-audit message after the agent gave advice?</code></pre>
+<pre><code>4. CAPABILITY GAP DISCOVERY
+
+Where are users hitting a wall with [agent]? Pull messages where the user tried to get the agent to do something it couldn&#x27;t. Look for fallback signals like &quot;how do I do it myself&quot; right after a failed action request?</code></pre>
+<pre><code>5. CREATION REQUESTS BY TYPE
+
+What are users asking [agent] to create from scratch? Break down creation requests by type (e.g. campaign, segment, flow, email content) and note whether users provide a detailed brief, a reference example, or just a one-liner.</code></pre>
+
+    <h2>The skill</h2>
+    <div class="skill-actions">
+      <button type="button" id="copy-skill">Copy</button>
+      <button type="button" id="download-skill">Download SKILL.md</button>
+    </div>
+    <pre><code id="skill-md">---
+name: braintrust-mcp-setup
+description: A guide to connecting Claude to Braintrust so you can query logs, traces and experiments in plain language.
+---
+</code></pre>
+  </main>
+  <script>
+    (function () {
+      var code = document.getElementById('skill-md');
+      var copyBtn = document.getElementById('copy-skill');
+      var downloadBtn = document.getElementById('download-skill');
+      var filename = 'braintrust-mcp-setup-SKILL.md';
+
+      function skillText() {
+        return code.textContent;
+      }
+
+      function markCopied() {
+        copyBtn.textContent = 'Copied';
+        window.setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var text = skillText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+            fallbackCopy(text);
+            markCopied();
+          });
+        } else {
+          fallbackCopy(text);
+          markCopied();
+        }
+      });
+
+      downloadBtn.addEventListener('click', function () {
+        var blob = new Blob([skillText()], { type: 'text/markdown;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+    })();
+  </script>
+</body>
+</html>
