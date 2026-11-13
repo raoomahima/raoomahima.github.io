@@ -212,6 +212,82 @@
       max-width: 480px;
     }
 
+    /* ── DESIGN LIBRARY ── */
+    .lib-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .lib-tab {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--mid);
+      background: transparent;
+      border: 1px solid #f0f0f0;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .lib-tab[aria-selected="true"] {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #fff;
+    }
+    .lib-tab:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .lib-panel[hidden] { display: none; }
+    .lib-panel .exp-title { overflow-wrap: anywhere; }
+    .lib-label {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--mid);
+      margin: 0 0 16px;
+    }
+    .lib-label + .exp-row { margin-top: 0; }
+    .lib-tools { margin-top: 28px; }
+    .tool-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+    .tool-links a,
+    .tool-links a:visited {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .tool-links a:hover,
+    .tool-links a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .tool-links a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+    .shelf-book {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1.5;
+      margin: 0 0 6px;
+    }
+    .shelf-book span {
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+    .shelf-book:last-child { margin-bottom: 0; }
+
     /* ── CONTACT ── */
     .contact-links {
       display: flex;
@@ -522,11 +598,123 @@
       </div>
     </section>
 
+    <section class="narrow" id="library">
+      <h2>Design library</h2>
+      <div class="lib-tabs" role="tablist" aria-label="Design library">
+        <button type="button" class="lib-tab" role="tab" id="tab-writing" aria-selected="true" aria-controls="panel-writing" tabindex="0">Writing</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-skills" aria-selected="false" aria-controls="panel-skills" tabindex="-1">Skills &amp; tools</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-shelf" aria-selected="false" aria-controls="panel-shelf" tabindex="-1">On my shelf</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-film" aria-selected="false" aria-controls="panel-film" tabindex="-1">Film</button>
+      </div>
+
+      <div class="lib-panel" id="panel-writing" role="tabpanel" aria-labelledby="tab-writing">
+        <div class="exp-row">
+          <p class="exp-title">Claude skills I built</p>
+          <p class="exp-desc">Which skill gets used most, why it became a skill, the instructions behind it, and what it still gets wrong.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">Codex vs. Claude vs. Cursor</p>
+          <p class="exp-desc">Which tool to reach for, and for what.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">A component teardown</p>
+          <p class="exp-desc">One component shipped with AI, and the details it missed.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">Fixing a banner, from Linear ticket to merged PR</p>
+          <p class="exp-desc">How I take a small front-end design fix from a ticket to a merged PR with Claude, and what I check before anyone reviews it.</p>
+        </div>
+      </div>
+
+      <div class="lib-panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" hidden>
+        <p class="lib-label">Skills</p>
+        <div class="exp-row">
+          <p class="exp-title">braintrust-mcp-setup</p>
+          <p class="exp-desc">A guide to connecting Claude to Braintrust so you can query logs, traces and experiments in plain language.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">daily-standup</p>
+          <p class="exp-desc">Draft daily async standup updates for a team and send them for review.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">daily-todos</p>
+          <p class="exp-desc">Weekday morning briefing and one unified to-do list pulled from calendar, email, Slack, issue tracker, Figma, and GitHub.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">product-marketing-assets</p>
+          <p class="exp-desc">Create launch-ready product marketing assets: polished product screenshots, short GIFs, and organized Figma files.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">slack-message-cleanup</p>
+          <p class="exp-desc">Cleans up, tightens, and rewrites Slack messages in your own voice.</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title">weekly-design-showcase</p>
+          <p class="exp-desc">Generate a weekly design showcase Slack message and Loom talking-points outline.</p>
+        </div>
+        <p class="lib-label lib-tools">Tools I use</p>
+        <div class="tool-links">
+          <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a>
+          <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude</a>
+          <a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">Cursor</a>
+          <a href="https://openai.com/codex" target="_blank" rel="noopener noreferrer">Codex</a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://grok.com/" target="_blank" rel="noopener noreferrer">Grok Bot</a>
+          <a href="https://www.braintrust.dev/" target="_blank" rel="noopener noreferrer">Braintrust</a>
+          <a href="https://www.heap.io/" target="_blank" rel="noopener noreferrer">Heap</a>
+          <a href="https://linear.app/" target="_blank" rel="noopener noreferrer">Linear</a>
+          <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Canva</a>
+          <a href="https://www.adobe.com/" target="_blank" rel="noopener noreferrer">Adobe Suite</a>
+          <a href="https://www.usertesting.com/" target="_blank" rel="noopener noreferrer">UserTesting</a>
+          <a href="https://www.gong.io/" target="_blank" rel="noopener noreferrer">Gong</a>
+          <a href="https://www.loom.com/" target="_blank" rel="noopener noreferrer">Loom</a>
+        </div>
+      </div>
+
+      <div class="lib-panel" id="panel-shelf" role="tabpanel" aria-labelledby="tab-shelf" hidden>
+        <p class="shelf-book">Laws of UX, <span>Jon Yablonski</span></p>
+        <p class="shelf-book">Mobile Design Patterns, <span>Smashing Magazine</span></p>
+        <p class="shelf-book">Articulating Design Decisions, <span>Tom Greever</span></p>
+        <p class="shelf-book">User Friendly, <span>Cliff Kuang</span></p>
+        <p class="shelf-book">Living in Information, <span>Jorge Arango</span></p>
+        <p class="shelf-book">About Face, <span>Alan Cooper</span></p>
+        <p class="shelf-book">Just Enough Research, <span>Erika Hall</span></p>
+        <p class="shelf-book">The Jobs to Be Done Playbook, <span>Jim Kalbach</span></p>
+        <p class="shelf-book">The Materials of Interaction Design, <span>Mikael Wiberg</span></p>
+        <p class="shelf-book">Visual Complexity, <span>Manuel Lima</span></p>
+        <p class="shelf-book">Dear Data, <span>Giorgia Lupi &amp; Stefanie Posavec</span></p>
+        <p class="shelf-book">Extra Bold, <span>Ellen Lupton</span></p>
+        <p class="shelf-book">Thinking with Type, <span>Ellen Lupton</span></p>
+        <p class="shelf-book">The Sketchnote Handbook, <span>Mike Rohde</span></p>
+        <p class="shelf-book">Seeing with Fresh Eyes, <span>Edward Tufte</span></p>
+        <p class="shelf-book">The Visual Display of Quantitative Information, <span>Edward Tufte</span></p>
+        <p class="shelf-book">Things We Create, <span>Brechbühler</span></p>
+        <p class="shelf-book">Creative Confidence, <span>Tom &amp; David Kelley</span></p>
+        <p class="shelf-book">Lists, <span>Liza Kirwin</span></p>
+        <p class="shelf-book">Show Your Work!, <span>Austin Kleon</span></p>
+        <p class="shelf-book">Steal Like an Artist, <span>Austin Kleon</span></p>
+        <p class="shelf-book">Design Is Storytelling, <span>Ellen Lupton</span></p>
+        <p class="shelf-book">Ruined by Design, <span>Mike Monteiro</span></p>
+        <p class="shelf-book">Design as Art, <span>Bruno Munari</span></p>
+        <p class="shelf-book">Design as an Attitude, <span>Alice Rawsthorn</span></p>
+        <p class="shelf-book">Design Emergency, <span>Alice Rawsthorn</span></p>
+      </div>
+
+      <div class="lib-panel" id="panel-film" role="tabpanel" aria-labelledby="tab-film" hidden>
+        <p class="body-text"><a href="https://www.instagram.com/myfilmraol/" target="_blank" rel="noopener noreferrer">More on Instagram</a></p>
+      </div>
+    </section>
+
     <section class="narrow">
       <h2>Experience</h2>
       <div class="exp-row">
+        <p class="exp-title">Lead product designer</p>
+        <p class="exp-date">Klaviyo, 2026 – Present</p>
+        <p class="exp-desc">Lead design for the campaigns space, from strategy to production code, building AI-native, data-driven experiences.</p>
+      </div>
+      <div class="exp-row">
         <p class="exp-title">Senior product designer</p>
-        <p class="exp-date">Klaviyo, 2021 — Present</p>
+        <p class="exp-date">Klaviyo, 2021 – 2026</p>
         <p class="exp-desc">Leading product design for marketing orchestration and AI, shaping tools that power e-commerce growth across email, SMS, and automation</p>
       </div>
       <div class="exp-row">
@@ -771,6 +959,38 @@
         if (mq.matches && ORDER.indexOf(id) !== -1) scrollToProject(id, 'auto');
       });
       update();
+    })();
+  </script>
+  <script>
+    (function () {
+      const tabs = Array.from(document.querySelectorAll('.lib-tab'));
+      const panels = Array.from(document.querySelectorAll('.lib-panel'));
+      if (!tabs.length) return;
+
+      function select(tab) {
+        const panelId = tab.getAttribute('aria-controls');
+        tabs.forEach((item) => {
+          const on = item === tab;
+          item.setAttribute('aria-selected', on ? 'true' : 'false');
+          item.tabIndex = on ? 0 : -1;
+        });
+        panels.forEach((panel) => {
+          panel.hidden = panel.id !== panelId;
+        });
+      }
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => select(tab));
+        tab.addEventListener('keydown', (event) => {
+          if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+          event.preventDefault();
+          const next = event.key === 'ArrowRight'
+            ? tabs[(index + 1) % tabs.length]
+            : tabs[(index - 1 + tabs.length) % tabs.length];
+          next.focus();
+          select(next);
+        });
+      });
     })();
   </script>
 
