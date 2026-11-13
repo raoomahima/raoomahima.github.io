@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start with whichever AI tool you already have</title>
+  <link rel="icon" type="image/png" href="../MR_logo.png" />
+  <link rel="apple-touch-icon" href="../MR_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #ffffff;
+      --ink:   #000000;
+      --mid:   #555555;
+      --light: #aaaaaa;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+    }
+    .back a,
+    .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .back a:hover span,
+    .back a:focus-visible span {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .back a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    pre {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 0 0 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre code { font-size: inherit; }
+
+    @media (max-width: 900px) {
+      html { font-size: 17px; }
+      main { max-width: 540px; padding: 56px 32px 96px; }
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      main { max-width: 100%; padding: 40px 20px 64px; }
+      h1 { font-size: 1.25rem; }
+      p, .back { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+      main { padding: 32px 16px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../index.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <h1>Start with whichever AI tool you already have</h1>
+
+    <p>I've used Claude, Codex, and Cursor to ship front-end changes, and I rotate between them. I used to use Cursor a lot more. Lately it's Codex and Claude, a couple of PRs in one and a couple in the other.</p>
+    <p>At this point they're converging. Each one can read the code, make the change, run the tests, and open a PR. What's left is which interface you like working in. So this isn't a ranking. It's what pulls me to each one, and what I'd tell a designer picking their first.</p>
+
+    <p>Claude is where I do more than code. I use it for design and prototyping too, so I can move between exploratory work and production improvements without changing tools.</p>
+    <p>It's connected to Linear and Figma, so it pulls context from the ticket and the design instead of me pasting it in. When it opens a PR, the changes and the linked PR show up right in the interface, and I can jump to GitHub from there.</p>
+    <p>The bigger change is how much of the git work it handles now. I used to keep a terminal open side by side and type the commits, pull requests, and branch switches myself. Then I'd go into GitHub and paste in the description it had written.</p>
+    <p>Now Claude creates its own branch, makes the commits, explains what's in each one, and updates the PR description in GitHub directly. In Claude Code you can ask for all of that in one line:</p>
+    <pre><code>create a pr for my changes</code></pre>
+
+    <p>In Codex it's easier to see each branch and switch between them.</p>
+    <p>In Claude I once got confused because a single chat was talking about two branches and switched between them. I lost track of which one I was on. In Codex the branches are easier to tell apart visually, so I don't commit to the wrong one by mistake. The branch controls sit right in the chat, with a worktree option and a starting branch under the message box, and a Create branch here button in the header.</p>
+    <p>I also like the terminal experience in Codex and Cursor.</p>
+
+    <p>The fix for my mix-up wasn't switching tools. It was giving each branch its own copy of the code. A git worktree is a separate checkout of the same repo, so two sessions can run side by side without touching each other's files.</p>
+    <p>All three tools support this now. In Claude Code:</p>
+    <pre><code>claude --worktree banner-cleanup</code></pre>
+    <p>Codex has the same <code>--worktree</code> flag in its CLI, and a Worktree option in the app. Cursor has a <code>/worktree</code> command and an Agents Window that lists local, worktree, and cloud agents together. Each also runs cloud sessions, where every task gets its own branch on a separate machine.</p>
+    <p>One detail is easy to miss. In the Claude desktop app, worktrees are off by default. Several sessions in the same project folder will edit the same files unless you turn it on. I use separate worktrees on purpose now.</p>
+
+    <p>The tools are only part of why I can ship quickly. My company has a team that sets up testing and the environment I need, so I can get a PR ready faster.</p>
+
+    <p>Honestly, you can start with any of them. It depends on what's already in your toolset.</p>
+    <p>If you already chat and work with Claude, switch over to Claude Code and explore from there.</p>
+  </main>
+</body>
+</html>
