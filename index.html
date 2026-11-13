@@ -22,7 +22,7 @@
       --light: #aaaaaa;
     }
 
-    html { font-size: 18px; scroll-behavior: smooth; }
+    html { font-size: clamp(17px, 0.35vw + 13px, 20px); scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -33,11 +33,11 @@
     }
 
     main {
-      padding: 72px 0 120px;
+      padding: clamp(40px, 5.5vh, 72px) 0 120px;
     }
 
     .narrow {
-      max-width: 600px;
+      max-width: clamp(600px, 44vw, 720px);
       margin-left: auto;
       margin-right: auto;
       padding-left: 40px;
@@ -45,7 +45,7 @@
     }
 
     /* ── HEADER ── */
-    header { margin-bottom: 104px; }
+    header { margin-bottom: clamp(48px, 8vh, 96px); }
     .name {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: normal;
@@ -84,7 +84,7 @@
       color: var(--ink);
       line-height: 1.75;
       margin-bottom: 14px;
-      max-width: 520px;
+      max-width: 60ch;
     }
     .body-text:last-child { margin-bottom: 0; }
     .body-text a,
@@ -112,7 +112,7 @@
 
     /* ── PROJECT ROWS ── */
     .project-list {
-      max-width: 600px;
+      max-width: clamp(600px, 44vw, 720px);
       margin-left: auto;
       margin-right: auto;
       padding-left: 40px;
@@ -576,9 +576,42 @@
       .work { margin-bottom: 44px; }
     }
 
+    /* ── PHONE / SMALL TABLET (≤ 767px): static page, no hero motion ── */
+    @media (max-width: 767px) {
+      html { scroll-behavior: auto; }
+
+      .body-text a,
+      .body-text a:visited,
+      .body-text a:hover,
+      .body-text a:active,
+      .body-text a:focus-visible,
+      .body-text a.is-on {
+        -webkit-text-stroke: 0;
+        transition: none;
+      }
+      .body-text a:hover,
+      .body-text a:active,
+      .body-text a.is-on {
+        text-decoration-thickness: 1.5px;
+        text-decoration-color: #aaaaaa;
+      }
+
+      .intro .body-text a,
+      .intro .body-text a:visited,
+      .intro .body-text a:hover,
+      .intro .body-text a:active,
+      .intro .body-text a:focus-visible,
+      .intro .body-text a.is-on {
+        text-decoration: none;
+        -webkit-text-stroke: 0;
+      }
+
+      section.intro { margin-bottom: 12px; }
+    }
+
     /* ── DESKTOP SCROLL HERO ── */
     @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-      html.enhanced .intro { margin-bottom: 36px; }
+      html.enhanced .intro { margin-bottom: clamp(24px, 3.5vh, 40px); }
 
       html.enhanced .work { height: 320vh; }
 
@@ -590,18 +623,18 @@
 
       html.enhanced .work-stage {
         height: 100%;
-        width: min(1120px, calc(100vw - 64px));
+        width: min(1360px, calc(100vw - clamp(48px, 6vw, 128px)));
         margin: 0 auto;
         display: grid;
-        grid-template-columns: minmax(260px, 300px) minmax(320px, 560px);
-        column-gap: clamp(28px, 4vw, 64px);
+        grid-template-columns: minmax(260px, clamp(280px, 24vw, 380px)) minmax(360px, clamp(520px, 50vw, 820px));
+        column-gap: clamp(32px, 4.5vw, 80px);
         align-items: center;
         align-content: center;
         justify-content: center;
       }
 
       html.enhanced .project-list {
-        max-width: 300px;
+        max-width: 100%;
         width: auto;
         margin: 0;
         padding: 0;
@@ -652,7 +685,7 @@
       html.enhanced .hero-slot {
         display: block;
         width: 100%;
-        max-width: 560px;
+        max-width: 100%;
         aspect-ratio: 2 / 1;
         justify-self: end;
         visibility: hidden;
@@ -664,7 +697,7 @@
         z-index: 2;
         top: 0;
         left: 50%;
-        width: min(960px, calc(100vw - 80px));
+        width: min(1360px, calc(100vw - clamp(48px, 6vw, 128px)));
         aspect-ratio: 2 / 1;
         border-radius: 12px;
         overflow: hidden;
@@ -698,6 +731,30 @@
         opacity: 0;
         transform: translate3d(-16px, 0, 0);
       }
+    }
+
+    /* Laptop widths: keep the stage and hero inside the viewport. */
+    @media (min-width: 768px) and (max-width: 1280px) and (prefers-reduced-motion: no-preference) {
+      html.enhanced .work-stage {
+        width: calc(100% - clamp(40px, 5vw, 72px));
+        grid-template-columns: minmax(0, clamp(200px, 28vw, 320px)) minmax(0, 1fr);
+        column-gap: clamp(20px, 3vw, 40px);
+      }
+
+      html.enhanced .hero {
+        max-width: calc(100% - clamp(40px, 5vw, 72px));
+      }
+
+      html.enhanced .hero-slot {
+        width: min(100%, calc((100vh - 80px) * 2));
+        max-width: 100%;
+      }
+    }
+
+    @media (min-width: 768px) and (max-height: 700px) and (prefers-reduced-motion: no-preference) {
+      html.enhanced .project-row { margin-bottom: 16px; }
+      html.enhanced .work-stage h2 { margin-bottom: 12px; }
+      html.enhanced .pr-bar { margin-top: 8px; }
     }
   </style>
 </head>
@@ -1102,9 +1159,10 @@
         glideEase = smooth(glide);
 
         const above = track.getBoundingClientRect().top + window.scrollY;
-        const spaceAtRest = Math.max(220, window.innerHeight - above - 20);
-        const startW = Math.min(960, window.innerWidth - 80, (spaceAtRest / 1.03) * 2);
-        const endW = slotRect.width || startW;
+        const padX = clamp(window.innerWidth * 0.06, 48, 128);
+        const spaceAtRest = Math.max(0, window.innerHeight - above - 24);
+        const startW = Math.min(1360, (window.innerWidth - padX) / 1.03, (spaceAtRest / 1.03) * 2);
+        const endW = Math.min(slotRect.width || startW, Math.max(0, window.innerWidth - padX));
         const endX = slotRect.left - stickyRect.left;
         const endY = slotRect.top - stickyRect.top;
         const scale = lerp(1.03, 1, glideEase);
