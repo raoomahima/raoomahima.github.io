@@ -211,6 +211,23 @@
       line-height: 1.6;
       max-width: 480px;
     }
+    #panel-talks .exp-title a,
+    #panel-talks .exp-title a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    #panel-talks .exp-title a:hover,
+    #panel-talks .exp-title a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    #panel-talks .exp-title a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
 
     /* ── DESIGN LIBRARY ── */
     .lib-tabs {
@@ -695,6 +712,7 @@
         <button type="button" class="lib-tab" role="tab" id="tab-writing" aria-selected="true" aria-controls="panel-writing" tabindex="0">Writing</button>
         <button type="button" class="lib-tab" role="tab" id="tab-skills" aria-selected="false" aria-controls="panel-skills" tabindex="-1">Skills &amp; tools</button>
         <button type="button" class="lib-tab" role="tab" id="tab-shelf" aria-selected="false" aria-controls="panel-shelf" tabindex="-1">On my shelf</button>
+        <button type="button" class="lib-tab" role="tab" id="tab-talks" aria-selected="false" aria-controls="panel-talks" tabindex="-1">Talks</button>
         <!-- Film tab hidden for now
         <button type="button" class="lib-tab" role="tab" id="tab-film" aria-selected="false" aria-controls="panel-film" tabindex="-1">Film</button>
         -->
@@ -841,6 +859,21 @@
           <img src="books/the-problem-with-personalization.webp" alt="The Problem with Personalization — Joseph Turow" title="The Problem with Personalization — Joseph Turow" />
         </div>
         <button type="button" class="books-toggle" aria-expanded="false">View all (45)</button>
+      </div>
+
+      <div class="lib-panel" id="panel-talks" role="tabpanel" aria-labelledby="tab-talks" hidden>
+        <div class="exp-row">
+          <p class="exp-title"><a href="https://x.com/leerob/status/2108650243365736855" target="_blank" rel="noopener noreferrer">How do always-on, proactive agents work?</a></p>
+          <p class="exp-desc">Lee Robinson · Stanford CS146S</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title"><a href="https://www.youtube.com/watch?v=eh8bcBIAAFo" target="_blank" rel="noopener noreferrer">The design process is dead. Here's what's replacing it.</a></p>
+          <p class="exp-desc">Jenny Wen · Lenny's Podcast</p>
+        </div>
+        <div class="exp-row">
+          <p class="exp-title"><a href="https://www.youtube.com/watch?v=VfA-vjsFQ1o" target="_blank" rel="noopener noreferrer">Own the loop: how designers and researchers win with AI evals</a></p>
+          <p class="exp-desc">Setor Zilevu · Config 2026</p>
+        </div>
       </div>
 
       <!-- Film panel hidden for now
