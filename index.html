@@ -314,6 +314,35 @@
       object-fit: cover;
       display: block;
     }
+    .books img:nth-child(n + 16) { display: none; }
+    .books.is-expanded img:nth-child(n + 16) { display: block; }
+    .books-toggle {
+      appearance: none;
+      display: inline-block;
+      margin-top: 20px;
+      padding: 0;
+      border: 0;
+      background: none;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--mid);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+      cursor: pointer;
+    }
+    .books-toggle:hover,
+    .books-toggle:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .books-toggle:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
     .film-rows { margin-bottom: 20px; }
     .film-row {
       display: grid;
@@ -487,21 +516,23 @@
 
       html.enhanced .work-stage {
         height: 100%;
-        width: min(1040px, 92vw);
+        width: min(1120px, calc(100vw - 64px));
         margin: 0 auto;
         display: grid;
-        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-        column-gap: clamp(28px, 4vw, 72px);
+        grid-template-columns: minmax(260px, 300px) minmax(320px, 560px);
+        column-gap: clamp(28px, 4vw, 64px);
         align-items: center;
         align-content: center;
+        justify-content: center;
       }
 
       html.enhanced .project-list {
-        max-width: none;
+        max-width: 300px;
         width: auto;
         margin: 0;
         padding: 0;
         opacity: 0;
+        justify-self: start;
       }
 
       html.enhanced .project-row {
@@ -547,7 +578,9 @@
       html.enhanced .hero-slot {
         display: block;
         width: 100%;
-        aspect-ratio: 818 / 463;
+        max-width: 560px;
+        aspect-ratio: 2 / 1;
+        justify-self: end;
         visibility: hidden;
       }
 
@@ -557,14 +590,20 @@
         z-index: 2;
         top: 0;
         left: 50%;
-        width: min(500px, calc(100vw - 80px));
-        aspect-ratio: 818 / 463;
+        width: min(960px, calc(100vw - 80px));
+        aspect-ratio: 2 / 1;
         border-radius: 12px;
         overflow: hidden;
         background: #f0f0f0;
-        pointer-events: none;
+        color: inherit;
+        text-decoration: none;
+        pointer-events: auto;
         transform: translateX(-50%) scale(1.03);
         transform-origin: top center;
+      }
+      html.enhanced .hero:focus-visible {
+        outline: 1px solid var(--ink);
+        outline-offset: 3px;
       }
       html.enhanced .hero img {
         position: absolute;
@@ -608,7 +647,7 @@
             <h2>Latest projects</h2>
 
             <div class="project-row" id="composer" data-project="composer" data-panel="1">
-              <a href="https://www.klaviyo.com/composer" target="_blank" class="pr-link">
+              <a href="https://www.klaviyo.com/composer" target="_blank" rel="noopener noreferrer" class="pr-link">
                 <img class="pr-thumb" src="KAI_marketing_agent.png" alt="Composer marketing agent" />
                 <div class="pr-left">
                   <p class="pr-name">Composer marketing agent</p>
@@ -619,7 +658,7 @@
             </div>
 
             <div class="project-row" id="omnichannel" data-project="omnichannel" data-panel="2">
-              <a href="https://www.klaviyo.com/solutions/omnichannel" target="_blank" class="pr-link">
+              <a href="https://www.klaviyo.com/solutions/omnichannel" target="_blank" rel="noopener noreferrer" class="pr-link">
                 <img class="pr-thumb" src="Omnichannel_campaign.png" alt="Omnichannel campaigns" />
                 <div class="pr-left">
                   <p class="pr-name">Omnichannel campaigns</p>
@@ -630,7 +669,7 @@
             </div>
 
             <div class="project-row" id="attribution" data-project="attribution" data-panel="3">
-              <a href="https://www.klaviyo.com/solutions/analytics/marketing-attribution" target="_blank" class="pr-link">
+              <a href="https://www.klaviyo.com/solutions/analytics/marketing-attribution" target="_blank" rel="noopener noreferrer" class="pr-link">
                 <img class="pr-thumb" src="Attribution.png" alt="Marketing attribution and reporting" />
                 <div class="pr-left">
                   <p class="pr-name">Marketing attribution &amp; reporting</p>
@@ -642,11 +681,11 @@
           </div>
           <div class="hero-slot" aria-hidden="true"></div>
         </div>
-        <div class="hero" aria-hidden="true">
+        <a class="hero" href="https://www.klaviyo.com/solutions/omnichannel" target="_blank" rel="noopener noreferrer" aria-label="Omnichannel campaigns">
           <img data-project="omnichannel" class="is-shown" src="Omnichannel_campaign.png" alt="" />
           <img data-project="composer" src="KAI_marketing_agent.png" alt="" />
           <img data-project="attribution" src="Attribution.png" alt="" />
-        </div>
+        </a>
       </div>
     </section>
 
@@ -756,7 +795,7 @@
       <div class="lib-panel" id="panel-shelf" role="tabpanel" aria-labelledby="tab-shelf" hidden>
         <div class="books">
           <img src="books/laws-of-ux.webp" alt="Laws of UX — Jon Yablonski" title="Laws of UX — Jon Yablonski" />
-          <img src="books/mobile-design-patterns-smashing-ebooks-28.webp" alt="Mobile Design Patterns — Smashing Magazine" title="Mobile Design Patterns — Smashing Magazine" />
+          <img src="books/mobile-design-patterns-smashing-ebooks-28.webp" alt="Mobile Design Patterns (Smashing eBooks #28) — Smashing Magazine" title="Mobile Design Patterns (Smashing eBooks #28) — Smashing Magazine" />
           <img src="books/articulating-design-decisions.webp" alt="Articulating Design Decisions — Tom Greever" title="Articulating Design Decisions — Tom Greever" />
           <img src="books/user-friendly.webp" alt="User Friendly — Cliff Kuang" title="User Friendly — Cliff Kuang" />
           <img src="books/living-in-information.webp" alt="Living in Information — Jorge Arango" title="Living in Information — Jorge Arango" />
@@ -770,7 +809,38 @@
           <img src="books/thinking-with-type.webp" alt="Thinking with Type — Ellen Lupton" title="Thinking with Type — Ellen Lupton" />
           <img src="books/the-sketchnote-handbook.webp" alt="The Sketchnote Handbook — Mike Rohde" title="The Sketchnote Handbook — Mike Rohde" />
           <img src="books/seeing-with-fresh-eyes.webp" alt="Seeing with Fresh Eyes — Edward Tufte" title="Seeing with Fresh Eyes — Edward Tufte" />
+          <img src="books/the-visual-display-of-quantitative-information.webp" alt="The Visual Display of Quantitative Information — Edward Tufte" title="The Visual Display of Quantitative Information — Edward Tufte" />
+          <img src="books/things-we-create.webp" alt="Things We Create — Brechbühler" title="Things We Create — Brechbühler" />
+          <img src="books/creative-confidence.webp" alt="Creative Confidence — Tom &amp; David Kelley" title="Creative Confidence — Tom &amp; David Kelley" />
+          <img src="books/lists.webp" alt="Lists — Liza Kirwin" title="Lists — Liza Kirwin" />
+          <img src="books/show-your-work.webp" alt="Show Your Work! — Austin Kleon" title="Show Your Work! — Austin Kleon" />
+          <img src="books/steal-like-an-artist.webp" alt="Steal Like an Artist — Austin Kleon" title="Steal Like an Artist — Austin Kleon" />
+          <img src="books/design-is-storytelling.webp" alt="Design Is Storytelling — Ellen Lupton" title="Design Is Storytelling — Ellen Lupton" />
+          <img src="books/ruined-by-design.webp" alt="Ruined by Design — Mike Monteiro" title="Ruined by Design — Mike Monteiro" />
+          <img src="books/design-as-art.webp" alt="Design as Art — Bruno Munari" title="Design as Art — Bruno Munari" />
+          <img src="books/design-as-an-attitude.webp" alt="Design as an Attitude — Alice Rawsthorn" title="Design as an Attitude — Alice Rawsthorn" />
+          <img src="books/design-emergency.webp" alt="Design Emergency — Alice Rawsthorn" title="Design Emergency — Alice Rawsthorn" />
+          <img src="books/the-creative-act.webp" alt="The Creative Act — Rick Rubin" title="The Creative Act — Rick Rubin" />
+          <img src="books/the-art-of-noticing.webp" alt="The Art of Noticing — Rob Walker" title="The Art of Noticing — Rob Walker" />
+          <img src="books/the-beauty-of-everyday-things.webp" alt="The Beauty of Everyday Things — Soetsu Yanagi" title="The Beauty of Everyday Things — Soetsu Yanagi" />
+          <img src="books/mindful-design.webp" alt="Mindful Design — Scott Riley" title="Mindful Design — Scott Riley" />
+          <img src="books/100-things-every-designer-needs-to-know-about-people.webp" alt="100 Things Every Designer Needs to Know About People — Susan Weinschenk" title="100 Things Every Designer Needs to Know About People — Susan Weinschenk" />
+          <img src="books/accessible-america.webp" alt="Accessible America — Bess Williamson" title="Accessible America — Bess Williamson" />
+          <img src="books/the-making-of-prince-of-persia-journals-1985-1993.webp" alt="The Making of Prince of Persia: Journals 1985-1993 — Jordan Mechner" title="The Making of Prince of Persia: Journals 1985-1993 — Jordan Mechner" />
+          <img src="books/we-are-not-machines.webp" alt="We Are Not Machines — Sarah O'Connor" title="We Are Not Machines — Sarah O'Connor" />
+          <img src="books/the-alignment-problem.webp" alt="The Alignment Problem — Brian Christian" title="The Alignment Problem — Brian Christian" />
+          <img src="books/this-is-for-everyone.webp" alt="This Is for Everyone — Tim Berners-Lee" title="This Is for Everyone — Tim Berners-Lee" />
+          <img src="books/ways-of-being.webp" alt="Ways of Being — James Bridle" title="Ways of Being — James Bridle" />
+          <img src="books/space-journal.webp" alt="Space Journal — Dallas Campbell" title="Space Journal — Dallas Campbell" />
+          <img src="books/the-book-of-alchemy.webp" alt="The Book of Alchemy — Suleika Jaouad" title="The Book of Alchemy — Suleika Jaouad" />
+          <img src="books/co-existence.webp" alt="Co-Existence — Ethan Mollick" title="Co-Existence — Ethan Mollick" />
+          <img src="books/thing-explainer.webp" alt="Thing Explainer — Randall Munroe" title="Thing Explainer — Randall Munroe" />
+          <img src="books/japanese-graphic-design.webp" alt="Japanese Graphic Design — Sandu" title="Japanese Graphic Design — Sandu" />
+          <img src="books/the-art-book.webp" alt="The Art Book — Phaidon Editors" title="The Art Book — Phaidon Editors" />
+          <img src="books/beautiful-particulars.webp" alt="Beautiful Particulars — David Weinberger" title="Beautiful Particulars — David Weinberger" />
+          <img src="books/the-problem-with-personalization.webp" alt="The Problem with Personalization — Joseph Turow" title="The Problem with Personalization — Joseph Turow" />
         </div>
+        <button type="button" class="books-toggle" aria-expanded="false">View all (45)</button>
       </div>
 
       <!-- Film panel hidden for now
@@ -847,12 +917,27 @@
       let glideEase = 0;
       let raf = 0;
 
+      const HERO_LINKS = {
+        composer: { href: 'https://www.klaviyo.com/composer', label: 'Composer marketing agent' },
+        omnichannel: { href: 'https://www.klaviyo.com/solutions/omnichannel', label: 'Omnichannel campaigns' },
+        attribution: { href: 'https://www.klaviyo.com/solutions/analytics/marketing-attribution', label: 'Marketing attribution and reporting' }
+      };
+
       const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
       const lerp = (a, b, t) => a + (b - a) * t;
       const smooth = (t) => t * t * (3 - 2 * t);
 
+      function syncHeroLink(id) {
+        const info = HERO_LINKS[id];
+        if (!info || hero.tagName !== 'A') return;
+        hero.href = info.href;
+        hero.setAttribute('aria-label', info.label);
+      }
+
       function showProject(id) {
-        if (!id || id === shownId) {
+        if (!id) return;
+        syncHeroLink(id);
+        if (id === shownId) {
           blurbLinks.forEach((link) => link.classList.toggle('is-on', link.dataset.project === shownId));
           return;
         }
@@ -926,8 +1011,8 @@
         glideEase = smooth(glide);
 
         const above = track.getBoundingClientRect().top + window.scrollY;
-        const spaceAtRest = Math.max(180, window.innerHeight - above - 16);
-        const startW = Math.min(500, window.innerWidth - 80, spaceAtRest * (818 / 463));
+        const spaceAtRest = Math.max(220, window.innerHeight - above - 20);
+        const startW = Math.min(960, window.innerWidth - 80, (spaceAtRest / 1.03) * 2);
         const endW = slotRect.width || startW;
         const endX = slotRect.left - stickyRect.left;
         const endY = slotRect.top - stickyRect.top;
@@ -1011,7 +1096,6 @@
       });
 
       rows.forEach((row) => {
-        const link = row.querySelector('.pr-link');
         row.addEventListener('pointerenter', () => {
           if (glideEase < 0.98) return;
           armPreview(row.dataset.project);
@@ -1019,12 +1103,6 @@
         row.addEventListener('pointerleave', () => {
           if (glideEase < 0.98) return;
           clearPreview();
-        });
-        link.addEventListener('click', (event) => {
-          if (!mq.matches || !plainClick(event)) return;
-          if (row.classList.contains('is-current')) return;
-          event.preventDefault();
-          scrollToProject(row.dataset.project, 'smooth');
         });
       });
 
@@ -1062,6 +1140,16 @@
         });
         panels.forEach((panel) => {
           panel.hidden = panel.id !== panelId;
+        });
+      }
+
+      const books = document.querySelector('.books');
+      const booksToggle = document.querySelector('.books-toggle');
+      if (books && booksToggle) {
+        booksToggle.addEventListener('click', () => {
+          const open = books.classList.toggle('is-expanded');
+          booksToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          booksToggle.textContent = open ? 'Show less' : 'View all (45)';
         });
       }
 
