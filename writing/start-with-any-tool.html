@@ -83,25 +83,7 @@
       margin-bottom: 14px;
     }
 
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.82rem;
-      color: var(--ink);
-    }
-
-    pre {
-      font-size: 0.82rem;
-      line-height: 1.6;
-      color: var(--ink);
-      background: #f7f7f7;
-      border-radius: 8px;
-      padding: 16px 18px;
-      margin: 0 0 14px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-    pre code { font-size: inherit; }
+    strong { font-weight: 600; }
 
     @media (max-width: 900px) {
       html { font-size: 17px; }
@@ -123,32 +105,20 @@
 </head>
 <body>
   <main>
-    <p class="back"><a href="../index.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <p class="back"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
     <h1>Rotating between Claude, Codex, and Cursor</h1>
 
-    <p>I've used Claude, Codex, and Cursor to ship front-end changes, and I rotate between them. I used to use Cursor a lot more. Lately it's Codex and Claude, a couple of PRs in one and a couple in the other.</p>
-    <p>At this point they're converging. Each one can read the code, make the change, run the tests, and open a PR. What's left is which interface you like working in. So this isn't a ranking. It's what pulls me to each one, and what I'd tell a designer picking their first.</p>
+    <p>I've used Claude, Codex, and Cursor to ship front-end changes, and I rotate between them. At this point they're converging: each one can read the code, make the change, run the tests, and open a PR. What's left is which tool fits the job in front of you and which interface you like working in. Here is how I pick between them.</p>
 
-    <p>Claude is where I do more than code. I use it for design and prototyping too, so I can move between exploratory work and production improvements without changing tools.</p>
-    <p>It's connected to Linear and Figma, so it pulls context from the ticket and the design instead of me pasting it in. When it opens a PR, the changes and the linked PR show up right in the interface, and I can jump to GitHub from there.</p>
-    <p>The bigger change is how much of the git work it handles now. I used to keep a terminal open side by side and type the commits, pull requests, and branch switches myself. Then I'd go into GitHub and paste in the description it had written.</p>
-    <p>Now Claude creates its own branch, makes the commits, explains what's in each one, and updates the PR description in GitHub directly. In Claude Code you can ask for all of that in one line:</p>
-    <pre><code>create a pr for my changes</code></pre>
+    <p><strong>Claude, when the work starts in design or a ticket.</strong> I use it for moving between exploratory prototyping and production PRs without switching tools. Because it connects directly to Linear and Figma, it pulls context from the ticket and the design instead of me pasting everything in. For example, when I'm taking a UI polish ticket from backlog to PR, I can inspect the element, point Claude at the ticket, and let it create its own branch, make the commits, explain what's in each one, and update the PR description in GitHub directly. When a change touches both design intent and code, Claude is the smoothest bridge.</p>
 
-    <p>In Codex it's easier to see each branch and switch between them.</p>
-    <p>In Claude I once got confused because a single chat was talking about two branches and switched between them. I lost track of which one I was on. In Codex the branches are easier to tell apart visually, so I don't commit to the wrong one by mistake. The branch controls sit right in the chat, with a worktree option and a starting branch under the message box, and a Create branch here button in the header.</p>
-    <p>I also like the terminal experience in Codex and Cursor.</p>
+    <p><strong>Codex, when I'm juggling multiple branches at once.</strong> I use it when I want parallel workstreams without losing track of where I am. In Claude I once got confused because a single chat was talking about two branches and switched between them, and I lost track of which one I was on. In Codex, the branches are easier to tell apart visually: the branch controls sit right in the chat, with a worktree option and a starting branch under the message box, and a Create branch here button in the header. When I'm running a couple of PRs side by side, that visibility keeps me from committing to the wrong branch by mistake.</p>
 
-    <p>The fix for my mix-up wasn't switching tools. It was giving each branch its own copy of the code. A git worktree is a separate checkout of the same repo, so two sessions can run side by side without touching each other's files.</p>
-    <p>All three tools support this now. In Claude Code:</p>
-    <pre><code>claude --worktree banner-cleanup</code></pre>
-    <p>Codex has the same <code>--worktree</code> flag in its CLI, and a Worktree option in the app. Cursor has a <code>/worktree</code> command and an Agents Window that lists local, worktree, and cloud agents together. Each also runs cloud sessions, where every task gets its own branch on a separate machine.</p>
-    <p>One detail is easy to miss. In the Claude desktop app, worktrees are off by default. Several sessions in the same project folder will edit the same files unless you turn it on. I use separate worktrees on purpose now.</p>
+    <p><strong>Cursor, when I want the editor and terminal side by side.</strong> I use it for fast, hands-on front-end iteration where I want to stay close to the code. I used to use Cursor a lot more, and I still like the terminal experience in Cursor and Codex when I'm inspecting files directly, editing in place, and watching changes land immediately.</p>
 
-    <p>The tools are only part of why I can ship quickly. My company has a team that sets up testing and the environment I need, so I can get a PR ready faster.</p>
+    <p><strong>One habit that applies to all three.</strong> Regardless of which tool I pick, giving each branch its own copy of the code via a git worktree keeps parallel sessions from colliding. All three support worktrees and cloud sessions now, and in the Claude desktop app it's worth turning the worktree option on since it's off by default.</p>
 
-    <p>Honestly, you can start with any of them. It depends on what's already in your toolset.</p>
-    <p>If you already chat and work with Claude, switch over to Claude Code and explore from there.</p>
+    <p>The tools are only part of why I can ship quickly: my company also has a team that sets up testing and the environment I need so a PR can get ready faster. Honestly, you can start with any of them. It depends on what's already in your toolset. If you already chat and work with Claude, switch over to Claude Code and explore from there.</p>
   </main>
 </body>
 </html>

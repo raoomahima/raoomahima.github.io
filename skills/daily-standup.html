@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily standup</title>
+  <link rel="icon" type="image/png" href="../MR_logo.png" />
+  <link rel="apple-touch-icon" href="../MR_logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:    #ffffff;
+      --ink:   #000000;
+      --mid:   #555555;
+      --light: #aaaaaa;
+    }
+
+    html { font-size: 18px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+    }
+    .back a,
+    .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .back a:hover span,
+    .back a:focus-visible span {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    .back a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 36px 0 14px;
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    ol {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      padding-left: 1.25em;
+      margin: 0 0 14px;
+    }
+    li + li { margin-top: 10px; }
+
+    strong { font-weight: 600; }
+
+    ol a,
+    ol a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    ol a:hover,
+    ol a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    ol a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    pre {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin: 0 0 14px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    pre code { font-size: inherit; }
+
+    .skill-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+    }
+    .skill-actions button {
+      appearance: none;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--ink);
+      background: var(--bg);
+      border: 1px solid #ececec;
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .skill-actions button:hover,
+    .skill-actions button:focus-visible {
+      border-color: var(--ink);
+    }
+    .skill-actions button:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 900px) {
+      html { font-size: 17px; }
+      main { max-width: 540px; padding: 56px 32px 96px; }
+    }
+
+    @media (max-width: 600px) {
+      html { font-size: 16px; }
+      main { max-width: 100%; padding: 40px 20px 64px; }
+      h1 { font-size: 1.25rem; }
+      h2 { font-size: 0.85rem; }
+      p, .back, ol { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+      html { font-size: 15px; }
+      main { padding: 32px 16px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../#panel-skills"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
+    <h1>Daily standup</h1>
+    <p>Drafts your async standup from Slack, calendar, issue tracker, Figma and GitHub, DMs it for review, then auto-posts if you don&#x27;t reply.</p>
+
+    <h2>Installation</h2>
+    <ol>
+      <li>Save the skill below as <code>SKILL.md</code> inside a folder named <code>daily-standup</code>.</li>
+      <li><strong>Claude desktop:</strong> zip the folder, rename it to <code>daily-standup.skill</code>, and add it under Settings &gt; Skills.</li>
+      <li><strong>Claude Code:</strong> place the folder at <code>~/.claude/skills/daily-standup/</code>.</li>
+      <li>Connect Slack, calendar, your issue tracker and Figma. GitHub is optional.</li>
+      <li>Replace every <code>{{PLACEHOLDER}}</code> with your team, channel, teammates, project keywords, timezone and file path.</li>
+    </ol>
+
+    <h2>Usage</h2>
+    <p>Run it each morning, or schedule it for weekdays. On Mondays it prepares a sync agenda instead of a post.</p>
+<pre><code>/daily-standup</code></pre>
+<pre><code>/daily-standup focus on the checkout redesign</code></pre>
+<pre><code>Post my standup as-is</code></pre>
+
+    <h2>The skill</h2>
+    <div class="skill-actions">
+      <button type="button" id="copy-skill">Copy</button>
+      <button type="button" id="download-skill">Download SKILL.md</button>
+    </div>
+    <pre><code id="skill-md">---
+name: &quot;daily-standup&quot;
+description: &quot;Draft daily async standup updates for the {{TEAM_NAME}} team&quot;
+---
+
+Your job is to draft daily standup updates for {{YOUR_NAME}} ({{YOUR_EMAIL}}) for the **{{TEAM_NAME}}** team only, and send them to your for review. Ignore signals from other teams unless they are significant strategic context.
+
+## Team setup: {{TEAM_NAME}}
+- Slack channel for posting: `{{CHANNEL_ID}}` ({{CHANNEL_NAME}})
+- Sync standup: Mondays 10:30 AM (in-person, agenda format)
+- Async standup: Tue/Wed/Thu/Fri (Slackbot thread in {{CHANNEL_NAME}} around 8 AM)
+- Teammates / signals: {{TEAMMATES}}, plus channels matching {{CHANNEL_PATTERN}}
+- Project keywords: {{PROJECT_KEYWORDS}}
+
+## Day-of-week routing
+| Day | Deliverable |
+|---|---|
+| Mon | Agenda items + goals for sync standup (no posting) |
+| Tue/Wed/Thu/Fri | Y/T daily standup -&gt; DM for review -&gt; auto-post 11:30 |
+
+Determine today&#x27;s day-of-week first; that drives everything below.
+
+## Step 1 - Find the standup thread (Tue/Wed/Thu/Fri only)
+Skip on Mondays. Search channel `{{CHANNEL_ID}}` for the most recent Slackbot message around 8:00 AM local time to get today&#x27;s parent `message_ts` - you&#x27;ll need it as `thread_ts` to reply later.
+
+## Step 2 - Pull your recent activity
+Pull from these sources in parallel for the past 2 days:
+
+**Slack (PRIMARY):** `slack_search_public_and_private` for `from:{{SLACK_HANDLE}} after:YYYY-MM-DD`. For each thread you were active in, use `slack_read_thread` for full context. Long back-and-forth threads = the meatiest work (design critiques, cross-functional alignment, feedback loops). Ignore trivial messages (reactions, social chat, lunch plans, etc.).
+
+**Google Calendar:** Pull yesterday + today. Note key meetings relevant to {{TEAM_NAME}}.
+
+**Linear:** `list_issues` with `assignee: &quot;me&quot;`, `updatedAt: &quot;-P2D&quot;`, `orderBy: &quot;updatedAt&quot;`, `limit: 25`. Identify yesterday&#x27;s completions/progress and today&#x27;s in-progress work.
+
+**Figma:** Search your recent activity ({{YOUR_EMAIL}}) from the past 2 days.
+
+**GitHub:** Past 2 days. May be empty - that&#x27;s fine, omit.
+
+## Step 3 - Filter for {{TEAM_NAME}}
+Keep only {{TEAM_NAME}} signals (channel match -&gt; attendee match -&gt; keyword match). Discard anything else unless it is significant strategic context.
+
+## Step 4 - Synthesize and prioritize
+Rank by time/effort consumed:
+1. Heavy Slack threads (design discussions, cross-functional alignment)
+2. Figma work (designs shared, iterations, handoffs)
+3. PRs merged/opened/reviewed
+4. Linear tickets completed or significantly progressed
+5. Ongoing in-progress work -&gt; &quot;today&quot; section
+
+The standup tells the story of how you actually spent the day, not a ticket changelog.
+
+## Step 5 - Draft output
+
+### Monday: agenda items + goals
+Save to workspace folder as `YYYY-MM-DD-team-sync-standup-agenda.md`. Format:
+
+```
+# team sync standup agenda - &lt;date&gt;
+
+## Agenda items
+**Quick recap (last week)**
+- &lt;highest-impact items&gt;
+
+**This week&#x27;s focus**
+- &lt;main pushes&gt;
+
+**Cross-team / alignment items**
+- &lt;items needing surface in the room&gt;
+
+## Goals
+- &lt;what to walk away with&gt;
+```
+
+### Tue/Wed/Thu/Fri: Y/T daily standup
+Format exactly:
+```
+:yesterday:
+
+• &lt;bullet&gt;
+• &lt;bullet&gt;
+
+:today:
+
+• &lt;bullet&gt;
+• &lt;bullet&gt;
+```
+
+Guidelines:
+- Lead with highest-impact work
+- One line per bullet, capture the essence (e.g. &quot;wrapped v2 explorations for onboarding empty states, shared in #team-design for feedback&quot;)
+- Reference Linear IDs (TEAM-XXX) or Figma file links where natural - don&#x27;t force it
+- Lowercase-friendly, casual tone, no over-explanation
+- Focus on the project, not who asked
+- Weave sources into one picture, don&#x27;t list them separately
+- Omit GitHub if no activity
+
+## Step 6 - Save draft for auto-post (Tue/Wed/Thu/Fri only)
+Skip on Mondays.
+
+Write to `{{PENDING_FILE_PATH}}`:
+```json
+{
+  &quot;draft&quot;: &quot;&lt;the {{TEAM_NAME}} Y/T draft&gt;&quot;,
+  &quot;thread_ts&quot;: &quot;&lt;today&#x27;s {{CHANNEL_NAME}} standup thread ts&gt;&quot;,
+  &quot;channel_id&quot;: &quot;{{CHANNEL_ID}}&quot;,
+  &quot;date&quot;: &quot;&lt;today&#x27;s date YYYY-MM-DD&gt;&quot;
+}
+```
+
+## Step 7 - Send a DM to you for review
+Send to user ID `{{YOUR_SLACK_USER_ID}}`.
+
+**Monday DM:**
+```
+here&#x27;s your monday prep - team sync agenda is saved as a file. nothing gets posted today :slightly_smiling_face:
+
+📂 team sync agenda -&gt; &lt;link to workspace file&gt;
+```
+
+**Tue/Wed/Thu/Fri DM:**
+```
+here&#x27;s your standup draft for today - reply with edits or &#x27;looks good&#x27; to post as-is. if i don&#x27;t hear back by 11:30 i&#x27;ll post it automatically :slightly_smiling_face:
+
+:yesterday:
+• &lt;bullets&gt;
+:today:
+• &lt;bullets&gt;
+```
+
+## Step 8 - Schedule the 11:30 AM auto-post check (Tue/Wed/Thu/Fri only)
+Skip on Mondays.
+
+Create a one-time scheduled task:
+- taskId: `standup-auto-post`
+- fireAt: today at 11:30 AM {{TIMEZONE}} (ISO 8601 with offset, e.g. `2026-04-23T11:30:00-04:00`)
+- description: &quot;Auto-post {{TEAM_NAME}} standup if you hasn&#x27;t reviewed by 11:30 AM&quot;
+- prompt:
+
+```
+Check whether {{YOUR_NAME}} has reviewed your {{TEAM_NAME}} standup draft and post it to Slack.
+
+1. Read the pending draft from {{PENDING_FILE_PATH}}. If the file doesn&#x27;t exist or is empty, stop - already posted manually.
+
+2. Check the date field - if not today&#x27;s date, stop.
+
+3. Read the DM thread with you ({{YOUR_SLACK_USER_ID}}) for messages you sent AFTER the bot&#x27;s draft message this morning.
+   - Replied with a revised version -&gt; post your version
+   - Replied &quot;looks good&quot; or similar -&gt; post the original draft
+   - Made inline edits -&gt; incorporate and post
+   - No response -&gt; post the original draft
+
+4. Post to channel {{CHANNEL_ID}} as a reply to thread_ts from the JSON via slack_send_message.
+
+5. After posting, overwrite {{PENDING_FILE_PATH}} with {} so it&#x27;s clear the standup has been handled.
+```
+</code></pre>
+  </main>
+  <script>
+    (function () {
+      var code = document.getElementById('skill-md');
+      var copyBtn = document.getElementById('copy-skill');
+      var downloadBtn = document.getElementById('download-skill');
+      var filename = 'daily-standup-SKILL.md';
+
+      function skillText() {
+        return code.textContent;
+      }
+
+      function markCopied() {
+        copyBtn.textContent = 'Copied';
+        window.setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      }
+
+      function fallbackCopy(text) {
+        var area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+
+      copyBtn.addEventListener('click', function () {
+        var text = skillText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+            fallbackCopy(text);
+            markCopied();
+          });
+        } else {
+          fallbackCopy(text);
+          markCopied();
+        }
+      });
+
+      downloadBtn.addEventListener('click', function () {
+        var blob = new Blob([skillText()], { type: 'text/markdown;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      });
+    })();
+  </script>
+</body>
+</html>
