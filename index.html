@@ -301,18 +301,34 @@
     .tool-tile:focus-visible::after {
       opacity: 1;
     }
-    .shelf-book {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--ink);
-      line-height: 1.5;
-      margin: 0 0 6px;
+    .books {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
     }
-    .shelf-book span {
-      font-size: 0.82rem;
-      color: var(--mid);
+    .books img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      object-fit: cover;
+      display: block;
     }
-    .shelf-book:last-child { margin-bottom: 0; }
+    .film-rows { margin-bottom: 20px; }
+    .film-row {
+      display: grid;
+      grid-template-columns: 2fr 3fr 2fr 3fr 2fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .film-row + .film-row { margin-top: 12px; }
+    .film-frame {
+      background: #f3f3f2;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px #e8e8e6;
+    }
+    .film-frame.is-portrait { aspect-ratio: 2 / 3; }
+    .film-frame.is-landscape { aspect-ratio: 3 / 2; }
 
     /* ── CONTACT ── */
     .contact-links {
@@ -423,6 +439,16 @@
 
       .contact-links { gap: 10px; }
       .contact-links a { font-size: 0.85rem; }
+
+      .books {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .film-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .film-frame:nth-child(n + 4) { display: none; }
+      .film-frame,
+      .film-frame.is-portrait,
+      .film-frame.is-landscape { aspect-ratio: 2 / 3; }
 
       footer {
         margin-top: 48px;
@@ -726,35 +752,42 @@
       </div>
 
       <div class="lib-panel" id="panel-shelf" role="tabpanel" aria-labelledby="tab-shelf" hidden>
-        <p class="shelf-book">Laws of UX, <span>Jon Yablonski</span></p>
-        <p class="shelf-book">Mobile Design Patterns, <span>Smashing Magazine</span></p>
-        <p class="shelf-book">Articulating Design Decisions, <span>Tom Greever</span></p>
-        <p class="shelf-book">User Friendly, <span>Cliff Kuang</span></p>
-        <p class="shelf-book">Living in Information, <span>Jorge Arango</span></p>
-        <p class="shelf-book">About Face, <span>Alan Cooper</span></p>
-        <p class="shelf-book">Just Enough Research, <span>Erika Hall</span></p>
-        <p class="shelf-book">The Jobs to Be Done Playbook, <span>Jim Kalbach</span></p>
-        <p class="shelf-book">The Materials of Interaction Design, <span>Mikael Wiberg</span></p>
-        <p class="shelf-book">Visual Complexity, <span>Manuel Lima</span></p>
-        <p class="shelf-book">Dear Data, <span>Giorgia Lupi &amp; Stefanie Posavec</span></p>
-        <p class="shelf-book">Extra Bold, <span>Ellen Lupton</span></p>
-        <p class="shelf-book">Thinking with Type, <span>Ellen Lupton</span></p>
-        <p class="shelf-book">The Sketchnote Handbook, <span>Mike Rohde</span></p>
-        <p class="shelf-book">Seeing with Fresh Eyes, <span>Edward Tufte</span></p>
-        <p class="shelf-book">The Visual Display of Quantitative Information, <span>Edward Tufte</span></p>
-        <p class="shelf-book">Things We Create, <span>Brechbühler</span></p>
-        <p class="shelf-book">Creative Confidence, <span>Tom &amp; David Kelley</span></p>
-        <p class="shelf-book">Lists, <span>Liza Kirwin</span></p>
-        <p class="shelf-book">Show Your Work!, <span>Austin Kleon</span></p>
-        <p class="shelf-book">Steal Like an Artist, <span>Austin Kleon</span></p>
-        <p class="shelf-book">Design Is Storytelling, <span>Ellen Lupton</span></p>
-        <p class="shelf-book">Ruined by Design, <span>Mike Monteiro</span></p>
-        <p class="shelf-book">Design as Art, <span>Bruno Munari</span></p>
-        <p class="shelf-book">Design as an Attitude, <span>Alice Rawsthorn</span></p>
-        <p class="shelf-book">Design Emergency, <span>Alice Rawsthorn</span></p>
+        <div class="books">
+          <img src="books/laws-of-ux.webp" alt="Laws of UX — Jon Yablonski" title="Laws of UX — Jon Yablonski" />
+          <img src="books/mobile-design-patterns-smashing-ebooks-28.webp" alt="Mobile Design Patterns — Smashing Magazine" title="Mobile Design Patterns — Smashing Magazine" />
+          <img src="books/articulating-design-decisions.webp" alt="Articulating Design Decisions — Tom Greever" title="Articulating Design Decisions — Tom Greever" />
+          <img src="books/user-friendly.webp" alt="User Friendly — Cliff Kuang" title="User Friendly — Cliff Kuang" />
+          <img src="books/living-in-information.webp" alt="Living in Information — Jorge Arango" title="Living in Information — Jorge Arango" />
+          <img src="books/about-face.webp" alt="About Face — Alan Cooper" title="About Face — Alan Cooper" />
+          <img src="books/just-enough-research.webp" alt="Just Enough Research — Erika Hall" title="Just Enough Research — Erika Hall" />
+          <img src="books/the-jobs-to-be-done-playbook.webp" alt="The Jobs to Be Done Playbook — Jim Kalbach" title="The Jobs to Be Done Playbook — Jim Kalbach" />
+          <img src="books/the-materials-of-interaction-design.webp" alt="The Materials of Interaction Design — Mikael Wiberg" title="The Materials of Interaction Design — Mikael Wiberg" />
+          <img src="books/visual-complexity.webp" alt="Visual Complexity — Manuel Lima" title="Visual Complexity — Manuel Lima" />
+          <img src="books/dear-data.webp" alt="Dear Data — Giorgia Lupi &amp; Stefanie Posavec" title="Dear Data — Giorgia Lupi &amp; Stefanie Posavec" />
+          <img src="books/extra-bold.webp" alt="Extra Bold — Ellen Lupton" title="Extra Bold — Ellen Lupton" />
+          <img src="books/thinking-with-type.webp" alt="Thinking with Type — Ellen Lupton" title="Thinking with Type — Ellen Lupton" />
+          <img src="books/the-sketchnote-handbook.webp" alt="The Sketchnote Handbook — Mike Rohde" title="The Sketchnote Handbook — Mike Rohde" />
+          <img src="books/seeing-with-fresh-eyes.webp" alt="Seeing with Fresh Eyes — Edward Tufte" title="Seeing with Fresh Eyes — Edward Tufte" />
+        </div>
       </div>
 
       <div class="lib-panel" id="panel-film" role="tabpanel" aria-labelledby="tab-film" hidden>
+        <div class="film-rows" aria-hidden="true">
+          <div class="film-row">
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+          </div>
+          <div class="film-row">
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+            <div class="film-frame is-landscape"></div>
+            <div class="film-frame is-portrait"></div>
+          </div>
+        </div>
         <p class="body-text"><a href="https://www.instagram.com/myfilmraol/" target="_blank" rel="noopener noreferrer">More on Instagram</a></p>
       </div>
     </section>
