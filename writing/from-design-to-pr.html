@@ -39,14 +39,26 @@
     }
     .back a,
     .back a:visited {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       color: var(--ink);
+      text-decoration: none;
+    }
+    .back a svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      display: block;
+    }
+    .back a span {
       text-decoration: underline;
       text-decoration-thickness: 1.5px;
       text-underline-offset: 3px;
       text-decoration-color: var(--light);
     }
-    .back a:hover,
-    .back a:focus-visible {
+    .back a:hover span,
+    .back a:focus-visible span {
       color: var(--ink);
       text-decoration-color: var(--ink);
     }
@@ -117,7 +129,7 @@
 </head>
 <body>
   <main>
-    <p class="back"><a href="../index.html">← Mahima Rao</a></p>
+    <p class="back"><a href="../index.html"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
     <h1>UI bug regarding a banner section, from Linear ticket to merged PR</h1>
 
     <p>About 20% of my week goes into front-end polish that I merge myself. Layout that breaks when panels sit next to each other. Icons, labels, and status colors that don't match from one screen to the next. Copy and defaults that don't say what they mean.</p>
