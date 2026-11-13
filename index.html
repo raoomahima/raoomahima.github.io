@@ -262,6 +262,23 @@
       outline: 1px solid var(--ink);
       outline-offset: 3px;
     }
+    #panel-writing .exp-title a,
+    #panel-writing .exp-title a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    #panel-writing .exp-title a:hover,
+    #panel-writing .exp-title a:focus-visible {
+      color: var(--ink);
+      text-decoration-color: var(--ink);
+    }
+    #panel-writing .exp-title a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
 
     /* ── DESIGN LIBRARY ── */
     .lib-tabs {
@@ -754,19 +771,7 @@
 
       <div class="lib-panel" id="panel-writing" role="tabpanel" aria-labelledby="tab-writing">
         <div class="exp-row">
-          <p class="exp-title">Claude skills I built</p>
-          <p class="exp-desc">Which skill gets used most, why it became a skill, the instructions behind it, and what it still gets wrong.</p>
-        </div>
-        <div class="exp-row">
-          <p class="exp-title">Codex vs. Claude vs. Cursor</p>
-          <p class="exp-desc">Which tool to reach for, and for what.</p>
-        </div>
-        <div class="exp-row">
-          <p class="exp-title">A component teardown</p>
-          <p class="exp-desc">One component shipped with AI, and the details it missed.</p>
-        </div>
-        <div class="exp-row">
-          <p class="exp-title">Fixing a banner, from Linear ticket to merged PR</p>
+          <p class="exp-title"><a href="writing/from-design-to-pr.html">Fixing a banner, from Linear ticket to merged PR</a></p>
           <p class="exp-desc">How I take a small front-end design fix from a ticket to a merged PR with Claude, and what I check before anyone reviews it.</p>
         </div>
       </div>
