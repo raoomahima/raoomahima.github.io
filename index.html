@@ -251,29 +251,54 @@
     }
     .lib-label + .exp-row { margin-top: 0; }
     .lib-tools { margin-top: 28px; }
-    .tool-links {
+    .tool-icons {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 16px;
+      gap: 10px;
     }
-    .tool-links a,
-    .tool-links a:visited {
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--ink);
-      text-decoration: underline;
-      text-decoration-thickness: 1.5px;
-      text-underline-offset: 3px;
-      text-decoration-color: var(--light);
+    .tool-tile {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #ececec;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
     }
-    .tool-links a:hover,
-    .tool-links a:focus-visible {
-      color: var(--ink);
-      text-decoration-color: var(--ink);
+    .tool-tile svg {
+      width: 20px;
+      height: 20px;
+      display: block;
     }
-    .tool-links a:focus-visible {
+    .tool-tile:focus-visible {
       outline: 1px solid var(--ink);
       outline-offset: 3px;
+    }
+    .tool-tile::after {
+      content: attr(data-name);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 8px);
+      transform: translateX(-50%);
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: var(--ink);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.2;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+    }
+    .tool-tile:hover::after,
+    .tool-tile:focus-visible::after {
+      opacity: 1;
     }
     .shelf-book {
       font-size: 0.9rem;
@@ -653,21 +678,92 @@
           <p class="exp-desc">Generate a weekly design showcase Slack message and Loom talking-points outline.</p>
         </div>
         <p class="lib-label lib-tools">Tools I use</p>
-        <div class="tool-links">
-          <a href="https://www.figma.com/" target="_blank" rel="noopener noreferrer">Figma</a>
-          <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer">Claude</a>
-          <a href="https://cursor.com/" target="_blank" rel="noopener noreferrer">Cursor</a>
-          <a href="https://openai.com/codex" target="_blank" rel="noopener noreferrer">Codex</a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="https://grok.com/" target="_blank" rel="noopener noreferrer">Grok Bot</a>
-          <a href="https://www.braintrust.dev/" target="_blank" rel="noopener noreferrer">Braintrust</a>
-          <a href="https://www.heap.io/" target="_blank" rel="noopener noreferrer">Heap</a>
-          <a href="https://linear.app/" target="_blank" rel="noopener noreferrer">Linear</a>
-          <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer">Canva</a>
-          <a href="https://www.adobe.com/" target="_blank" rel="noopener noreferrer">Adobe Suite</a>
-          <a href="https://www.usertesting.com/" target="_blank" rel="noopener noreferrer">UserTesting</a>
-          <a href="https://www.gong.io/" target="_blank" rel="noopener noreferrer">Gong</a>
-          <a href="https://www.loom.com/" target="_blank" rel="noopener noreferrer">Loom</a>
+        <div class="tool-icons">
+          <span class="tool-tile" tabindex="0" title="Figma" data-name="Figma" aria-label="Figma">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="3" width="5.6" height="6" rx="2.8" fill="#000"/>
+              <rect x="4" y="9" width="5.6" height="6" fill="#000"/>
+              <path d="M4 15h5.6v2.8A2.8 2.8 0 0 1 6.8 20.6 2.8 2.8 0 0 1 4 17.8Z" fill="#000"/>
+              <circle cx="13.2" cy="6" r="2.7" fill="#000"/>
+              <circle cx="13.2" cy="12" r="2.7" fill="#000"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Claude" data-name="Claude" aria-label="Claude">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <g fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 3.2v17.6M3.2 12h17.6M5.7 5.7l12.6 12.6M18.3 5.7 5.7 18.3"/>
+              </g>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Cursor" data-name="Cursor" aria-label="Cursor">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3.2 20 7.6v8.8L12 20.8 4 16.4V7.6Z" fill="none" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M12 12.2 20 7.6M12 12.2 4 7.6M12 12.2v8.6" fill="none" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Codex" data-name="Codex" aria-label="Codex">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 7 4.5 12 9 17M15 7l4.5 5L15 17M13 5.5 11 18.5" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="GitHub" data-name="GitHub" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#000" d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.84c.85 0 1.7.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.38-.01 2.49-.01 2.83 0 .26.18.59.69.48A10.04 10.04 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Grok Bot" data-name="Grok Bot" aria-label="Grok Bot">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4.8c3.8 0 6.2 2.6 5.7 5.8-.6 3.6-3.8 5.6-6.8 4.8-2.6-.7-4-2.9-3.4-5.1.5-1.8 2-2.8 3.6-2.4 1.2.3 1.9 1.3 1.6 2.3" fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Braintrust" data-name="Braintrust" aria-label="Braintrust">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 19.2V11" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M12 11.4c0-3-2.1-4.8-4.2-4-1.9 1.5-1.4 4 .2 4.8-1.1 1-1 3 .8 3.5 1.1 1.1 3.2.8 3.2-.5" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 11.4c0-3 2.1-4.8 4.2-4 1.9 1.5 1.4 4-.2 4.8 1.1 1 1 3-.8 3.5-1.1 1.1-3.2.8-3.2-.5" fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Heap" data-name="Heap" aria-label="Heap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 16.2 12 20l8-3.8M4 12.2 12 16l8-3.8M4 8.2 12 12l8-3.8L12 4.4Z" fill="none" stroke="#000" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Linear" data-name="Linear" aria-label="Linear">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 18.2 18.4 5.4" fill="none" stroke="#000" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Canva" data-name="Canva" aria-label="Canva">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3.5" y="3.5" width="17" height="17" rx="4" fill="none" stroke="#000" stroke-width="1.6"/>
+              <circle cx="12" cy="12" r="3.6" fill="#000"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Adobe Suite" data-name="Adobe Suite" aria-label="Adobe Suite">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#000" fill-rule="evenodd" d="M12 3.2 20.4 20h-3.8l-1.6-3.8H8.9L7.3 20H3.6Zm0 6.2-1.8 4.4h3.6Z"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="UserTesting" data-name="UserTesting" aria-label="UserTesting">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="8" r="3" fill="#000"/>
+              <path d="M5.2 19.4C5.8 15 8.2 13.2 12 13.2s6.2 1.8 6.8 6.2Z" fill="#000"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Gong" data-name="Gong" aria-label="Gong">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.5" cy="13.2" r="5.6" fill="none" stroke="#000" stroke-width="1.6"/>
+              <circle cx="10.5" cy="13.2" r="1.4" fill="#000"/>
+              <path d="M14.6 8.4 18.6 4.4" fill="none" stroke="#000" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="19" cy="3.8" r="1.25" fill="#000"/>
+            </svg>
+          </span>
+          <span class="tool-tile" tabindex="0" title="Loom" data-name="Loom" aria-label="Loom">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="7" fill="none" stroke="#000" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="2.5" fill="#000"/>
+            </svg>
+          </span>
         </div>
       </div>
 
@@ -709,12 +805,7 @@
       <h2>Experience</h2>
       <div class="exp-row">
         <p class="exp-title">Lead product designer</p>
-        <p class="exp-date">Klaviyo, 2026 – Present</p>
-        <p class="exp-desc">Lead design for the campaigns space, from strategy to production code, building AI-native, data-driven experiences.</p>
-      </div>
-      <div class="exp-row">
-        <p class="exp-title">Senior product designer</p>
-        <p class="exp-date">Klaviyo, 2021 – 2026</p>
+        <p class="exp-date">Klaviyo, 2021 – Present</p>
         <p class="exp-desc">Leading product design for marketing orchestration and AI, shaping tools that power e-commerce growth across email, SMS, and automation</p>
       </div>
       <div class="exp-row">
