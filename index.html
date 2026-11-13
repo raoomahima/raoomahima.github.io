@@ -17,7 +17,7 @@
       --light: #aaaaaa;
     }
 
-    html { font-size: 18px; }
+    html { font-size: 18px; scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -75,6 +75,18 @@
       max-width: 520px;
     }
     .body-text:last-child { margin-bottom: 0; }
+    .body-text a,
+    .body-text a:visited {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--light);
+    }
+    .body-text a:hover {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration-color: var(--ink);
+    }
 
     /* ── PROJECT ROWS ── */
     .project-row {
@@ -84,6 +96,7 @@
       padding-bottom: 28px;
       margin-bottom: 28px;
       border-bottom: 1px solid #f0f0f0;
+      scroll-margin-top: 32px;
     }
     .project-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 
@@ -288,17 +301,17 @@
 
     <header>
 <p class="name"><i>M</i>ahima <i>R</i>ao</p>
-      <p class="role">Product Designer / Design Technologist</p>
+      <p class="role">Lead Product Designer / Design Technologist</p>
     </header>
 
     <section>
-      <p class="body-text">Design generalist who moves between canvas and code. I care about how things work as much as how they look. Currently at Klaviyo, working on marketing orchestration and AI tooling</p>
+      <p class="body-text">Lead product designer at <a href="https://www.klaviyo.com/" target="_blank" rel="noopener noreferrer">Klaviyo</a> working on <a href="#omnichannel">omnichannel orchestration</a> and <a href="#composer">agentic marketing</a> tools used by 200,000+ brands, and previously <a href="#attribution">multi-touch attribution reporting</a>. I move between canvas and code, building AI-native, data-driven experiences.</p>
     </section>
 
     <section>
       <h2>Latest projects</h2>
 
-      <div class="project-row" data-panel="1">
+      <div class="project-row" id="composer" data-panel="1">
         <a href="https://www.klaviyo.com/blog/introducing-kai-marketing-agent" target="_blank" class="pr-link">
           <img class="pr-thumb" src="KAI_marketing_agent.png" alt="K:AI marketing agent" />
           <div class="pr-left">
@@ -308,7 +321,7 @@
         </a>
       </div>
 
-      <div class="project-row" data-panel="2">
+      <div class="project-row" id="omnichannel" data-panel="2">
         <a href="https://www.klaviyo.com/blog/omnichannel-campaign-builder" target="_blank" class="pr-link">
           <img class="pr-thumb" src="Omnichannel_campaign.png" alt="Omnichannel campaigns" />
           <div class="pr-left">
@@ -318,7 +331,7 @@
         </a>
       </div>
 
-      <div class="project-row" data-panel="3">
+      <div class="project-row" id="attribution" data-panel="3">
         <a href="https://www.klaviyo.com/blog/single-touch-vs-multi-touch-attribution" target="_blank" class="pr-link">
           <img class="pr-thumb" src="Attribution.png" alt="Marketing attribution and reporting" />
           <div class="pr-left">
