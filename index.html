@@ -22,7 +22,7 @@
       --light: #aaaaaa;
     }
 
-    html { font-size: 18px; scroll-behavior: smooth; }
+    html { font-size: clamp(17px, 0.35vw + 13px, 20px); scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -33,11 +33,11 @@
     }
 
     main {
-      padding: 72px 0 120px;
+      padding: clamp(40px, 5.5vh, 72px) 0 120px;
     }
 
     .narrow {
-      max-width: 600px;
+      max-width: clamp(600px, 44vw, 720px);
       margin-left: auto;
       margin-right: auto;
       padding-left: 40px;
@@ -45,7 +45,7 @@
     }
 
     /* ── HEADER ── */
-    header { margin-bottom: 104px; }
+    header { margin-bottom: clamp(48px, 8vh, 96px); }
     .name {
       font-family: 'Playfair Display', Georgia, serif;
       font-style: normal;
@@ -84,7 +84,7 @@
       color: var(--ink);
       line-height: 1.75;
       margin-bottom: 14px;
-      max-width: 520px;
+      max-width: 60ch;
     }
     .body-text:last-child { margin-bottom: 0; }
     .body-text a,
@@ -112,7 +112,7 @@
 
     /* ── PROJECT ROWS ── */
     .project-list {
-      max-width: 600px;
+      max-width: clamp(600px, 44vw, 720px);
       margin-left: auto;
       margin-right: auto;
       padding-left: 40px;
@@ -578,7 +578,7 @@
 
     /* ── DESKTOP SCROLL HERO ── */
     @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-      html.enhanced .intro { margin-bottom: 36px; }
+      html.enhanced .intro { margin-bottom: clamp(24px, 3.5vh, 40px); }
 
       html.enhanced .work { height: 320vh; }
 
@@ -590,18 +590,18 @@
 
       html.enhanced .work-stage {
         height: 100%;
-        width: min(1120px, calc(100vw - 64px));
+        width: min(1360px, calc(100vw - clamp(48px, 6vw, 128px)));
         margin: 0 auto;
         display: grid;
-        grid-template-columns: minmax(260px, 300px) minmax(320px, 560px);
-        column-gap: clamp(28px, 4vw, 64px);
+        grid-template-columns: minmax(260px, clamp(280px, 24vw, 380px)) minmax(360px, clamp(520px, 50vw, 820px));
+        column-gap: clamp(32px, 4.5vw, 80px);
         align-items: center;
         align-content: center;
         justify-content: center;
       }
 
       html.enhanced .project-list {
-        max-width: 300px;
+        max-width: 100%;
         width: auto;
         margin: 0;
         padding: 0;
@@ -652,7 +652,7 @@
       html.enhanced .hero-slot {
         display: block;
         width: 100%;
-        max-width: 560px;
+        max-width: 100%;
         aspect-ratio: 2 / 1;
         justify-self: end;
         visibility: hidden;
@@ -664,7 +664,7 @@
         z-index: 2;
         top: 0;
         left: 50%;
-        width: min(960px, calc(100vw - 80px));
+        width: min(1360px, calc(100vw - clamp(48px, 6vw, 128px)));
         aspect-ratio: 2 / 1;
         border-radius: 12px;
         overflow: hidden;
@@ -1102,8 +1102,9 @@
         glideEase = smooth(glide);
 
         const above = track.getBoundingClientRect().top + window.scrollY;
-        const spaceAtRest = Math.max(220, window.innerHeight - above - 20);
-        const startW = Math.min(960, window.innerWidth - 80, (spaceAtRest / 1.03) * 2);
+        const padX = clamp(window.innerWidth * 0.06, 48, 128);
+        const spaceAtRest = Math.max(280, window.innerHeight - above - 24);
+        const startW = Math.min(1360, window.innerWidth - padX, (spaceAtRest / 1.03) * 2);
         const endW = slotRect.width || startW;
         const endX = slotRect.left - stickyRect.left;
         const endY = slotRect.top - stickyRect.top;
