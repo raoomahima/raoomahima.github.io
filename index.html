@@ -7,6 +7,11 @@
   <link rel="icon" type="image/png" href="MR_logo.png" />
   <link rel="apple-touch-icon" href="MR_logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+  <script>
+    if (window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)').matches) {
+      document.documentElement.classList.add('enhanced');
+    }
+  </script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -28,9 +33,15 @@
     }
 
     main {
+      padding: 72px 0 120px;
+    }
+
+    .narrow {
       max-width: 600px;
-      margin: 0 auto;
-      padding: 72px 40px 120px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 40px;
+      padding-right: 40px;
     }
 
     /* ── HEADER ── */
@@ -55,7 +66,8 @@
     }
 
     /* ── SECTIONS ── */
-    section { margin-bottom: 104px; }
+    section.narrow,
+    .work { margin-bottom: 104px; }
 
     /* Level 1 — Header: semi-bold, ink */
     h2 {
@@ -78,17 +90,35 @@
     .body-text a,
     .body-text a:visited {
       color: var(--ink);
-      text-decoration: underline;
+      text-decoration-line: underline;
+      text-decoration-thickness: 1.5px;
       text-underline-offset: 3px;
-      text-decoration-color: var(--light);
+      text-decoration-color: #aaaaaa;
+      text-decoration-skip-ink: none;
     }
-    .body-text a:hover {
+    .body-text a:hover,
+    .body-text a:active,
+    .body-text a:focus-visible,
+    .body-text a.is-on {
       color: var(--ink);
-      font-weight: 600;
+      text-decoration-thickness: 3px;
       text-decoration-color: var(--ink);
+      -webkit-text-stroke: 0.4px var(--ink);
+    }
+    .body-text a:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
     }
 
     /* ── PROJECT ROWS ── */
+    .project-list {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+
     .project-row {
       display: flex;
       align-items: center;
@@ -122,6 +152,10 @@
       gap: 20px;
       width: 100%;
     }
+    .pr-link:focus-visible {
+      outline: 1px solid var(--ink);
+      outline-offset: 4px;
+    }
 
     /* Level 2 — Body */
     .pr-name {
@@ -145,6 +179,11 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
+
+    .pr-bar { display: none; }
+
+    .hero,
+    .hero-slot { display: none; }
 
     /* ── EXPERIENCE ROWS ── */
     .exp-row {
@@ -201,17 +240,20 @@
     @media (max-width: 900px) {
       html { font-size: 17px; }
 
-      main {
+      main { padding: 56px 0 96px; }
+
+      .narrow,
+      .project-list {
         max-width: 540px;
-        padding: 56px 32px 96px;
+        padding-left: 32px;
+        padding-right: 32px;
       }
 
       header { margin-bottom: 80px; }
-      section { margin-bottom: 80px; }
+      section.narrow,
+      .work { margin-bottom: 80px; }
 
-      .body-text {
-        max-width: 100%;
-      }
+      .body-text { max-width: 100%; }
 
       footer { margin-top: 64px; }
     }
@@ -220,9 +262,13 @@
     @media (max-width: 600px) {
       html { font-size: 16px; }
 
-      main {
+      main { padding: 40px 0 64px; }
+
+      .narrow,
+      .project-list {
         max-width: 100%;
-        padding: 40px 20px 64px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       header { margin-bottom: 56px; }
@@ -230,7 +276,8 @@
       .name { font-size: 1.25rem; }
       .role { font-size: 0.85rem; }
 
-      section { margin-bottom: 72px; }
+      section.narrow,
+      .work { margin-bottom: 72px; }
 
       h2 {
         font-size: 0.85rem;
@@ -256,9 +303,7 @@
         aspect-ratio: 16 / 9;
       }
 
-      .pr-left {
-        padding-top: 0;
-      }
+      .pr-left { padding-top: 0; }
 
       .pr-link {
         flex-direction: column;
@@ -272,9 +317,7 @@
         line-height: 1.55;
       }
 
-      .pr-year {
-        font-size: 0.78rem;
-      }
+      .pr-year { font-size: 0.78rem; }
 
       .contact-links { gap: 10px; }
       .contact-links a { font-size: 0.85rem; }
@@ -289,9 +332,131 @@
     @media (max-width: 380px) {
       html { font-size: 15px; }
 
-      main { padding: 32px 16px 56px; }
+      main { padding: 32px 0 56px; }
+
+      .narrow,
+      .project-list {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
       header { margin-bottom: 44px; }
-      section { margin-bottom: 44px; }
+      section.narrow,
+      .work { margin-bottom: 44px; }
+    }
+
+    /* ── DESKTOP SCROLL HERO ── */
+    @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+      html.enhanced .intro { margin-bottom: 36px; }
+
+      html.enhanced .work { height: 320vh; }
+
+      html.enhanced .work-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+      }
+
+      html.enhanced .work-stage {
+        height: 100%;
+        width: min(1040px, 92vw);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+        column-gap: clamp(28px, 4vw, 72px);
+        align-items: center;
+        align-content: center;
+      }
+
+      html.enhanced .project-list {
+        max-width: none;
+        width: auto;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+      }
+
+      html.enhanced .project-row {
+        display: block;
+        border-bottom: none;
+        margin: 0 0 30px;
+        padding: 0;
+      }
+      html.enhanced .project-row:last-child { margin-bottom: 0; }
+
+      html.enhanced .pr-link {
+        display: block;
+      }
+
+      html.enhanced .pr-thumb { display: none; }
+
+      html.enhanced .pr-bar {
+        display: block;
+        height: 1px;
+        margin-top: 12px;
+        background: #e4e4e4;
+        overflow: hidden;
+      }
+      html.enhanced .pr-bar-fill {
+        display: block;
+        height: 1px;
+        width: 100%;
+        background: var(--ink);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+
+      html.enhanced .project-list.is-stepping .pr-name {
+        color: var(--mid);
+        transition: color 0.25s ease;
+      }
+      html.enhanced .project-list.is-stepping .project-row.is-current .pr-name,
+      html.enhanced .project-list.is-stepping .project-row:hover .pr-name {
+        color: var(--ink);
+        -webkit-text-stroke: 0.4px var(--ink);
+      }
+
+      html.enhanced .hero-slot {
+        display: block;
+        width: 100%;
+        aspect-ratio: 818 / 463;
+        visibility: hidden;
+      }
+
+      html.enhanced .hero {
+        display: block;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 50%;
+        width: min(500px, calc(100vw - 80px));
+        aspect-ratio: 818 / 463;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #f0f0f0;
+        pointer-events: none;
+        transform: translateX(-50%) scale(1.03);
+        transform-origin: top center;
+      }
+      html.enhanced .hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transform: translate3d(16px, 0, 0);
+        transition: opacity 520ms ease, transform 520ms ease;
+      }
+      html.enhanced .hero img.is-shown {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        z-index: 1;
+      }
+      html.enhanced .hero img.is-leaving {
+        opacity: 0;
+        transform: translate3d(-16px, 0, 0);
+      }
     }
   </style>
 </head>
@@ -299,50 +464,65 @@
 
   <main>
 
-    <header>
-<p class="name"><i>M</i>ahima <i>R</i>ao</p>
+    <header class="narrow">
+      <p class="name"><i>M</i>ahima <i>R</i>ao</p>
       <p class="role">Lead Product Designer / Design Technologist</p>
     </header>
 
-    <section>
-      <p class="body-text">Lead product designer at <a href="https://www.klaviyo.com/" target="_blank" rel="noopener noreferrer">Klaviyo</a> working on <a href="#omnichannel">omnichannel orchestration</a> and <a href="#composer">agentic marketing</a> tools used by 200,000+ brands, and previously <a href="#attribution">multi-touch attribution reporting</a>. I move between canvas and code, building AI-native, data-driven experiences.</p>
+    <section class="intro narrow">
+      <p class="body-text">Lead product designer at Klaviyo working on <a href="#omnichannel" data-project="omnichannel">omnichannel orchestration</a> and <a href="#composer" data-project="composer">agentic marketing</a> tools used by 200,000+ brands, and previously <a href="#attribution" data-project="attribution">multi-touch attribution reporting</a>. I move between canvas and code, building AI-native, data-driven experiences.</p>
     </section>
 
-    <section>
-      <h2>Latest projects</h2>
+    <section class="work" id="work">
+      <div class="work-sticky">
+        <div class="work-stage">
+          <div class="project-list">
+            <h2>Latest projects</h2>
 
-      <div class="project-row" id="composer" data-panel="1">
-        <a href="https://www.klaviyo.com/blog/introducing-kai-marketing-agent" target="_blank" class="pr-link">
-          <img class="pr-thumb" src="KAI_marketing_agent.png" alt="K:AI marketing agent" />
-          <div class="pr-left">
-            <p class="pr-name">K:AI marketing agent</p>
-            <p class="pr-desc">Autonomous AI agent surfacing advanced recommendations and optimization strategies</p>
-          </div>
-        </a>
-      </div>
+            <div class="project-row" id="composer" data-project="composer" data-panel="1">
+              <a href="https://www.klaviyo.com/blog/introducing-kai-marketing-agent" target="_blank" class="pr-link">
+                <img class="pr-thumb" src="KAI_marketing_agent.png" alt="Composer marketing agent" />
+                <div class="pr-left">
+                  <p class="pr-name">Composer marketing agent</p>
+                  <p class="pr-desc">Autonomous AI agent surfacing advanced recommendations and optimization strategies</p>
+                  <span class="pr-bar" aria-hidden="true"><span class="pr-bar-fill"></span></span>
+                </div>
+              </a>
+            </div>
 
-      <div class="project-row" id="omnichannel" data-panel="2">
-        <a href="https://www.klaviyo.com/blog/omnichannel-campaign-builder" target="_blank" class="pr-link">
-          <img class="pr-thumb" src="Omnichannel_campaign.png" alt="Omnichannel campaigns" />
-          <div class="pr-left">
-            <p class="pr-name">Omnichannel campaigns</p>
-            <p class="pr-desc">Unified cross-channel campaign builder spanning email, SMS, push, and WhatsApp</p>
-          </div>
-        </a>
-      </div>
+            <div class="project-row" id="omnichannel" data-project="omnichannel" data-panel="2">
+              <a href="https://www.klaviyo.com/blog/omnichannel-campaign-builder" target="_blank" class="pr-link">
+                <img class="pr-thumb" src="Omnichannel_campaign.png" alt="Omnichannel campaigns" />
+                <div class="pr-left">
+                  <p class="pr-name">Omnichannel campaigns</p>
+                  <p class="pr-desc">Unified cross-channel campaign builder spanning email, SMS, push, and WhatsApp</p>
+                  <span class="pr-bar" aria-hidden="true"><span class="pr-bar-fill"></span></span>
+                </div>
+              </a>
+            </div>
 
-      <div class="project-row" id="attribution" data-panel="3">
-        <a href="https://www.klaviyo.com/blog/single-touch-vs-multi-touch-attribution" target="_blank" class="pr-link">
-          <img class="pr-thumb" src="Attribution.png" alt="Marketing attribution and reporting" />
-          <div class="pr-left">
-            <p class="pr-name">Marketing attribution & reporting</p>
-            <p class="pr-desc">End-to-end attribution and analytics for multi-touch marketing journeys</p>
+            <div class="project-row" id="attribution" data-project="attribution" data-panel="3">
+              <a href="https://www.klaviyo.com/blog/single-touch-vs-multi-touch-attribution" target="_blank" class="pr-link">
+                <img class="pr-thumb" src="Attribution.png" alt="Marketing attribution and reporting" />
+                <div class="pr-left">
+                  <p class="pr-name">Marketing attribution &amp; reporting</p>
+                  <p class="pr-desc">End-to-end attribution and analytics for multi-touch marketing journeys</p>
+                  <span class="pr-bar" aria-hidden="true"><span class="pr-bar-fill"></span></span>
+                </div>
+              </a>
+            </div>
           </div>
-        </a>
+          <div class="hero-slot" aria-hidden="true"></div>
+        </div>
+        <div class="hero" aria-hidden="true">
+          <img data-project="omnichannel" class="is-shown" src="Omnichannel_campaign.png" alt="" />
+          <img data-project="composer" src="KAI_marketing_agent.png" alt="" />
+          <img data-project="attribution" src="Attribution.png" alt="" />
+        </div>
       </div>
     </section>
 
-    <section>
+    <section class="narrow">
       <h2>Experience</h2>
       <div class="exp-row">
         <p class="exp-title">Senior product designer</p>
@@ -361,7 +541,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="narrow">
       <h2>Links</h2>
       <div class="contact-links">
         <a href="https://www.linkedin.com/in/rao-mahima/" target="_blank">LinkedIn</a>
@@ -370,9 +550,229 @@
       </div>
     </section>
 
-    <footer>© 2026 Mahima Rao</footer>
+    <footer class="narrow">© 2026 Mahima Rao</footer>
 
   </main>
+
+  <script>
+    (function () {
+      const mq = window.matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)');
+      const ORDER = ['composer', 'omnichannel', 'attribution'];
+      const HOLD_START = 0.1;
+      const HOLD_END = 0.12;
+      const track = document.querySelector('.work');
+      const sticky = document.querySelector('.work-sticky');
+      const list = document.querySelector('.project-list');
+      const slot = document.querySelector('.hero-slot');
+      const hero = document.querySelector('.hero');
+      const rows = Array.from(document.querySelectorAll('.project-row'));
+      const blurbLinks = Array.from(document.querySelectorAll('.body-text a[data-project]'));
+      let shownId = 'omnichannel';
+      let preview = null;
+      let intentTimer = 0;
+      let glideEase = 0;
+      let raf = 0;
+
+      const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+      const lerp = (a, b, t) => a + (b - a) * t;
+      const smooth = (t) => t * t * (3 - 2 * t);
+
+      function showProject(id) {
+        if (!id || id === shownId) {
+          blurbLinks.forEach((link) => link.classList.toggle('is-on', link.dataset.project === shownId));
+          return;
+        }
+        const next = hero.querySelector('[data-project="' + id + '"]');
+        const prev = hero.querySelector('.is-shown');
+        if (prev) {
+          prev.classList.remove('is-shown');
+          prev.classList.add('is-leaving');
+        }
+        next.classList.remove('is-leaving');
+        next.classList.remove('is-shown');
+        void next.offsetWidth;
+        next.classList.add('is-shown');
+        shownId = id;
+        blurbLinks.forEach((link) => link.classList.toggle('is-on', link.dataset.project === id));
+      }
+
+      function clearHeroMotion() {
+        hero.style.left = '';
+        hero.style.top = '';
+        hero.style.width = '';
+        hero.style.transform = '';
+        hero.style.transformOrigin = '';
+        list.style.opacity = '';
+        list.style.transform = '';
+        list.classList.remove('is-stepping');
+        list.inert = false;
+        rows.forEach((row) => {
+          row.classList.remove('is-current', 'is-done');
+          const fill = row.querySelector('.pr-bar-fill');
+          if (fill) fill.style.transform = '';
+        });
+        blurbLinks.forEach((link) => link.classList.remove('is-on'));
+      }
+
+      function progressFor(index) {
+        const span = 1 - HOLD_START - HOLD_END;
+        return HOLD_START + span * ((index + 0.4) / ORDER.length);
+      }
+
+      function scrollToProject(id, behavior) {
+        const index = ORDER.indexOf(id);
+        if (index < 0) return;
+        const scrollable = track.offsetHeight - window.innerHeight;
+        const top = track.getBoundingClientRect().top + window.scrollY + scrollable * progressFor(index);
+        window.scrollTo({ top: top, behavior: behavior || 'smooth' });
+      }
+
+      function stepState(pinnedP) {
+        if (pinnedP <= HOLD_START) return { index: -1, local: 0 };
+        if (pinnedP >= 1 - HOLD_END) return { index: ORDER.length - 1, local: 1 };
+        const span = 1 - HOLD_START - HOLD_END;
+        const scaled = ((pinnedP - HOLD_START) / span) * ORDER.length;
+        const index = Math.min(ORDER.length - 1, Math.floor(scaled));
+        return { index: index, local: scaled - index };
+      }
+
+      function update() {
+        const enhanced = mq.matches;
+        document.documentElement.classList.toggle('enhanced', enhanced);
+        if (!enhanced) {
+          clearHeroMotion();
+          return;
+        }
+
+        const stickyRect = sticky.getBoundingClientRect();
+        const slotRect = slot.getBoundingClientRect();
+        const approach = stickyRect.top;
+        const glideDistance = Math.max(1, track.getBoundingClientRect().top + window.scrollY);
+        const glide = clamp(1 - approach / glideDistance, 0, 1);
+        glideEase = smooth(glide);
+
+        const above = track.getBoundingClientRect().top + window.scrollY;
+        const spaceAtRest = Math.max(180, window.innerHeight - above - 16);
+        const startW = Math.min(500, window.innerWidth - 80, spaceAtRest * (818 / 463));
+        const endW = slotRect.width || startW;
+        const endX = slotRect.left - stickyRect.left;
+        const endY = slotRect.top - stickyRect.top;
+        const scale = lerp(1.03, 1, glideEase);
+        const width = lerp(startW, endW, glideEase);
+        const x = lerp((sticky.clientWidth - startW * 1.03) / 2, endX, glideEase);
+        const y = lerp(0, endY, glideEase);
+
+        hero.style.left = '0px';
+        hero.style.top = '0px';
+        hero.style.width = width + 'px';
+        hero.style.transformOrigin = 'top left';
+        hero.style.transform = 'translate3d(' + x + 'px, ' + y + 'px, 0) scale(' + scale + ')';
+
+        list.style.opacity = String(glideEase);
+        list.style.transform = 'translateY(' + ((1 - glideEase) * 18) + 'px)';
+        list.inert = glideEase < 0.98;
+
+        const scrollable = Math.max(1, track.offsetHeight - window.innerHeight);
+        const pinnedP = clamp(-(track.getBoundingClientRect().top) / scrollable, 0, 1);
+        const step = glide >= 1 ? stepState(pinnedP) : { index: -1, local: 0 };
+        list.classList.toggle('is-stepping', step.index >= 0);
+        rows.forEach((row, index) => {
+          const fill = row.querySelector('.pr-bar-fill');
+          let amount = 0;
+          if (step.index >= 0) {
+            if (index < step.index) amount = 1;
+            else if (index === step.index) amount = step.local;
+          }
+          if (fill) fill.style.transform = 'scaleX(' + amount + ')';
+          row.classList.toggle('is-current', index === step.index);
+          row.classList.toggle('is-done', step.index >= 0 && index < step.index);
+        });
+
+        const scrollProject = step.index >= 0 ? ORDER[step.index] : null;
+        showProject(preview || scrollProject || 'omnichannel');
+      }
+
+      function requestUpdate() {
+        if (raf) return;
+        raf = window.requestAnimationFrame(() => {
+          raf = 0;
+          update();
+        });
+      }
+
+      function armPreview(id) {
+        window.clearTimeout(intentTimer);
+        intentTimer = window.setTimeout(() => {
+          preview = id;
+          requestUpdate();
+        }, 60);
+      }
+
+      function clearPreview() {
+        window.clearTimeout(intentTimer);
+        intentTimer = window.setTimeout(() => {
+          preview = null;
+          requestUpdate();
+        }, 60);
+      }
+
+      function plainClick(event) {
+        return event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey;
+      }
+
+      blurbLinks.forEach((link) => {
+        link.addEventListener('pointerenter', () => armPreview(link.dataset.project));
+        link.addEventListener('pointerleave', clearPreview);
+        link.addEventListener('focus', () => {
+          window.clearTimeout(intentTimer);
+          preview = link.dataset.project;
+          requestUpdate();
+        });
+        link.addEventListener('blur', clearPreview);
+        link.addEventListener('click', (event) => {
+          if (!mq.matches || !plainClick(event)) return;
+          event.preventDefault();
+          scrollToProject(link.dataset.project, 'smooth');
+        });
+      });
+
+      rows.forEach((row) => {
+        const link = row.querySelector('.pr-link');
+        row.addEventListener('pointerenter', () => {
+          if (glideEase < 0.98) return;
+          armPreview(row.dataset.project);
+        });
+        row.addEventListener('pointerleave', () => {
+          if (glideEase < 0.98) return;
+          clearPreview();
+        });
+        link.addEventListener('click', (event) => {
+          if (!mq.matches || !plainClick(event)) return;
+          if (row.classList.contains('is-current')) return;
+          event.preventDefault();
+          scrollToProject(row.dataset.project, 'smooth');
+        });
+      });
+
+      hero.querySelectorAll('img').forEach((img) => {
+        img.addEventListener('transitionend', (event) => {
+          if (event.propertyName === 'opacity' && !img.classList.contains('is-shown')) {
+            img.classList.remove('is-leaving');
+          }
+        });
+      });
+
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate);
+      mq.addEventListener('change', requestUpdate);
+      window.addEventListener('load', () => {
+        update();
+        const id = location.hash.replace('#', '');
+        if (mq.matches && ORDER.indexOf(id) !== -1) scrollToProject(id, 'auto');
+      });
+      update();
+    })();
+  </script>
 
 </body>
 </html>
