@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Designers in the codebase: UI bug to merged PR</title>
+  <title>Fixing UX paper cuts in code</title>
+  <meta name="description" content="How I take a UX fix from a Linear ticket to a merged PR" />
   <link rel="icon" type="image/png" href="../MR_logo.png" />
   <link rel="apple-touch-icon" href="../MR_logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
@@ -77,8 +78,11 @@
     }
 
     h2 {
-      font-size: 0.9rem;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
       font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
       color: var(--ink);
       margin: 36px 0 14px;
     }
@@ -91,6 +95,19 @@
     }
 
     strong { font-weight: 600; }
+
+    ul {
+      margin: 0 0 14px;
+      padding-left: 1.25rem;
+    }
+    li {
+      font-size: 0.9rem;
+      font-weight: 400;
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+    li:last-child { margin-bottom: 0; }
+    li pre { margin: 10px 0 0; }
 
     code {
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -138,8 +155,8 @@
       html { font-size: 16px; }
       main { max-width: 100%; padding: 40px 20px 64px; }
       h1 { font-size: 1.25rem; }
-      h2 { font-size: 0.85rem; }
-      p, .back { font-size: 0.85rem; }
+      h2 { font-size: 1.05rem; }
+      p, .back, li { font-size: 0.85rem; }
     }
 
     @media (max-width: 380px) {
@@ -151,28 +168,66 @@
 <body>
   <main>
     <p class="back"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
-    <h1>Designers in the codebase: UI bug to merged PR</h1>
+    <h1>Fixing UX paper cuts in code</h1>
 
-    <p>About 30% of my week goes to UI paper cuts and user requests that come in, which I fix directly in production code. Layout that breaks when panels sit next to each other. Icons, labels, and status colors that don't match from one screen to the next. Copy and defaults that don't say what they mean.</p>
+    <p>About 30% of my week goes to UI paper cuts and user requests, which I fix directly in production code. These are the small things that slow people down: a layout that breaks when two panels sit side by side, a status color that means one thing on one screen and something else on the next, or a default that doesn't do what its label says.</p>
     <figure>
       <img src="images/contribution-heatmap.png" alt="Calendar heat map of my code contributions from November to November" />
     </figure>
+    <p>Here's the process that works for me, using a recent banner fix as the example.</p>
 
-    <p><strong>Context first.</strong> I use AI to gather context and usage patterns, not opinions. I find what the change touches before I start.</p>
+    <h2>Pick • Think small and scoped</h2>
+    <ul>
+      <li>Log design bugs and user requests in your team's regular backlog, so they're planned like any other work.</li>
+      <li>Sit down with your engineers each week to set goals and agree on which tickets you'll take. Simple front-end design changes usually get assigned to me.</li>
+    </ul>
 
-    <p><strong>Define what good looks like.</strong> Before I build, I write down the outcome I want.</p>
+    <h2>Understand • Think context before code</h2>
+    <ul>
+      <li>Pull the Linear ticket into Claude, check out a branch, and point Claude at that part of the code.</li>
+      <li>Ask "what touches this feature?" to see which pages are affected, and "what else breaks if we do X?" to find dependencies you won't see in the design file.</li>
+      <li>Ask for the error, empty, and loading states, and check that the requirements cover them.</li>
+    </ul>
 
-    <p><strong>Build.</strong> I build it in Cursor, Claude, or Codex. AI speeds up the build. The craft stays mine.</p>
+    <h2>Build • Think outcome, not instructions</h2>
+    <ul>
+      <li>The ticket already holds the context, so the only line you need to add is the outcome you want. For the banner, a few bugs kept coming from that section, and this was the whole prompt:
+        <pre><code>Switch to branch &lt;ticket-id&gt; and work on &lt;Linear ticket link&gt;. Context: clean up the banner section and add the ability to collapse or dismiss it.</code></pre>
+      </li>
+      <li>Check changes locally as you go, in the browser, before moving on.</li>
+      <li>Commit changes to a draft PR that follows a set PR template, with before and after images an engineer can scan.
+        <pre><code>## Loom
+&lt;link to a short walkthrough of the change&gt;
 
-    <p><strong>Review and merge.</strong> I keep the diff small and reuse existing design system components. The PR gets a before and after table, then it goes to review and merges.</p>
+## Short Description
+Cleans up the banner section and adds the ability to collapse or dismiss it. Fixes &lt;Linear ticket link&gt;.
 
-    <p><strong>Iterate in production.</strong> After it merges, I keep refining it live.</p>
+## Before and After
+| Before | After |
+| Banner section, current state | Cleaned-up banner |
+| Banner can't be hidden | Banner can be collapsed or dismissed |
 
-    <p><strong>Example: the banner.</strong> A few bugs kept coming from a banner section. It needed a cleanup and a way to collapse or dismiss it. This was the prompt:</p>
-    <pre><code>Switch to branch &lt;ticket-id&gt; and work on &lt;Linear ticket link&gt;.
-Context: clean up the banner section and add the ability to
-collapse or dismiss it.</code></pre>
-    <p>It came out as a cleaner section that can be collapsed or dismissed, built from a variation of an existing component.</p>
+## Test Plan
+- Checked locally in the browser
+- Checked error, empty, and loading states
+- No build or CI failures
+
+## Checklist for PR Authors
+- [ ] Uses an existing design system component
+- [ ] Small, focused diff
+- [ ] Before and after images added</code></pre>
+      </li>
+    </ul>
+
+    <h2>Review and ship • Think small diffs and clear handoffs</h2>
+    <ul>
+      <li>Watch the line count. A banner cleanup shouldn't be a big diff. When it is, Claude has usually built custom code instead of using the right variation of an existing component.</li>
+      <li>Test it yourself against your source assets, and make sure there are no build or CI failures.</li>
+      <li>Mark it ready for review. It merges once it's been reviewed.</li>
+    </ul>
+
+    <p>My first PRs were copy changes, ten lines at most. They taught me how my engineers work and what review feels like. If you're a designer about to open your first PR, start there!</p>
+    <p>Side note: this is what works for me and my team. Take it as a starting point, and iterate until you find what works for you.</p>
   </main>
 </body>
 </html>
