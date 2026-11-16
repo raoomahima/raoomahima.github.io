@@ -85,6 +85,35 @@
 
     strong { font-weight: 600; }
 
+    .tool-icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 28px;
+    }
+    .tool-icon {
+      position: relative;
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      border-radius: 22.5%;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .tool-icon img {
+      position: absolute;
+      width: 124.272%;
+      height: 124.272%;
+      max-width: none;
+      left: -12.136%;
+      top: -12.136%;
+      display: block;
+    }
+
     @media (max-width: 900px) {
       html { font-size: 17px; }
       main { max-width: 540px; padding: 56px 32px 96px; }
@@ -95,6 +124,8 @@
       main { max-width: 100%; padding: 40px 20px 64px; }
       h1 { font-size: 1.25rem; }
       p, .back { font-size: 0.85rem; }
+      .tool-icons { gap: 12px; }
+      .tool-icon { width: 56px; height: 56px; }
     }
 
     @media (max-width: 380px) {
@@ -107,6 +138,13 @@
   <main>
     <p class="back"><a href="../"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Mahima Rao</span></a></p>
     <h1>Rotating between Claude, Codex, and Cursor</h1>
+
+    <div class="tool-icons">
+      <span class="tool-icon"><img src="images/cursor-app-icon.png" alt="Cursor app icon" width="64" height="64" /></span>
+      <span class="tool-icon"><img src="images/codex-app-icon.png" alt="Codex app icon" width="64" height="64" /></span>
+      <span class="tool-icon"><img src="images/chatgpt-app-icon.png" alt="ChatGPT app icon" width="64" height="64" /></span>
+      <span class="tool-icon"><img src="images/claude-app-icon.png" alt="Claude app icon" width="64" height="64" /></span>
+    </div>
 
     <p>I've used Claude, Codex, and Cursor to ship front-end changes, and I rotate between them. At this point they're converging: each one can read the code, make the change, run the tests, and open a PR. What's left is which tool fits the job in front of you and which interface you like working in. Here is how I pick between them.</p>
 
